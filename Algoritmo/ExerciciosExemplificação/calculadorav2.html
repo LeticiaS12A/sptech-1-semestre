@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora v2</title>
+</head>
+<body>
+    Primeiro número:
+    <input type="text" id="input_n1" placeholder="numero 1"> <br><br>
+    Segundo número:
+    <input type="text" id="input_n2" placeholder="numero 2"> <br>
+
+    <button onclick="multiplicar()">Multiplicar</button>
+    <button onclick="dividir()">Dividir</button>
+    <button onclick="subtrair()">Subtrair</button>
+    <button onclick="somar()">Somar</button>
+    <button onclick="exponenciacao()">Exponenciação</button>
+    <button onclick="resto()">Resto</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function multiplicar(){
+        let n1 = Number(input_n1.value)
+        let n2 = Number(input_n2.value)
+        let resultado = n1 * n2;
+        
+        div_mensagem.innerHTML = `O resultado da multiplicação de ${n1} por ${n2} é: ${resultado}`;
+    }
+    function dividir(){
+        let n1 = Number(input_n1.value)
+        let n2 = Number(input_n2.value)
+        let resultado = n1 / n2;
+
+        div_mensagem.innerHTML = `O resultado da divisão de ${n1} por ${n2} é: ${resultado}`;
+    }
+    function subtrair(){
+        let n1 = Number(input_n1.value)
+        let n2 = Number(input_n2.value)
+        let resultado = n1 - n2;
+
+        div_mensagem.innerHTML = `O resultado da subtração de ${n1} menos ${n2} é: ${resultado}`;
+    }
+    function somar(){
+        let n1 = Number(input_n1.value)
+        let n2 = Number(input_n2.value)
+        let resultado = n1 + n2;
+
+        div_mensagem.innerHTML = `O resultado da soma de ${n1} mais ${n2} é: ${resultado}`;
+    } 
+    function exponenciacao(){
+        let n1 = Number(input_n1.value)
+        let n2 = Number(input_n2.value)
+        let resultado = n1 ** n2;
+        
+        div_mensagem.innerHTML = `O resultado da exponenciação de ${n1} por ${n2} é: ${resultado}`;
+    }
+    function resto(){
+        let n1 = Number(input_n1.value)
+        let n2 = Number(input_n2.value)
+        let resultado = n1 % n2;
+        
+        div_mensagem.innerHTML = `O resultado do resto de ${n1} por ${n2} é: ${resultado}`;
+    }
+</script>
