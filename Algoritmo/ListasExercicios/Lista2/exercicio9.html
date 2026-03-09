@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 9</title>
+</head>
+<body>
+    <h1>Bem vindo a Recomendação de clima</h1>
+
+    <input type="number" placeholder="Temperatura atual em graus" 
+    id="input_temperatura">
+    <input type="text" placeholder="Condição do tempo" id="input_condicao">
+
+    <button onclick="verDica()">Ver dica</button>
+</body>
+</html>
+<script>
+    function verDica(){
+        alert('Está fazendo ' + input_temperatura.value + ' graus e o dia está ' + input_condicao.value)
+    }
+</script>

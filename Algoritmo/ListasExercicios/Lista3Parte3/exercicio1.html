@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saldo bancario</title>
+</head>
+<body>
+    <h1>Bem vindo ao seu saldo bancario</h1><br>
+
+    <button onclick="receber()">Receber 100</button>
+    <button onclick="pagar()">Pagar 50</button><br><br>
+    
+    <div id="div_mensagem"> </div>
+</body>
+</html>
+<script>
+    let saldoTotal = 0;
+
+    function receber(){
+        saldoTotal += 100;
+
+        div_mensagem.innerHTML = `Transferência de R$100 recebida! Saldo Atual: R$${saldoTotal}<br>`
+    }
+    function pagar(){
+        saldoTotal -= 50
+
+        div_mensagem.innerHTML = `Pagamento de R$50 efetuado! Saldo atual: R$${saldoTotal}<br>`
+    }
+</script>

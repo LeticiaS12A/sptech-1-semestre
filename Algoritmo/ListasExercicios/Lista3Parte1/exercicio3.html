@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    <label for="input_valor">Digite o valor da passagem: </label>
+    <input type="text" placeholder="valor da passagem" id="input_valor" name="input_valor">
+    <label for="input_qtdpassagem">Digite quantas viagens fará por mês</label>
+    <input type="text" placeholder="quantidade de passagem" id="input_qtdpassagem">
+
+    <button onclick="economia()">Ver economia</button>
+
+    <h1 id="div_mensagem"></h1>
+</body>
+</html>
+<script>
+    function economia(){
+        div_mensagem.innerHTML = "Você economizará R$" + (input_valor.value * input_qtdpassagem.value) / 2 + " por mês"
+    }
+</script>

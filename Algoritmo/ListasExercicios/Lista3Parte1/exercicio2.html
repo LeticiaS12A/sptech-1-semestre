@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+</head>
+<body>
+    <input type="text" placeholder="Valor da pizza: " id="input_valor">
+    <input type="text" placeholder="Quantos amigos vão dividir" id="input_amigos">
+
+    <button onclick="calcular()">#lovePizza</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function calcular(){
+        div_mensagem.innerHTML = "Cada um dos " + input_amigos.value + " vai pagar R$" + (input_valor.value / input_amigos.value)
+    }
+</script>

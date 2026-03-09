@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bem vindo a Contador de Passos</h1>
+
+    <input type="number" placeholder="Distância Percorrida" id="input_km">
+    <input type="number" placeholder="Tempo Gasto" id="input_min">
+
+    <button onclick="finalizar()">Finalizar Treino</button>
+</body>
+</html>
+<script>
+    function finalizar(){
+        alert('Você percorreu ' + input_km.value  + 'km hoje' + '\nO seu tempo total de exercicio foi de ' + input_min.value + ' minutos');
+    }
+</script>

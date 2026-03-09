@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+<body>
+    <input type="number" placeholder="Digite sua idade" id="input_idade">
+    <button onclick="apossentoHomen()">Apossentadoria Homen</button>
+    <button onclick="apossentoMulher()">Apossentadoria Mulher</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function apossentoHomen(){
+        div_mensagem.innerHTML = "O tempo que falta para você se apossentar é de " + (70 - input_idade.value) + " anos"
+    }
+    function apossentoMulher(){
+        div_mensagem.innerHTML = "O tempo que falta para você se apossentar é de " + (60 - input_idade.value) + " anos"
+    }
+</script>

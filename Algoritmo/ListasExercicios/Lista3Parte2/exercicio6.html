@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 6</title>
+</head>
+<body>
+    <h1>Votação</h1><br>
+
+    <label>Quantidade votos Candidato A</label>
+    <input type="text" id="ipt_a"><br>
+    <label>Quantidade votos Candidato B</label>
+    <input type="text" id="ipt_b"><br>
+    <label>Quantidade votos em branco</label>
+    <input type="text" id="ipt_branco"><br>
+    <label>Quantidade votos nulos</label>
+    <input type="text" id="ipt_nulos"><br><br>
+
+    <button onclick="resultado()">Resultado da Eleição</button><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function resultado(){
+        canA = Number(ipt_a.value);
+        canB = Number(ipt_b.value);
+        votosBrancos = Number(ipt_branco.value);
+        votosNulos = Number(ipt_nulos.value);
+
+        totalVotos = canA + canB + votosBrancos + votosNulos;
+        canA
+        invalidos = votosBrancos + votosNulos;
+    }
+</script>
