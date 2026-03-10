@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de Investimento - Live Saver</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Calculadora Financeira - <b style="color: brown;">Life Saver - Grupo 1</b></h1>
+    
+    <div class="inputs">
+        <div>
+            <p>Quantidade de pacientes na UTI por mês:</p>
+            <input class="input" type="number" id="ipt_pacientes"><br><br>
+        </div>
+        <div>
+            <p>Custo médio por paciente (R$):</p>
+            <input class="input" type="number" id="ipt_custo"><br><br>
+        </div>
+        <div>
+            <p>Investimento no sistema(R$):</p>
+            <input class="input" type="number" id="ipt_investimento"><br><br>
+        </div>
+    </div>
+    <div class="button">
+        <button class="button-calcular" onclick="calcular()">Calcular Economia</button><br><br>
+    </div>
+
+    <div id="div_mensagem" class="mensagem"></div>
+</body>
+</html>
+<script>
+    function calcular(){
+
+        let pacientes = Number(ipt_pacientes.value)
+        let custo = Number(ipt_custo.value)
+
+        let reducao = 30 / 100;
+
+        let investimento = Number(ipt_investimento.value)
+
+        let custoMensal = pacientes * custo
+
+        let economiaMensal = custoMensal * reducao
+
+        let economiaAnual = economiaMensal * 12
+
+        let roi = (economiaAnual / investimento) * 100
+
+        div_mensagem.innerHTML = `
+            <div>
+                <h3>Resultado Financeiro</h3>
+
+                Custo mensal atual da UTI: <b>R$ ${custoMensal.toFixed(2)}</b><br>
+
+                Economia mensal estimada: <b>R$ ${economiaMensal.toFixed(2)}</b><br>
+
+                Economia anual estimada: <b>R$ ${economiaAnual.toFixed(2)}</b><br>
+
+                Retorno sobre investimento (ROI): <b>${roi.toFixed(2)}%</b>
+            </div>
+            `
+    }
+</script>
