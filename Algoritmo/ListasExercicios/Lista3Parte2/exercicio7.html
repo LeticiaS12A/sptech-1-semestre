@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Dividindo a pizza</h1>
+    <p>insira o valor daa pizza</p>
+    <input type="number" id="preco">
+    <p>insira o sabor da pizza</p>
+    <input type="text" id="sabor">
+    <p>Insira quantidade de amigos que vão comer</p>
+    <input type="number" id="pessoas"><br> 
+    <button onclick="total()">Ver valor por amigo</button>
+    <div id="pizza"></div>
+</body>
+</html>
+
+<script>   
+    function total() {
+        let valor = Number(preco.value);
+        let amigos = Number(pessoas.value);
+        caixinha  = (valor * 0.1);
+        resultado = (valor + caixinha) / amigos;
+
+        pizza.innerHTML = `Cada Amigo vai colaborar${resultado} para a pizza de ${sabor.value}`
+    }
+</script>

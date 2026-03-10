@@ -5,32 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 6</title>
 </head>
-<body>
-    <h1>Votação</h1><br>
-
-    <label>Quantidade votos Candidato A</label>
-    <input type="text" id="ipt_a"><br>
-    <label>Quantidade votos Candidato B</label>
-    <input type="text" id="ipt_b"><br>
-    <label>Quantidade votos em branco</label>
-    <input type="text" id="ipt_branco"><br>
-    <label>Quantidade votos nulos</label>
-    <input type="text" id="ipt_nulos"><br><br>
-
-    <button onclick="resultado()">Resultado da Eleição</button><br>
-
-    <div id="div_mensagem"></div>
+    <h1>Fases do sono</h1>
+    
+    <p>Quantos votos teve o Candidato a?</p>
+    <input type="text" id="ipt_Candidato1">
+    <p>Quantos votos teve o Candidato b?</p>
+    <input type="text" id="ipt_Candidato2">
+    <p>Quantos votos foram em branco?</p>
+    <input type="text" id="ipt_Branco">
+    <p>Quantos votos foram nulos?</p>
+    <input type="text" id="ipt_Nulos">
+    <button onclick="Urna()">Resultado da Eleição</button>
+    <div id="eleicao"></div>
 </body>
 </html>
-<script>
-    function resultado(){
-        canA = Number(ipt_a.value);
-        canB = Number(ipt_b.value);
-        votosBrancos = Number(ipt_branco.value);
-        votosNulos = Number(ipt_nulos.value);
 
-        totalVotos = canA + canB + votosBrancos + votosNulos;
-        canA
-        invalidos = votosBrancos + votosNulos;
-    }
+<script>   
+    function Urna() {
+    let CandidatoA = Number(ipt_Candidato1.value);
+    let CandidatoB = Number(ipt_Candidato2.value);
+    let Branco = Number(ipt_Branco.value);
+    let Nulo = Number(ipt_Nulos.value); 
+
+    let total = CandidatoA + CandidatoB + Branco + Nulo;
+    let percA = (CandidatoA / total * 100).toFixed(2);
+    let percB = (CandidatoB / total * 100).toFixed(2);
+    let percBranco = (Branco / total * 100).toFixed(2);
+    let percNulo = (Nulo / total * 100).toFixed(2);
+    eleicao.innerHTML = `
+        <p>Total de Votos: ${total}</p>
+        <p>Candidato A: ${percA}%</p>
+        <p>Candidato B: ${percB}%</p>
+        <p>Brancos: ${percBranco}%</p>
+        <p>Nulos: ${percNulo}%</p>
+    `;
+}
 </script>
