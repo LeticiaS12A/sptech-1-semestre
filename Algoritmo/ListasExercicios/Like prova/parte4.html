@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Calculadora SPFlix</h1>
+
+  <div>
+      <p>Qualidade (720p ou 1080p ou 4K):</p>
+      <input type="text" id="ipt_qualidade">
+  </div>
+
+  <div style="display: flex; gap: 50px">
+    <div>
+      <p>Telas simultâneas - Na mesma casa:</p>
+      <input type="text" id="ipt_qtd_telas">
+    </div>
+
+    <div>
+      <p>Telas extras - Fora da residência:</p>
+      <input type="text" id="ipt_qtd_telas_extras">
+    </div>
+  </div>
+
+  <div>
+    <p>Quer fazer download ('sim' ou 'nao'):</p>
+    <input type="text" id="ipt_download">
+  </div>
+
+  <p></p>
+  <button onclick="exibirResultado()">Exibir Resultado</button>
+
+  <p></p>
+  <div id="div_mensagem"></div>
+
+</body>
+</html>
+<script>
+function exibirResultado(){
+
+    let qualidade = ipt_qualidade.value;
+    let qtdTelas = Number(ipt_qtd_telas.value);
+    let telaExtras = Number(ipt_qtd_telas_extras.value);
+    let download = ipt_download.value;
+
+    let valorBase = 0;
+    let valorTelas = 0;
+
+    if(qualidade == "720p"){
+        valorBase = 15;
+    }
+
+    if(qualidade == "1080p"){
+        valorBase = 20;
+    }
+
+    if(qualidade == "4K"){
+        valorBase = 25;
+    }
+
+    let valorTelasExtra = telaExtras * 12.90;
+
+    if(qtdTelas <= 2){
+        valorTelas = valorTelasExtra + 10;
+    }
+
+    if(qtdTelas >= 3){
+        valorTelas = valorTelasExtra + 20;
+    }
+
+    if(qtdTelas > 4){
+        valorTelas = valorTelasExtra + 30;
+    }
+
+    let valorFinal = valorBase + valorTelas;
+
+    let pessoas = qtdTelas + telaExtras;
+
+    if(pessoas == 0){
+        pessoas = 1;
+    }
+
+    let mensagemDownload = "";
+
+    if(download == "sim"){
+        let porcentagem = 5 + pessoas;
+        valorFinal = valorFinal + (valorFinal * porcentagem / 100);
+        mensagemDownload = `Você optou por fazer download e por isso sua conta irá subir em ${porcentagem}%`;
+    }
+
+    if(download == "não"){
+        valorFinal = valorFinal - (valorFinal * 10 / 100);
+        mensagemDownload = `Você optou por não fazer download e por isso sua conta será reduzida em 10%`;
+    }
+
+    let valorPorPessoa = valorFinal / pessoas;
+
+    div_mensagem.innerHTML = `
+    O valor base do seu plano é R$${valorBase}<br>
+    O valor das telas do seu plano é R$${valorTelas} <br>
+    ${mensagemDownload} <br>
+    Valor final: R$${valorFinal} <br>
+    Se quiser dividir fica R$${valorPorPessoa} para cada!
+    `;
+}
+</script>
