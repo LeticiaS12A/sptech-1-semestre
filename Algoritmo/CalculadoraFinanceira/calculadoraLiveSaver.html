@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculo de Investimento - Live Saver</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Calculadora Financeira - <b style="color: brown;">Life Saver - Grupo 1</b></h1>
@@ -36,7 +35,7 @@
         let pacientes = Number(ipt_pacientes.value)
         let custo = Number(ipt_custo.value)
 
-        let reducao = 30 / 100;
+        let reducao = 20 / 100;
 
         let investimento = Number(ipt_investimento.value)
 
@@ -63,3 +62,36 @@
             `
     }
 </script>
+<style>
+    body {
+        margin: 0;
+        font-family: sans-serif;
+    }
+    .inputs{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        font-size: 16px;
+    }
+    .input{
+        width: 320px;
+    }
+    .button{
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .button-calcular{
+        width: 200px;
+        height: 40px;
+        border: 0;
+        border-radius: 10px;
+        background-color: brown;
+        color: #fff;
+    }
+    .mensagem{
+        display: flex;
+        justify-content: center;
+        margin: 20px;
+    }
+</style>
