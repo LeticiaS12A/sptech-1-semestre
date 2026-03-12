@@ -11,7 +11,7 @@
     Qual sua idade?
     <input type="text" id="ipt_idade">
 
-    <button class="irPraFesta">Ir para festa</button>
+    <button onclick="irPraFesta()">Ir para festa</button>
 </body>
 </html>
 <script>
@@ -19,12 +19,10 @@
         let idade = Number(ipt_idade.value);
 
         if(idade < 18){
-            alert('Pedir permisão pro responsável')
+            alert('Pedir permisão pro responsável');
+            alert('Partiu festa');
+        } else {
             alert('Partiu festa');
         }
-        if(idade >= 18){
-            alert('Partiu festa');
-        }
-
     }
 </script>

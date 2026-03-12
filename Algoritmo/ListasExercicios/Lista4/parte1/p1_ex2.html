@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+</head>
+<body>
+    <h1>Controle de Refrigerante</h1>
+
+    Quantas latinhas de refri toma por dia?<br>
+    <input type="text" id="ipt_qtd_refri">
+    <button onclick="calcular()">Quantos Refris?</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function calcular(){
+        let refris = Number(ipt_qtd_refri.value);
+        let refrisAno = refris * 365;
+
+        div_msg.innerHTML = `Você consome ${refrisAno} latas refris ao ano <br><br>`;
+
+        if(refrisAno > 500){
+            div_msg.innerHTML += `Cuidado com a diabetes!`;
+        }
+    }
+</script>

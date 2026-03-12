@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatacao</title>
+</head>
+<body>
+    <h1>Formatando para virar numero inteiro</h1>
+
+    <input type="text" id="ipt_valor">
+    <button onclick="formatar()">Formatar</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function formatar(){
+        let valor = Number(ipt_valor.value);
+
+        div_msg.innerHTML = `
+            Valor Original: ${valor}<br>
+            Valor Formatado: ${valor.toLocaleString('pt-br')}
+            Valor Formatado: ${valor.toFixed(2)}`;
+        }
+</script>
