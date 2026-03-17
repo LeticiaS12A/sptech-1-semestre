@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilizando operador OR</title>
+</head>
+<body>
+     Numero:
+     <input type="text" id="ipt_numero">
+     
+     <button onclick="analisar()">Analisar número</button>
+
+     <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function analisar(){
+        let numero = Number(ipt_numero.value);
+
+        if(numero >= 0 || numero <= 10){
+            div_msg.innerHTML = `O número ${numero} está entre 0 e 10`;
+        } else{ // numero < 0 ou numero > 10
+            div_msg.innerHTML = `O número ${numero} não está fora de 0 e 10`;
+        }
+    }
+</script>
