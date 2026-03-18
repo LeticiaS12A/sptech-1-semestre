@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 10</title>
+</head>
+<body>
+    <h1>Controle de horas assistindo streaming</h1>
+
+    Informe a ultima série assistida:
+    <input type="text" id="ipt_serie"><br>
+    informe o total de episódios assistidos:
+    <input type="text" id="ipt_eps"><br>
+
+    <button onclick="verificar()">Verificar nível</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function verificar(){
+        let serie = ipt_serie.value;
+        let eps = Number(ipt_eps.value);
+        let horas = ((eps * 22) / 60);
+        
+        div_msg.innerHTML = `Vejo que você gosta da série ${serie}<br><br>`;
+
+        if(horas > 30){
+            div_msg.innerHTML += `Uau, você realmente gosta dessa série!`;
+        }
+    }
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 6</title>
+</head>
+<body>
+    <h1>Conta de luz</h1>
+
+    Quantidade de kwh consumida no mês? <br>
+    <input type="text" id="ipt_qtd_kwh">
+    <button onclick="calcular()">Calcular conta de luz</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function calcular(){
+        let kwh = Number(ipt_qtd_kwh.value);
+        let conta = kwh * 0.85;
+
+        if(kwh < 100){
+            conta = conta * 0.90
+        }
+
+        alert(`Você deve pagar R$${conta} de conta de luz`)
+    }
+</script>
