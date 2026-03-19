@@ -35,23 +35,23 @@
             if(frequencia >= 75){
             div_msg.innerHTML += `Aluno aprovado por frequência<br>`;
             } else{
-                div_msg.innerHTML += `Aluno reprovado por frequência<br>`;
+                div_msg.innerHTML += `Aluno reprovado por frequência<br><br>`;
             }
-        } else if(nota >= 6 || nota <= 8){
+        } else if(nota >= 6 && nota <= 8){
             div_msg.innerHTML += `Aluno ficou na média<br>`;
 
             if(frequencia >= 75){
             div_msg.innerHTML += `Aluno aprovado por frequência<br>`;
             } else{
-                div_msg.innerHTML += `Aluno reprovado por frequência<br>`;
+                div_msg.innerHTML += `Aluno reprovado por frequência<br><br>`;
             }
-        } else if(nota > 8 || nota <= 10){
+        } else if(nota > 8 && nota <= 10){
             div_msg.innerHTML += `Aluno acima da média<br>`;
 
             if(frequencia >= 75){
             div_msg.innerHTML += `Aluno aprovado por frequência<br>`;
             } else{
-                div_msg.innerHTML += `Aluno reprovado por frequência<br>`;
+                div_msg.innerHTML += `Aluno reprovado por frequência<br><br>`;
             }
         } 
     }
