@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7</title>
+</head>
+<body>
+    <h1>Consumo de calorias</h1><br>
+
+    Pães por dia:
+    <input type="text" id="ipt_pao"><br>
+
+    Bolacha por dia:
+    <input type="text" id="ipt_bolacha"><br>
+
+    Achocolatado por dia:
+    <input type="text" id="ipt_choco"><br><br>
+
+    <button onclick="calcular()">Verificar calorias</button><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function calcular(){
+        let pao = Number(ipt_pao.value);
+        let bolacha = Number(ipt_bolacha.value);
+        let choco = Number(ipt_choco.value);
+
+        let total = (pao * 50) + (bolacha * 80) + (choco * 70);
+
+        if(total < 200){
+            div_msg.innerHTML = `Parabéns, vai ficar em forma!`;
+        } else if(total <= 400){
+            div_msg.innerHTML = `Cuidado, vai ficar menos saudável!`;
+        } else {
+            div_msg.innerHTML = `Alerta crítico de saúde!!!`;
+        }
+    }
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 8</title>
+</head>
+<body>
+    <h1>Análise de economia</h1><br>
+
+    Digite sua meta de economia:
+    <input type="text" id="ipt_meta"><br>
+
+    Digite o quanto tem guardado:
+    <input type="text" id="ipt_valor_guardado"><br><br>
+
+    <button onclick="analisar()">Analisar economia</button><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function analisar(){
+        let meta = Number(ipt_meta.value);
+        let valorGuardado = Number(ipt_valor_guardado.value);
+
+        if(valorGuardado == meta){
+            div_msg.innerHTML = `Parabéns, meta alcançada!`;
+
+        } else if(valorGuardado > meta){
+            let ultrapassou = valorGuardado - meta;
+            div_msg.innerHTML = `Parabéns, meta alcançada! Meta ultrapassada em R$${ultrapassou.toFixed(2)}`;
+
+        } else {
+            let falta = meta - valorGuardado;
+            div_msg.innerHTML = `Força! Ainda em busca da meta! Falta R$${falta.toFixed(2)}`;
+        }
+    }
+</script>

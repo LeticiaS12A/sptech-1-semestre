@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 13</title>
+</head>
+<body>
+    <h1>Escolha seu Pokémon</h1><br>
+
+    Digite o Pokémon:
+    <input type="text" id="ipt_pokemon"><br><br>
+
+    <button onclick="escolher()">Escolher Pokémon</button><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function escolher(){
+        let pokemon = ipt_pokemon.value;
+
+        if(pokemon == "Bulbasaur"){
+            div_msg.innerHTML = `<img src="https://img.pokemondb.net/artwork/bulbasaur.jpg" width="200px">`;
+        } else if(pokemon == "Charmander"){
+            div_msg.innerHTML = `<img src="https://img.pokemondb.net/artwork/charmander.jpg" width="200px">`;
+        } else if(pokemon == "Squirtle"){
+            div_msg.innerHTML = `<img src="https://img.pokemondb.net/artwork/squirtle.jpg" width="200px">`;
+        } else {
+            div_msg.innerHTML = `Pokémon não reconhecido`;
+        }
+    }
+</script>

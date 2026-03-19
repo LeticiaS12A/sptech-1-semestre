@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 14</title>
+</head>
+<body>
+    <h1>Humor do dia</h1><br>
+
+    Como você está?
+    <input type="text" id="ipt_humor"><br><br>
+
+    <button onclick="mostrar()">Mostrar humor</button><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function mostrar(){
+        let humor = ipt_humor.value;
+
+        if(humor == "Feliz"){
+            div_msg.innerHTML = `😊`;
+        } else if(humor == "Triste"){
+            div_msg.innerHTML = `😢`;
+        } else if(humor == "Bravo"){
+            div_msg.innerHTML = `😡`;
+        } else if(humor == "Surpreso"){
+            div_msg.innerHTML = `😲`;
+        } else if(humor == "Cansado"){
+            div_msg.innerHTML = `😴`;
+        }
+    }
+</script>

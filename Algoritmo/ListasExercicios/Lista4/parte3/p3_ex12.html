@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 12</title>
+</head>
+<body>
+    <h1>Múltiplo de 5</h1><br>
+
+    Digite um número:
+    <input type="text" id="ipt_num"><br><br>
+
+    <button onclick="verificar()">Verificar</button><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function verificar(){
+        let num = Number(ipt_num.value);
+
+        if(num <= 0){
+            alert(`Digite um número maior que zero`);
+        } else {
+            let resto = num % 5;
+
+            if(resto == 0){
+                div_msg.innerHTML = `Perfeito, esse número é múltiplo de cinco`;
+            } else if(resto == 1){
+                div_msg.innerHTML = `Vish, sobrou um`;
+            } else if(resto == 2){
+                div_msg.innerHTML = `Para esse o resto é dois`;
+            } else if(resto == 3){
+                div_msg.innerHTML = `Com mais dois daria certo`;
+            } else {
+                div_msg.innerHTML = `Só faltou 1 para ser múltiplo de 5`;
+            }
+        }
+    }
+</script>
