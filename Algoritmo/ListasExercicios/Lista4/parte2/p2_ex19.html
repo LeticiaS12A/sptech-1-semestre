@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 19</title>
+</head>
+<body>
+    <h1>Mercado BOM DOCE</h1><br>
+    
+    Digite os chocolates comprados:
+    <input type="text" id="ipt_chocolates"><br><br>
+
+    <button onclick="comprar()">Comprar</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function comprar(){
+        let chocolates = Number(ipt_chocolates.value);
+        let valorFinal = 0;
+
+        if(chocolates > 12){
+            valorFinal = chocolates * 2.50;
+        } else{
+            valorFinal = chocolates * 3.00;
+        }
+
+        div_msg.innerHTML = `o valor da sua compra foi de R$${valorFinal.toFixed(2)}`;
+    }
+</script>
