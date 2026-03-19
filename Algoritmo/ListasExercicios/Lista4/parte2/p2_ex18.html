@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 18</title>
+</head>
+<body>
+    <h1>Teste de divisibilidade</h1><br>
+
+    Digite o primeiro número:
+    <input type="text" id="ipt_n1"><br>
+    Digite o segundo número:
+    <input type="text" id="ipt_n2"><br><br>
+    
+    <button onclick="testar()">Testar</button><br><br>
+    
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function testar(){
+        let n1 = Number(ipt_n1.value);
+        let n2 = Number(ipt_n2.value);
+        let resto = n1 % n2;
+
+        if(resto == 0){
+            div_msg.innerHTML = `<img src="https://img.freepik.com/psd-gratuitas/verifique-o-simbolo-isolado_23-2150500363.jpg?semt=ais_hybrid&w=740&q=80" style="width: 200px">`;
+        } else{
+            div_msg.innerHTML = `<img src="https://dicasdamaia.com.br/wp-content/uploads/2018/01/negativo.png" style="width: 200px">`;
+        }
+    }
+</script>
