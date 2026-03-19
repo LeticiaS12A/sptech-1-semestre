@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Idade:
+    <input type="text" id="ipt_idade"><br>
+    Pagamento:
+    <select id="select_pagamento">
+        <option>Dinheiro</option>
+        <option>Débito</option>
+        <option>Cheque</option>
+    </select><br>
+
+    <button onclick="pagar()">Pagar</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function pagar(){
+        let idade = Number(ipt_idade.value);
+        let pagamento = select_pagamento.value;
+
+        if(idade >= 18 && (pagamento == 'Dinheiro' || pagamento == 'Débito')){
+            div_msg.innerHTML = `Pode pagar`;
+        } else {
+            div_msg.innerHTML = `Não pode pagar`;
+        }
+    }
+</script>
