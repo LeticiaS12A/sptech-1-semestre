@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 21</title>
+</head>
+<body>
+    <h1>Análise de frequência do aluno</h1><br>
+
+    Digite frequência do aluno:
+    <input type="text" id="ipt_frequencia"><br>
+
+    <button onclick="analisar()">Analisar frequência</button><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function analisar(){
+        let frenquencia = Number(ipt_frequencia.value);
+
+        if(frenquencia < 50){
+            div_msg.innerHTML = `<img src="https://img.freepik.com/fotos-gratis/tourist-apresentando-algo_1368-7018.jpg?semt=ais_hybrid&w=740&q=80" style="width: 200px">`;
+        } else{
+            div_msg.innerHTML = `<img src="https://thumbs.dreamstime.com/b/estudante-estudioso-44199909.jpg" style="width: 200px">`;
+        }
+    }
+</script>
