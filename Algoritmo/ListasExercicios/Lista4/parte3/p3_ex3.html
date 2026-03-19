@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    <h1>Sensação térmica</h1><br>
+
+    Digite a temperatura:
+    <input type="text" id="ipt_temp"><br><br>
+
+    <button onclick="verificar()">Verificar</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function verificar(){
+        let temp = Number(ipt_temp.value);
+
+        if(temp < 14){
+            div_msg.innerHTML = "Congelante";
+        } else if(temp <= 21){
+            div_msg.innerHTML = "Com frio";
+        } else if(temp <= 24){
+            div_msg.innerHTML = "Confortável";
+        } else if(temp <= 31){
+            div_msg.innerHTML = "Com calor";
+        } else {
+            div_msg.innerHTML = "Calor escaldante";
+        }
+    }
+</script>
