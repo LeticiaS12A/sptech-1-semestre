@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    <h1>Simulador de Preço do Bilhete Único de São Paulo</h1><br>
+
+    Selecione o tipo de passagem:
+    <select id="select_tipo">
+        <option>Comum</option>
+        <option>Estudante</option>
+        <option>Idoso/PNE</option>
+    </select><br>
+    Selecione qual passagem é:
+    <select id="select_qual">
+        <option>Passagem única</option>
+        <option>Passagem integração</option>
+    </select><br>
+
+    <button onclick="simular()">Simular preço</button><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function simular(){
+        let tipoPassageiro = select_tipo.value;
+        let tipo = select_qual.value;
+        let valor = 0;
+
+        if(tipoPassageiro == 'Comum' && tipo == 'Passagem única'){
+            valor = 4.40;
+        } else if(tipoPassageiro == 'Comum' && tipo == 'Passagem integração'){
+            valor = 5.90;
+        } else if(tipoPassageiro == 'Estudante' && tipo == 'Passagem única'){
+            valor = (4.40 * 50) / 100;
+        } else if(tipoPassageiro == 'Estudante' && tipo == 'Passagem integração'){
+            valor = (5.90 * 50) / 100;
+        }else if(tipoPassageiro == 'Idoso/PNE' && (tipo == 'Passagem única' || tipo  == 'Passagem integração')){
+            valor = 0;
+        }
+
+        div_msg.innerHTML = `Valor da passagem escolhida: R${valor.toFixed(2)}`;
+    }
+</script>

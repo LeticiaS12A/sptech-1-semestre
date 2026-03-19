@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4</title>
+</head>
+<body>
+    <h1> Autenticação Segura: Acesso ao Banco Melete</h1><br>
+
+    Digite seu login:
+    <input type="text" id="ipt_login"><br>
+    Digite sua senha:
+    <input type="text" id="ipt_senha"><br><br>
+    Difite uma informação pessoal:
+    <input type="text" id="ipt_pessoal"><br><br>
+
+    <button onclick="autenticar()">Autenticar</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function autenticar(){
+        let login = ipt_login.value;
+        let senha = ipt_senha.value;
+        let pessoal = ipt_pessoal.value;
+
+        if(login == 'ana' && senha == 'braga' && (pessoal == '1949' || pessoal == 'louro josé')){
+            div_msg.innerHTML = `Usuário autenticado`;
+        } else{
+            div_msg.innerHTML = `Falha na autenticação`;
+        }
+    }
+</script>

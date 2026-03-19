@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+</head>
+<body>
+    <h1> Simulador de Preferências de Compras: Será que Robervaldo Gostaria?</h1><br>
+
+    Tamanho da tela do celular:
+    <input type="text" id="ipt_tamanho"><br>
+    Cor do celular:
+    <select id="select_cor">
+        <option>Preto</option>
+        <option>Prata</option>
+        <option>Azul</option>
+        <option>Vermelho</option>
+    </select><br><br>
+    
+    <button onclick="verificar()">Será que ele gosta?</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function verificar(){
+        let tamanho = Number(ipt_tamanho.value);
+        let cor = select_cor.value;
+
+        if(tamanho > 6.5 && (cor == 'Preto' || cor == 'Prata')){
+            div_msg.innerHTML = `<img src="https://media.istockphoto.com/id/613525808/pt/foto/sensa%C3%A7%C3%A3o-t%C3%A3o-contente.jpg?s=612x612&w=0&k=20&c=y4XptbLmbFzQ3L-kioh3u8CsZ8K4yhw-HhhXWl67Uc8=" style="width: 200px">`;
+        } else{
+            div_msg.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQduPV8vrbB7cwoKY_uMVZhKdDM0PbLfrN_yw&s" style="width: 200px">`;
+        }
+    }
+</script>
