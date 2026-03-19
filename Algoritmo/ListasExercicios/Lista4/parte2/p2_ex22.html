@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 22</title>
+</head>
+<body>
+    <h1>Análise de temperatura</h1><br>
+
+    Digite a temperatura;
+    <input type="text" id="ipt_temperatura"><br><br>
+
+    <button onclick="verificar()">Verificar clima</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function verificar(){
+        let temperatura = Number(ipt_temperatura.value);
+
+        if(temperatura < 10){
+            div_msg.innerHTML = `<img src="https://www.tanquedeacoinox.com.br/wp-content/uploads/2020/02/Alimentos-nos-equipamentos-de-a%C3%A7o-inox..jpg" style="width: 200px">`;
+        } else{
+            div_msg.innerHTML = `<img src="https://img.freepik.com/fotos-premium/alimentos-estragados-e-estragados-com-mofo-macas-pimentoes-queijo-duro-e-banan-em-fundo-cinza-close-up_130716-3092.jpg?w=360" style="width: 200px">`;
+        }
+    }
+</script>
