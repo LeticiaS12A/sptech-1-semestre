@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Simulador de Economia - Gestão de Resíduos</title>
+
+<style>
+    body {
+        font-family: Arial;
+        background: linear-gradient(to right, #2c3e50, #4ca1af);
+        margin: 0;
+        padding: 0;
+    }
+
+    /* NOVO: wrapper para alinhar lado a lado */
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 30px;
+        margin-top: 20px;
+    }
+
+    /* SEU CARD (mantido) */
+    .container {
+        background: white;
+        color: black;
+        padding: 20px;
+        width: 450px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    /* NOVO CARD DE RESULTADO */
+    .resultado-card {
+        background: white;
+        color: black;
+        padding: 10px;
+        width: 500px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+        color: #2c3e50;
+        text-align: center;
+    }
+
+    .campo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    input {
+        width: 70%;
+        padding: 10px;
+        margin: 5px;
+    }
+
+    .valor {
+        width: 25%;
+        font-size: 14px;
+        color: #555;
+    }
+
+    button {
+        padding: 12px;
+        background: #27ae60;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 95%;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background: #219150;
+    }
+
+    .resultado {
+        margin-top: 10px;
+        text-align: left;
+        font-size: 15px;
+    }
+
+    .destaque {
+        color: #27ae60;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .alerta {
+        color: #e74c3c;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- CARD ESQUERDO (SEU ORIGINAL) -->
+    <div class="container">
+        <h2>Descubra Quanto Você Pode Economizar</h2>
+
+        <div class="campo">
+            <input type="number" id="coletas" placeholder="Quantas coletas por semana você faz?">
+            <span class="valor" id="v_coletas"></span>
+        </div>
+
+        <div class="campo">
+            <input type="number" id="custo" placeholder="Quanto você paga por coleta (R$)?">
+            <span class="valor" id="v_custo"></span>
+        </div>
+
+        <div class="campo">
+            <input type="number" id="usoAtual" placeholder="Em média, com quanto (%) o lixo é coletado hoje?">
+            <span class="valor" id="v_usoAtual"></span>
+        </div>
+
+        <div class="campo">
+            <input type="number" id="usoIdeal" placeholder="Com nosso sistema, podemos chegar a (%)">
+            <span class="valor" id="v_usoIdeal"></span>
+        </div>
+
+        <div class="campo">
+            <input type="number" id="investimento" placeholder="Investimento mensal no sistema (R$)">
+            <span class="valor" id="v_investimento"></span>
+        </div>
+
+        <button onclick="calcular()">Simular Economia</button>
+    </div>
+
+    <!-- CARD DIREITO (RESULTADO) -->
+    <div class="resultado-card">
+        <h2>Resultado</h2>
+        <div class="resultado" id="resultado">
+            <p>Preencha os dados para ver a simulação...</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+function atualizarValores(){
+    v_coletas.innerText = coletas.value ? coletas.value + "x/sem" : "";
+    v_custo.innerText = custo.value ? "R$ " + custo.value : "";
+    v_usoAtual.innerText = usoAtual.value ? usoAtual.value + "%" : "";
+    v_usoIdeal.innerText = usoIdeal.value ? usoIdeal.value + "%" : "";
+    v_investimento.innerText = investimento.value ? "R$ " + investimento.value : "";
+}
+
+document.querySelectorAll("input").forEach(input => {
+    input.addEventListener("input", atualizarValores);
+});
+
+function calcular(){
+
+    let coletas = Number(document.getElementById("coletas").value);
+    let custo = Number(document.getElementById("custo").value);
+    let usoAtual = Number(document.getElementById("usoAtual").value);
+    let usoIdeal = Number(document.getElementById("usoIdeal").value);
+    let investimento = Number(document.getElementById("investimento").value);
+
+    let coletasMensais = coletas * 4;
+    let custoAtual = coletasMensais * custo;
+    let coletasOtimizadas = coletasMensais * (usoAtual / usoIdeal);
+    let custoOtimizado = coletasOtimizadas * custo;
+    let economia = custoAtual - custoOtimizado;
+    let lucroMensal = economia - investimento;
+    let roi = (lucroMensal / investimento) * 100;
+    let payback = investimento / economia;
+
+    document.getElementById("resultado").innerHTML = 
+
+        "<p class='alerta'>Hoje você está gastando cerca de <b>R$ " + custoAtual.toFixed(2) + "/mês</b> com coletas.</p>" +
+
+        "<p>Com nosso sistema, esse valor pode cair para <b>R$ " + custoOtimizado.toFixed(2) + "/mês</b>.</p>" +
+
+        "<p class='destaque'>Você pode economizar R$ " + economia.toFixed(2) + " todos os meses.</p>" +
+
+        "<p>Em um ano, isso representa <b>R$ " + (economia*12).toFixed(2) + "</b> economizados.</p>" +
+
+        "<br>" +
+
+        "<p>Investimento no sistema: R$ " + investimento.toFixed(2) + "/mês</p>" +
+
+        "<p class='destaque'>Mesmo pagando o sistema, você ainda ganha R$ " + lucroMensal.toFixed(2) + "/mês.</p>" +
+
+        "<p>Retorno sobre investimento (ROI): " + roi.toFixed(1) + "%</p>" +
+
+        "<p>Seu investimento se paga em aproximadamente <b>" + payback.toFixed(1) + " meses</b>.</p>" +
+
+        "<br>" +
+
+        "<p class='destaque'>Ou seja: o sistema reduz custos, se paga sozinho e ainda gera economia!</p>";
+}
+
+</script>
+
+</body>
+</html>
