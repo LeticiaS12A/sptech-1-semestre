@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASCII Machine - LUA</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div id="container">
+    <h1>Base Calculator</h1>
+
+    <div class="tabs">
+        <div class="tab active" onclick="trocarAba('converter')">Converter</div>
+        <div class="tab" onclick="trocarAba('somar')">Somar</div>
+    </div>
+
+    <div id="converter" class="conteudo ativo">
+        <select id="baseEntrada">
+            <option value="2">Binário</option>
+            <option value="8">Octal</option>
+            <option value="10" selected>Decimal</option>
+            <option value="16">Hexadecimal</option>
+        </select>
+
+        <input id="valorConv" placeholder="Digite o valor">
+
+        <select id="baseSaida">
+            <option value="2">Binário</option>
+            <option value="8">Octal</option>
+            <option value="10">Decimal</option>
+            <option value="16">Hexadecimal</option>
+        </select>
+
+        <button onclick="converterValor()">Converter</button>
+    </div>
+
+    <div id="somar" class="conteudo" style="display:none;">
+
+        <div id="campos"></div>
+
+        <button onclick="adicionarCampo()">+ Adicionar número</button>
+
+        <select id="baseResultado">
+            <option value="2">Binário</option>
+            <option value="8">Octal</option>
+            <option value="10" selected>Decimal</option>
+            <option value="16">Hexadecimal</option>
+        </select>
+
+        <button onclick="somar()">Somar</button>
+
+    </div>
+
+    <div id="resultado"></div>
+
+    <div id="historico"></div>
+
+    </div>
+</body>
+</html>
+<script src="ASCII_Machine.js"></script>

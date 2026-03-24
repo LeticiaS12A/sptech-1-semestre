@@ -1,0 +1,96 @@
+body {
+    font-family: Arial;
+    background-color: #0f172a;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+#container {
+    background-color: #1e293b;
+    padding: 25px;
+    border-radius: 15px;
+    width: 420px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.tabs { display: flex; margin-bottom: 15px; }
+.tab {
+    flex: 1;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #334155;
+    transition: 0.3s;
+}
+.active { background-color: #ED145B; }
+
+input, select {
+    width: 90%;
+    padding: 10px;
+    margin: 6px 0;
+    border-radius: 8px;
+    border: none;
+    text-align: center;
+    transition: 0.3s;
+}
+
+input:focus {
+    transform: scale(1.05);
+    outline: none;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 95%;
+    border-radius: 8px;
+    border: none;
+    background-color: #ED145B;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.linha {
+    background-color: #334155;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    animation: aparecer 0.3s ease;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.remover {
+    background-color: #ef4444;
+    margin-top: 5px;
+}
+
+.erroCampo {
+    border: 2px solid #f87171;
+}
+
+#resultado {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #334155;
+    border-radius: 10px;
+}
+
+#historico {
+    margin-top: 15px;
+    max-height: 150px;
+    overflow-y: auto;
+    text-align: left;
+    font-size: 14px;
+}
