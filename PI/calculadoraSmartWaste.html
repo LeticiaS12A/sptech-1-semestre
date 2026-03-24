@@ -5,111 +5,118 @@
 <title>Simulador de Economia - Gestão de Resíduos</title>
 
 <style>
- body {
-    font-family: 'Inter', 'Segoe UI', sans-serif;
-    background: #f8fafc;
-    margin: 0;
-    padding: 0;
-}
+    body {
+        font-family: 'Inter', 'Segoe UI', sans-serif;
+        background: #f8fafc;
+        margin: 0;
+        padding: 0;
+    }
 
-.wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 50px;
-    margin-top: 60px;
-    padding: 20px;
-    flex-wrap: wrap;
-}
+    .titulo{
+        display: flex;
+        justify-content: center;
+        color: #111827;
+    }
 
-.container, .resultado-card {
-    background: white;
-    padding: 30px;
-    width: 420px;
-    border-radius: 14px;
-    border: 1px solid #e5e7eb;
-    transition: all 0.2s ease;
-}
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 50px;
+        margin-top: -20px;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
 
-.container:hover, .resultado-card:hover {
-    border-color: #d1d5db;
-    transform: translateY(-3px);
-}
+    .container, .resultado-card {
+        background: white;
+        padding: 30px;
+        width: 420px;
+        border-radius: 14px;
+        border: 1px solid #e5e7eb;
+        transition: all 0.2s ease;
+    }
 
-h2 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #111827;
-    margin-bottom: 20px;
-}
+    .container:hover, .resultado-card:hover {
+        border-color: #d1d5db;
+        transform: translateY(-2px);
+    }
 
-.plano {
-    background: #f1f5f9;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 13px;
-    margin-bottom: 20px;
-    color: #374151;
-}
+    h2 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 20px;
+    }
 
-.campo {
-    margin-bottom: 15px;
-}
+    .plano {
+        background: #f1f5f9;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 13px;
+        margin-bottom: 20px;
+        color: #374151;
+    }
 
-input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #d1d5db;
-    font-size: 14px;
-    transition: all 0.2s;
-    background: #f9fafb;
-}
+    .campo {
+        margin-bottom: 15px;
+    }
 
-input:focus {
-    outline: none;
-    border-color: #111827;
-    background: white;
-}
+    input {
+        width: 93%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #d1d5db;
+        font-size: 14px;
+        transition: all 0.2s;
+        background: #f9fafb;
+    }
 
-button {
-    margin-top: 10px;
-    padding: 14px;
-    width: 100%;
-    background: #111827;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-}
+    input:focus {
+        outline: none;
+        border-color: #111827;
+        background: white;
+    }
 
-button:hover {
-    background: #1f2937;
-}
+    button {
+        margin-top: 10px;
+        padding: 14px;
+        width: 100%;
+        background: #111827;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
 
-.resultado {
-    font-size: 14px;
-    color: #374151;
-    line-height: 1.6;
-}
+    button:hover {
+        background: #283344;
+    }
 
-.destaque {
-    color: #16a34a;
-    font-weight: 600;
-}
+    .resultado {
+        font-size: 14px;
+        color: #374151;
+        line-height: 1.6;
+    }
 
-.alerta {
-    color: #dc2626;
-    font-weight: 600;
-}
+    .destaque {
+        color: #16a34a;
+        font-weight: 600;
+    }
+
+    .alerta {
+        color: #dc2626;
+        font-weight: 600;
+    }
 </style>
 </head>
-
 <body>
-    <h1 style="margin-left: 80px; margin-bottom: -60px;">Por que comprar o Smart Waste Monitor</h1>
+    <div class="titulo">
+        <h1>Por que comprar o Smart Waste Monitor</h1>
+    </div>
     
     <div class="wrapper">
 
@@ -156,8 +163,8 @@ button:hover {
         let valorColeta = Number(custo.value);
         let percentualAtual = Number(usoAtual.value);
 
-        let usoIdeal = 95;
-        let investimento = 2990;
+        let usoIdeal = 96;
+        let investimento = 2500;
 
         let coletasMensais = qtdColetas * 4;
         let custoAtual = coletasMensais * valorColeta;
