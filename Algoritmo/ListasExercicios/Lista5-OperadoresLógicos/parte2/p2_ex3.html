@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    <h1>Auxílio Emergencial Covid-19</h1>
+
+    Renda individual:
+    <input type="text" id="ipt_renda2"><br>
+
+    Renda familiar:
+    <input type="text" id="ipt_familiar2"><br><br>
+
+    <button onclick="auxilio2()">Terei o benefício</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function auxilio2(){
+        let renda = Number(ipt_renda2.value);
+        let familiar = Number(ipt_familiar2.value);
+
+        if(renda <= 2000 || familiar <= 3000){
+            div_msg.innerHTML = `Você terá direito ao auxílio`;
+        } else{
+            div_msg.innerHTML = `Sem direito ao auxílio`;
+        }
+    }
+</script>

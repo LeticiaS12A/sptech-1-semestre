@@ -2,21 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 1</title>
 </head>
 <body>
-    <h1>Conforto Térmico</h1>
-    <p>A temperatura está ideal?</p><br>
+    <h1>Conforto Térmico: A Temperatura Está Ideal? </h1>
 
-    Qual a temperatura?
-    <input type="text" id="ipt_temp">
+    Digite a temperatura:
+    <input type="text" id="ipt_temp"><br><br>
 
-    <button onclick="ver()">Ver Situação</button><br>
+    <button onclick="verTemp()">Ver situação</button>
 
-    <div id="div_msg"></div>
 </body>
 </html>
 <script>
-    
+    function verTemp(){
+        let temp = Number(ipt_temp.value);
+
+        if(temp >= 21 && temp <= 24){
+            alert(`Temperatura confortável :D`);
+        } else{
+            alert(`Temperatura DESCONFORTÁVEL :C`);
+        }
+    }
 </script>

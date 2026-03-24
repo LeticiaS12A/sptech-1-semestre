@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Simulador de Economia - Gestão de Resíduos</title>
+
+<style>
+ body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #f8fafc;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    margin-top: 60px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.container, .resultado-card {
+    background: white;
+    padding: 30px;
+    width: 420px;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
+}
+
+.container:hover, .resultado-card:hover {
+    border-color: #d1d5db;
+    transform: translateY(-3px);
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 20px;
+}
+
+.plano {
+    background: #f1f5f9;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    color: #374151;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    transition: all 0.2s;
+    background: #f9fafb;
+}
+
+input:focus {
+    outline: none;
+    border-color: #111827;
+    background: white;
+}
+
+button {
+    margin-top: 10px;
+    padding: 14px;
+    width: 100%;
+    background: #111827;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background: #1f2937;
+}
+
+.resultado {
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.6;
+}
+
+.destaque {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.alerta {
+    color: #dc2626;
+    font-weight: 600;
+}
+</style>
+</head>
+
+<body>
+    <h1 style="margin-left: 80px; margin-bottom: -60px;">Por que comprar o Smart Waste Monitor</h1>
+    
+    <div class="wrapper">
+
+        <div class="container">
+            <h2>Descubra Quanto Você Está Perdendo</h2>
+
+            <div class="plano">
+                <b>Plano Mensal — R$ 2.990/mês</b><br>
+                Monitoramento em tempo real, alertas automáticos, dashboard e relatórios.
+            </div>
+
+            <div class="campo">
+                <input type="number" id="coletas" placeholder="Quantas coletas por semana você faz?">
+                <span class="valor" id="v_coletas"></span>
+            </div>
+
+            <div class="campo">
+                <input type="number" id="custo" placeholder="Quanto você paga por coleta s(R$)?">
+                <span class="valor" id="v_custo"></span>
+            </div>
+
+            <div class="campo">
+                <input type="number" id="usoAtual" placeholder="Com quantos % o lixo é coletado hoje?">
+                <span class="valor" id="v_usoAtual"></span>
+            </div>
+
+            <button onclick="calcular()">Simular Economia</button>
+        </div>
+
+        <div class="resultado-card">
+            <h2 style="margin-top: -10px;">Seu Resultado</h2>
+            <div class="resultado" id="resultado">
+                <p>Preencha os dados para ver quanto você pode economizar...</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+<script>
+    function calcular(){
+        let qtdColetas = Number(coletas.value);
+        let valorColeta = Number(custo.value);
+        let percentualAtual = Number(usoAtual.value);
+
+        let usoIdeal = 95;
+        let investimento = 2990;
+
+        let coletasMensais = qtdColetas * 4;
+        let custoAtual = coletasMensais * valorColeta;
+        let coletasOtimizadas = coletasMensais * (percentualAtual / usoIdeal);
+        let custoOtimizado = coletasOtimizadas * valorColeta;
+        let economia = custoAtual - custoOtimizado;
+        let economiaAno = economia * 12;
+        let lucroMensal = economia - investimento;
+        let roi = (lucroMensal / investimento) * 100;
+        let payback = investimento / economia;
+
+        resultado.innerHTML = `
+            <div style="display:flex; flex-direction:column; gap:10px;">
+                <!-- GASTO ATUAL -->
+                <div style="padding:10px; border:1px solid #e5e7eb; border-radius:10px;">
+                    <div style="font-size:13px; color:#6b7280;">Gasto atual mensal</div>
+                    <div style="font-size:26px; font-weight:600; color:#dc2626;">
+                        ${custoAtual.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}
+                    </div>
+                </div>
+
+                <!-- GASTO OTIMIZADO -->
+                <div style="padding:10px; border:1px solid #e5e7eb; border-radius:10px;">
+                    <div style="font-size:13px; color:#6b7280;">Gasto com otimização</div>
+                    <div style="font-size:26px; font-weight:600; color:#111827;">
+                        ${custoOtimizado.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}
+                    </div>
+                </div>
+
+                <!-- ECONOMIA -->
+                <div style="padding:10px; border-radius:12px; background:#f0fdf4; border:1px solid #bbf7d0;">
+                    <div style="font-size:13px; color:#166534;">Economia mensal</div>
+                    <div style="font-size:32px; font-weight:700; color:#16a34a;">
+                        ${economia.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}
+                    </div>
+                    <div style="font-size:13px; color:#166534;">
+                        ${economiaAno.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})} por ano
+                    </div>
+                </div>
+
+                <!-- INVESTIMENTO -->
+                <div style="padding:10px; border:1px solid #e5e7eb; border-radius:10px;">
+                    <div style="font-size:13px; color:#6b7280;">Investimento no sistema</div>
+                    <div style="font-size:20px; font-weight:600;">
+                        ${investimento.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}/mês
+                    </div>
+                </div>
+
+                <!-- LUCRO FINAL -->
+                <div style="padding:10px; border-radius:12px; background:#eff6ff; border:1px solid #bfdbfe;">
+                    <div style="font-size:13px; color:#1d4ed8;">Resultado mensal</div>
+                    <div style="font-size:30px; font-weight:700; color:#1d4ed8;">
+                        ${lucroMensal.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}
+                    <div style="font-size:13px; color:#1d4ed8;">
+                        ROI: ${roi.toFixed(1)}% • Payback: ${payback.toFixed(1)} meses
+                    </div>
+                </div>
+
+                <!-- FRASE FINAL -->
+                <div style="text-align:center; font-size:14px; color:#374151;">
+                    Você reduz custos, paga o sistema e ainda gera lucro.
+                </div>
+            </div>
+            `;
+    }
+</script>

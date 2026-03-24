@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio 2</title>
+</head>
+<body>
+    <h1>Processo Seletivo Mentes Brilhantes</h1>
+
+    Nota ENEM:
+    <input type="text" id="ipt_enem"><br>
+
+    Nota vestibular:
+    <input type="text" id="ipt_vest"><br><br>
+
+    <button onclick="avaliacao()">Avaliação</button>
+</body>
+</html>
+<script>
+    function avaliacao(){
+        let enem = Number(ipt_enem.value);
+        let vest = Number(ipt_vest.value);
+
+        if(enem >= 800 || vest >= 700){
+            alert(`Parabéns! Aprovado`);
+        } else{
+            alert(`Tente semestre que vem!`);
+        }
+    }
+</script>
