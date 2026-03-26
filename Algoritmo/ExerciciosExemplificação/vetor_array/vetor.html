@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    fruta ou indice:
+    <input type="text" id="ipt_fruta"><br><br>
+    <button onclick="exibir()">Exibir Lista</button>
+    <button onclick="adicionar()">adicionar fruta</button>
+    <button onclick="pesquisarFruta()">Pesquisar fruta</button>
+    <button onclick="pesquisarIndice()">Pesquisar indice</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let lista = ['uva', 'maçã']
+
+    function exibir(){
+        div_msg.innerHTML += `<b style="color: red; font-size: 20px;">${lista}<b>`; //Exibir a lista
+        // div_msg.innerHTML = lista.toString.replaceAll(',', '<br>');
+    }
+    function adicionar(){
+        let fruta = ipt_fruta.value;
+
+        lista.push(fruta); //para adicionar fruta a ultima posição da lista
+        div_msg.innerHTML += `<br>A fruta <b style="color: red; font-size: 20px;">${fruta}</b> foi adicionada na lista<br>`;
+    }
+    function pesquisarFruta(){
+        let fruta = ipt_fruta.value;
+
+        if (lista.includes(fruta)){//verifica se na lista tem a fruta
+            div_msg.innerHTML += `<br>A fruta ${fruta} existe na lista e está na posição ${lista.indexOf(fruta)}<br> `; //pega o index que tá aquela fruta
+        }
+        // lista.includes(fruta) //pesquisar se na lista tem a fruta
+    }
+    function pesquisarIndice(){
+        let indice = ipt_fruta.value;
+
+        if (indice < 0 || indice >= indice.length() || isNaN(indice)){//verificar se o indice é invalido
+            div_msg.innerHTML += `<br>Indice inválido<br>`; 
+        }else {
+            div_msg.innerHTML = `A fruta é: ${lista[indice]}`;
+        }
+        // lista[indice] //define nossa variavel como indice da fruta na lista
+    }
+</script>

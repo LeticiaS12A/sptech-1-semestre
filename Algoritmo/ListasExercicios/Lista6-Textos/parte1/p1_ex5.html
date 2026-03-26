@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troca de palavras</title>
+</head>
+<body>
+    Senha:
+    <input type="text" id="ipt_senha" oninput="trocar()"><br><br>
+    <!-- oninput funciona como um botão porém quando o usuario digita -->
+    <!-- sem precisar clicar em algo para executar a função -->
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function trocar(){
+        let senha = ipt_senha.value;
+        let senhaFormatada = senha.replaceAll('a', '@').replaceAll('A', '@')
+                                    .replaceAll('e', '3').replaceAll('E', '3')
+        
+        div_msg.innerHTML = `Formatada: ${senhaFormatada}<br>`;
+    }
+</script>

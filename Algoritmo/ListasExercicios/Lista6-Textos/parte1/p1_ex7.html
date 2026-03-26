@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troca de palavras</title>
+</head>
+<body>
+    Senha:
+    <input type="text" id="ipt_senha" oninput="validar()"><br><br>
+    <!-- oninput executa função enquanto digita-->
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function validar(){
+        let senha = ipt_senha.value;
+        let forca = 0;
+
+        if(senha.length >= 8){ //verificando que a senha tem 8 ou mais caracteres
+            forca ++;
+        } 
+        if(senha != senha.toLowerCase()){ // Se tem caracter maiusculo forçando a ficar minusculo e comparando
+            forca ++;
+        }
+        if(senha != senha.toUpperCase()){ // Se tem caracter minusculo forçando a ficar maiuscula e comparando
+            forca ++;
+        }
+
+        if(forca == 3){
+            div_msg.innerHTML = `Senha Forte - atingiu todos os critérios de segurança`;
+        } else if(forca == 2){
+            div_msg.innerHTML = `Senha Média - atingiu 2 critérios de segurança`;
+        } else if(forca == 1){
+            div_msg.innerHTML = `Senha Fraca - atingiu 1 critério de segurança`;
+        } else if(forca == 0){
+            div_msg.innerHTML = `Senha Insegura - não atingiu nenhum critério de segurança`;
+        }
+
+        // A senha deve conter ao menos 8 caracteres.
+        // A senha deve conter 1 letra maiúscula.
+        // A senha deve conter 1 letra minúscula.
+    }
+</script>
