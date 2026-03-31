@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementando o Char.JS</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body style="display: flex; justify-content: center;">
+    <div style="position: relative; height:40vh; width:40vw;">
+        <!-- quadro branco para renderizar o grafico -->
+        <canvas id="myChart"></canvas>
+    </div>
+    <div style="position: relative; height:40vh; width:40vw">
+        <!-- quadro branco para renderizar o grafico -->
+        <canvas id="myChart2"></canvas>
+    </div>
+</body>
+<!-- SETUP de configuração -->
+<script>
+    // Tela que vamos desenhar o grafico
+    // Criando as informações do grafico eixo x
+    const labels = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+    ];
+
+    // Json  
+    const data = {
+        // declarando uma varivel que puxa o valor das labels acima
+        labels: labels,
+        // Declarando um vetor
+        datasets: [{ // Criando linhas de informações
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45],
+            },
+            //Criando outra linha de dados
+            {
+            label: 'My  dataset',
+            backgroundColor: 'rgb(0, 0, 132)',
+            borderColor: 'rgb(0, 0, 132)',
+            data: [10, 10, 5, 20, 15, 30, 40], // cada posição equivale a possição das labels criadas antes
+            }
+        ]  
+    };
+
+    // Configurando o grafico
+    const config = {
+        type: 'line',   // Definindo o tipo de grafico de linha ou qualquer outro
+        data: data,     // Data/Dados: ele puxa nosso dataset
+        options: {}
+    };
+
+    const config2 = {
+        type: 'bar',   // Definindo o tipo de grafico de linha ou qualquer outro
+        data: data,     // Data/Dados: ele puxa nosso dataset
+        options: {}
+    };
+</script>
+<!-- Renderizando o grafico -->
+<script>
+    // Exibindo o grafico configurado
+    const myChart = new Chart(      // Criando um novo grafico onde
+        document.getElementById('myChart'),     // Onde contem o id myChart
+        config                      // Definindo quais as configurações do nosso grafico
+    );
+
+    const myChart2 = new Chart(      // Criando um novo grafico onde
+        document.getElementById('myChart2'),     // Onde contem o id myChart
+        config2                     // Definindo quais as configurações do nosso grafico
+    );
+</script>
+</html>
