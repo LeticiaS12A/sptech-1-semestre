@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercico 6</title>
+</head>
+<body>
+    <h1>Observador de Índices</h1><br>
+
+    Digite uma frase:
+    <input type="text" id="ipt_frase" oninput="digitando()"><br>
+    Digite numero da letra:
+    <input type="text" id="ipt_num_letra" oninput="digitando()"><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function digitando(){
+        let frase = ipt_frase.value;
+        let posi = Number(ipt_num_letra.value) - 1;
+        let primeiraLetra = frase[0];
+        let letraIndex = frase[index];
+        let ultimaLetra = frase[frase.length - 1];
+
+        div_msg.innerHTML = `A primeira letra é: ${primeiraLetra}<br>
+
+                            A ${index + 1}ª letra é: ${letraIndex}<br>
+
+                            A última letra é: ${ultimaLetra}<br>`;
+        
+    }
+</script>
