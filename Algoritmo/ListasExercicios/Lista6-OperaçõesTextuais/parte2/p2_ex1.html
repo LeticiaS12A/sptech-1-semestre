@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+<body>
+    <h1>Caça às Frutas: Descubra se está na Lista</h1><br>
+
+    Insira uma Fruta:
+    <input type="text" id="ipt_fruta"><br>
+
+    <button onclick="analise()">Pesquisar</button><br><br>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    let ListFrutas = ['morango','pera','uva']
+
+    function analise() {
+        let fruta = ipt_fruta.value.toLowerCase();
+        let verif = ListFrutas.indexOf(fruta);
+
+        if (verif >= 0){
+            msg.innerHTML = `A fruta ${fruta} existe na lista.`
+        }else {
+            msg.innerHTML = `Não existe a fruta ${fruta} na lista`
+        }
+    }
+</script>

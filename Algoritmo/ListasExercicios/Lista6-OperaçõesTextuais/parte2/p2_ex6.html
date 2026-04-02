@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 6</title>
+</head>
+<body>
+    <h1>Lista Viva de Filmes Favoritos</h1><br>
+
+    Insira um dos seus filmes favoritos:
+    <input type="text" id="ipt_filme"><br><br>
+
+    <button onclick="analisar()">Cadastrar</button><br><br>
+
+    <div id="msg"></div>
+</body>
+</html>
+<script>
+    ListFilmes = [];
+    
+    function analisar() {
+        let filme = ipt_filme.value;
+
+        ListFilmes.push(filme);
+        formatado = ListFilmes.toString();
+        formatado = formatado.replaceAll(',','<br>')
+
+        msg.innerHTML = formatado
+    }
+</script>

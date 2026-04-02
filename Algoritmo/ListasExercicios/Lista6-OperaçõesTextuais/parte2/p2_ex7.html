@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7</title>
+</head>
+<body>
+    <h1>Filmes em Cores: Azul e Vermelho Alternados</h1><br>
+
+    Insira um dos seus filmes favoritos:
+    <input type="text" id="ipt_filme"><br><br>
+
+    <button onclick="analisar()">Cadastrar</button><br><br>
+
+    <div id="msg"></div>
+</body>
+</html>
+
+<script>
+    ListFilmes = [];
+
+    function analisar() {
+        let filme = ipt_filme.value;
+
+        if (ListFilmes.length == 0 || ListFilmes.length % 2 == 0){
+            filme = `<span style="color:blue;">${filme}</span><br>`
+        }else {
+            filme = `<span style="color:red;">${filme}</span><br>`
+        }
+
+        ListFilmes.push(filme);
+
+        let formatado = ListFilmes.toString()
+
+        formatado = formatado.replaceAll(',','')
+
+        msg.innerHTML = formatado;
+    }
+</script>

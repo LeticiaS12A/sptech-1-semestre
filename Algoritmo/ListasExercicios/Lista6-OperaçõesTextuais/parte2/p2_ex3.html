@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    <h1>Relembrando Moradias: Onde Você Já Viveu?</h1>
+
+    Insira um bairro que morou:
+    <input type="text" id="ipt_bairro"><br>
+    Qual número da casa relembrar?
+    <input type="text" id="casaCad"><br><br>
+    
+    <button onclick="cad()">Cadastrar Moradia</button>
+    <button onclick="analisar()">Relembrar Moradia</button><br><br>
+
+    <div id="msg"></div>
+</body>
+
+</html>
+
+<script>
+    let ListBairros = [];
+    
+    function cad() {
+        let bairro = ipt_bairro.value;
+
+        ListBairros.push(bairro);
+    }
+    function analisar() {
+        let casa = Number(casaCad.value);
+
+        if (casa <= ListBairros.length) {
+            msg.innerHTML = ListBairros[casa - 1];
+        } else {
+            msg.innerHTML = `Você ainda não morou num ${casa}º bairro!`;
+        }
+    }
+</script>

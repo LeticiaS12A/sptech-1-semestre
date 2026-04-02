@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+</head>
+<body>
+    <h1>Diário de Viagens: Do Primeiro ao Último Destino</h1><br>
+
+    Insira o destino de sua viagem: <br>
+    <input type="text" id="ipt_destino">
+
+    <button onclick="adicionar()">Adicionar</button><br><br>
+    
+    <button onclick="primeira()">Primeira Viagem</button>
+    <button onclick="terceira()">Terceira Viagem</button>
+    <button onclick="ultima()">última Viagem</button><br><br>
+
+    <div id="msg"></div>
+</body>
+</html>
+<script>
+    let ListDestinos = [];
+    
+    function adicionar() {
+        let destino = ipt_destino.value;
+        
+        ListDestinos.push(destino);
+    }
+    function primeira() {
+        if (!ListDestinos[0]) {
+            msg.innerHTML = `Ainda não viajou`
+        } else {
+            msg.innerHTML = ListDestinos[0]
+        }
+    }
+
+    function terceira() {
+        if (!ListDestinos[2]) {
+            msg.innerHTML = `Ainda não fez a terceira viagem`
+        } else {
+            msg.innerHTML = ListDestinos[2]
+        }
+    }
+    function ultima() {
+        if (!ListDestinos[ListDestinos.length - 1]) {
+            msg.innerHTML = `Ainda não viajou`
+        } else {
+            msg.innerHTML = ListDestinos[ListDestinos.length - 1]
+        }
+    }
+</script>

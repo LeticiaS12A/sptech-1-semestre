@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 5</title>
+</head>
+<body>
+    <h1>Painel de Favoritos: Seus Filmes em Destaque</h1><br>
+
+    Insira seu Filme Favorito:
+    <input type="text" id="ipt_filme"><br><br>
+
+    <button onclick="analisar()">Cadastrar Filme</button><br><br>
+
+    <div id="msg"></div>
+</body>
+
+</html>
+<script>
+    let ListFilmes = [];
+    
+    function analisar() {
+        let filme = ipt_filme.value;
+        let vazio = '';
+        
+        ListFilmes.push(filme);
+
+        if (!ListFilmes[2]) {
+            vazio = 'Ainda não existe';
+        } else {
+            vazio = ListFilmes[2];
+        }
+
+        msg.innerHTML = `Seu filme favorito: ${ListFilmes[0]}<br>
+                        Seu 3º filme favorito: ${vazio}<br>
+                        Total de filmes cadastrados: ${ListFilmes.length}`;
+    }
+</script>
