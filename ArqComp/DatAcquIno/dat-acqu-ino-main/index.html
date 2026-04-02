@@ -1,112 +1,242 @@
 <!doctype html>
 <html>
-
 <head>
-    <title>Graphics</title>
+    <title>Volumes</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+<style>
+    body {
+        font-family: 'Inter', 'Segoe UI', sans-serif;
+        background: #f8fafc;
+        margin: 0;
+        padding: 0;
+    }
+    /* Header */
+    header{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding: 8px 40px;
+        background:white;
+        border-bottom:1px solid #e5e7eb;
+    }
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .logo img{
+        height: 50px;
+        width: 50px;
+    }
 
+    .titulo {
+        height: 20px;
+        font-size: 18px;
+        font-weight: 700;
+        color:#111827;
+    }
+
+    .links{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: #374151;
+        gap: 20px;
+    }
+
+    .escolhaLinks{
+        text-decoration:none;
+        color:#111827;
+        font-size:14px;
+        transition:0.2s;
+    }
+
+    .escolhaLinks:hover{
+        color:#012790
+    }
+    .login{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        font-weight: 700;
+        background:#111827;
+        color:white;
+        padding:8px 14px;
+        border-radius:8px;
+    }
+
+    .login:hover{
+        color: white;
+        background:#012790;
+    }
+
+    /* Conteúdo */
+    .container{
+        padding: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .titulo-dash{
+        display: flex;
+        justify-content: center;
+        font-size: 10px;
+        color: #111827;
+        margin-top: -20px;
+    }
+    .content {
+        width: 90vw;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    .grafico{
+        width: 100%;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    input {
+        width: 92%;
+        height: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #d1d5db;
+        font-size: 14px;
+        transition: all 0.2s;
+        background: #f9fafb;
+        margin-bottom: 14px;
+    }
+
+    input:hover{
+        border-color: #d1d5db;
+        transform: translateY(-3px);
+    }
+
+    button {
+        width: 100%;
+        height: 40px;
+        background: #111827;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    button:hover {
+        background: #012790;
+        border-color: #d1d5db;
+        transform: translateY(-3px);
+    }
+
+</style>
 <body>
-
-    <h1>Graphics</h1>
-    <div style="display: flex;">
-        <div style="width: 50%;">
-            <canvas id="sensorAnalogico"></canvas>
+    <header>
+        <div class="logo">
+            <p class="titulo">Smart Waste Systems</p>
         </div>
-        <div style="width: 50%;">
-            <canvas id="sensorDigital"></canvas>
+
+        <div class="links">
+            <a href="#hero-section" class="escolhaLinks">Home</a>
+            <a href="#servicos" class="escolhaLinks">Serviços</a>
+            <a href="#sobre-nos" class="escolhaLinks">Sobre Nós</a>
+            <a href="#fundadores" class="escolhaLinks">Fundadores</a>
+            <a href="#formulario" class="escolhaLinks">Contate-nos</a>
+            <a href="#" class="escolhaLinks login">Login</a>
+            <!-- Nesse precisamos do login! Então confie. -->
+        </div>
+    </header>
+    <div class="container">
+        
+        <div class="content">
+            <div class="titulo-dash">
+                <h1>Volume de lixeira Geral</h1>
+            </div>
+            
+            <div class="grafico">
+                <canvas id="sensorDigital"></canvas>
+            </div>
         </div>
     </div>
 
-    <script>
-        var sensorAnalogico = new Chart(document.getElementById('sensorAnalogico').getContext('2d'), {
-            type: 'line',
-            data: {
-                datasets: [{
-                    label: 'Analogico',
-                    borderColor: '#63B1BC',
-                    backgroundColor: '#ED145B'
-                }]
-            },
-            options: {
-                scales: {
-                    x: {
-                        beginAtZero: true
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: '(%)'
-                        },
-                        beginAtZero: true,
-                    },
-                },
-            }
-        });
 
-        var sensorDigital = new Chart(document.getElementById('sensorDigital').getContext('2d'), {
-            type: 'line',
-            data: {
-                datasets: [{
-                    label: 'Digital',
-                    borderColor: '#63B1BC',
-                    backgroundColor: '#0762C8'
-                }]
+</body>
+</html>
+<script>
+    var sensorDigital = new Chart(document.getElementById('sensorDigital').getContext('2d'), {
+        type: 'bar',
+        data: {
+            datasets: [{
+                label: 'Lixeira A',
+                borderColor: '#63B1BC',
+                backgroundColor: '#012790'
             },
-            options: {
-                scales: {
-                    x: {
-                        beginAtZero: true
+        {
+                label: 'Lixeira B',
+                borderColor: '#63B1BC',
+                backgroundColor: '#111827'
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    beginAtZero: true
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: '(0-1)'
                     },
-                    y: {
-                        title: {
-                            display: true,
-                            text: '(0-1)'
-                        },
-                        beginAtZero: true
-                    }
+                    beginAtZero: true
                 }
             }
-        });
-
-        var paginacao = {};
-        var tempo = {};
-
-        function obterDados(grafico, endpoint) {
-            fetch('http://localhost:3300/sensores/' + endpoint)
-                .then(response => response.json())
-                .then(valores => {
-                    if (paginacao[endpoint] == null) {
-                        paginacao[endpoint] = 0;
-                    }
-                    if (tempo[endpoint] == null) {
-                        tempo[endpoint] = 0;
-                    }
-
-                    var ultimaPaginacao = paginacao[endpoint];
-                    paginacao[endpoint] = valores.length;
-                    valores = valores.slice(ultimaPaginacao);
-
-                    valores.forEach((valor) => {
-                        if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
-                            grafico.data.labels.shift();
-                            grafico.data.datasets[0].data.shift();
-                        }
-
-                        grafico.data.labels.push(tempo[endpoint]++);
-                        grafico.data.datasets[0].data.push(parseFloat(valor));
-                        grafico.update();
-                    });
-                })
-                .catch(error => console.error('Erro ao obter dados:', error));
         }
+    });
 
-        setInterval(() => {
-            obterDados(sensorAnalogico, 'analogico');
-            obterDados(sensorDigital, 'digital');
-        }, 1000);
+    var paginacao = {};
+    var tempo = {};
 
-    </script>
-</body>
+    function obterDados(grafico, endpoint) {
+        fetch('http://10.18.32.143:3300/sensores/' + endpoint)
+            .then(response => response.json())
+            .then(valores => {
+                if (paginacao[endpoint] == null) {
+                    paginacao[endpoint] = 0;
+                }
+                if (tempo[endpoint] == null) {
+                    tempo[endpoint] = 0;
+                }
 
-</html>
+                var ultimaPaginacao = paginacao[endpoint];
+                paginacao[endpoint] = valores.length;
+                valores = valores.slice(ultimaPaginacao);
+
+                valores.forEach((valor) => {
+                    if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+                        grafico.data.labels.shift();
+                        grafico.data.datasets[0].data.shift();
+                    }
+
+                    grafico.data.labels.push(tempo[endpoint]++);
+                    grafico.data.datasets[0].data.push(parseFloat(valor));
+                    grafico.update();
+                });
+            })
+            .catch(error => console.error('Erro ao obter dados:', error));
+    }
+
+    setInterval(() => {;
+        obterDados(sensorDigital, 'digital');
+    }, 1000);
+
+</script>
