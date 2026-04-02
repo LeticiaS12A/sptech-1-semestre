@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 9</title>
+</head>
+<body onload="iniciar()">
+    <h1>Super Jogo da Palavra Secreta</h1>
+
+    <div id="div_inicio"></div><br>
+
+    Digite uma letra:
+    <input type="text" id="ipt_letra"><br><br>
+
+    <button onclick="verificar()">Verificar Letra</button><br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let palavra = "aurélio".toLowerCase();
+
+    // contadores de cada letra
+    let a = 1;
+    let u = 1;
+    let r = 1;
+    let e = 1;
+    let l = 1;
+    let i = 1;
+    let o = 1;
+
+    let restantes = 7;
+
+    function iniciar() {
+        div_inicio.innerHTML = `Palavra secreta definida! Descubra todos os ${palavra.length} caracteres!`;
+    }
+
+    function verificar() {
+        let letra = ipt_letra.value.toLowerCase();
+        let mensagem = "";
+
+        if (restantes == 0) {
+            return;
+        }
+
+        if (letra == "a" && a > 0) {
+            a--;
+            restantes--;
+            mensagem = `O caractere ${letra} aparece na palavra secreta! Faltam ${restantes} caracteres`;
+
+        } else if (letra == "u" && u > 0) {
+            u--;
+            restantes--;
+            mensagem = `O caractere ${letra} aparece na palavra secreta! Faltam ${restantes} caracteres`;
+
+        } else if (letra == "r" && r > 0) {
+            r--;
+            restantes--;
+            mensagem = `O caractere ${letra} aparece na palavra secreta! Faltam ${restantes} caracteres`;
+
+        } else if (letra == "e" && e > 0) {
+            e--;
+            restantes--;
+            mensagem = `O caractere ${letra} aparece na palavra secreta! Faltam ${restantes} caracteres`;
+
+        } else if (letra == "l" && l > 0) {
+            l--;
+            restantes--;
+            mensagem = `O caractere ${letra} aparece na palavra secreta! Faltam ${restantes} caracteres`;
+
+        } else if (letra == "i" && i > 0) {
+            i--;
+            restantes--;
+            mensagem = `O caractere ${letra} aparece na palavra secreta! Faltam ${restantes} caracteres`;
+
+        } else if (letra == "o" && o > 0) {
+            o--;
+            restantes--;
+            mensagem = `O caractere ${letra} aparece na palavra secreta! Faltam ${restantes} caracteres`;
+
+        } else {
+            mensagem = `O caractere ${letra} NÃO aparece na palavra secreta! Faltam ${restantes} caracteres`;
+        }
+
+        if (restantes == 0) {
+            mensagem = `Parabéns, você descobriu todas as letras da palavra secreta ${palavra}!`;
+        }
+
+        div_mensagem.innerHTML = mensagem;
+
+        ipt_letra.value = "";
+        ipt_letra.focus();
+    }
+</script>
