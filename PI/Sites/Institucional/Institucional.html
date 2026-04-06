@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Waste Systems</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- NAV!! Em resumo, nosso topo e tals -->
+    <nav>
+        <div class="logo">
+            <img src="imgs/logo.png" alt="Logo da Smart Waste Systems" height="100" width="100">
+            <!-- Por que alt? E isso em várias imagens... Leitor de tela em resumo! -->
+        </div>
+
+        <div class="titulo">
+            <p>Smart Waste Systems</p>
+        </div>
+
+        <div class="links">
+            <a href="#hero-section" class="escolhaLinks">Home</a>
+            <a href="#servicos" class="escolhaLinks">Serviços</a>
+            <a href="#sobre-nos" class="escolhaLinks">Sobre Nós</a>
+            <a href="#fundadores" class="escolhaLinks">Fundadores</a>
+            <a href="#formulario" class="escolhaLinks">Contate-nos</a>
+            <a href="#" class="escolhaLinks login">Login</a>
+            <!-- Nesse precisamos do login! Então confie. -->
+        </div>
+    </nav>
+
+    <!-- HERO!! Coloquei como header só para não ficar usando div que nem louco -->
+    <header id="hero-section">
+        <div class="carousel">
+            <div class="slides">
+                <img src="https://dummyimage.com/1200x300/1e1e2f/ffffff&text=Slide+1" class="slide active"
+                    alt="Slide 1">
+                <img src="https://dummyimage.com/1200x300/ff4b2b/ffffff&text=Slide+2" class="slide" alt="Slide 2">
+                <img src="https://dummyimage.com/1200x300/00c9a7/ffffff&text=Slide+3" class="slide" alt="Slide 3">
+            </div>
+
+            <div class="indicador">
+                <span class="indica active"></span>
+                <span class="indica"></span>
+                <span class="indica"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- SERVIÇOS -->
+    <section id="servicos" class="servicos">
+        <!-- Por que section invés de div? Além de facilitar leitura, ajuda leitor de tela! Tem que ser acessível (e vamos ser sinceros, muito mais bonito!) -->
+        <h2 class="tituloServico">Serviços Prestados</h2>
+
+        <div class="servicoMostrar">
+            Card 1 | Card 2 | Card 3
+            <!-- Ainda vai colocar bonitinho, tem que ver-->
+        </div>
+    </section>
+
+    <!-- Vamos tirar isso no futuro, só por enquanto -->
+    <br><br>
+
+    <!-- SOBRE NÓS!! -->
+    <section id="sobre-nos" class="sobre-nos">
+        <h2 class="tituloSobre">Sobre Nós</h2>
+
+        <div class="sobreMostrar">
+            <div class="imgSobre">
+                <img src="" alt="Imagem sobre a empresa">
+            </div>
+
+            <div class="textoSobre">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel interdum turpis. Aliquam erat
+                volutpat. Etiam facilisis pellentesque justo. Maecenas imperdiet, arcu in suscipit scelerisque, nisi
+                diam feugiat dui, vel pretium nulla quam sit amet turpis. Vestibulum ante ipsum primis in faucibus orci
+                luctus et ultrices posuere cubilia curae; Cras ut velit pellentesque, commodo est vitae, aliquet sem.
+                Etiam suscipit accumsan diam, quis maximus orci dignissim eu.
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNDADORES!! -->
+    <section id="fundadores" class="fundadores">
+        <!-- Futuramente cards dos fundadores -->
+    </section>
+
+    <!-- FORMULÁRIO -->
+    <section id="formulario" class="formulario">
+
+        <form action="#" method="post">
+            <!-- Isso é pro futuro, questão de enviar e tals... A não ser que em JS seja diferente.-->
+
+            <h2 class="tituloCont">Contate-nos</h2>
+            <!-- "O que é label matheus?" Simples, é basicamente uma legenda para o input, além disso, se clicar nele, ele ta ligado ao
+            input sabe? O for sempre deve corresponder ao nome do id. Além disso, o "name" serve para identificar no futuro! Required como
+            nome diz, é basicamente... REQUER para funcionar!
+            -->
+            <label class="labelContato" for="nome">Nome do representante</label>
+            <input type="text" class="inputContato" id="nome" name="nome" placeholder="Insira o nome de seu representante..." required>
+
+            <label class="labelContato" for="email">Email</label>
+            <input type="email" class="inputContato"  id="email" name="email" placeholder="Insira o seu email..." required>
+
+            <label class="labelContato" for="mensagem">Motivo do contato</label>
+            <textarea class="mensagemContato" id="mensagem" name="mensagem" placeholder="Ex: dúvida, reclamação, requisição de cadastro..."
+                required></textarea>
+
+            <button type="submit">
+                Enviar
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- Lembra do footer? É isso em resumo, parte de baixo, direitos reservados etc -->
+    <footer class="footer">
+        &copy;Todos os direitos reservados a Smart Waste Systems
+    </footer>
+
+    
+</body>
+</html>
+<script>
+    // Seleciona TODAS as imagens do carousel (classe .slide)
+    // Para então virar uma NODE LIST (coleção de objetos para usar o querySelectorALl) com o document (seleciona a tag)
+    let slides = document.querySelectorAll(".slide");
+    // Seleciona todos os indicadores (que ta como indica, a bolinha!)
+    let dots = document.querySelectorAll(".indica");
+    // É o índice da primeira imagem (que é 0 né)
+    let index = 0;
+
+    // Função que avança para o próximo slide
+    function nextSlide() {
+        // Aumenta o meu indice
+        index++;
+        // Ve se passou da última imagem para então voltar a primeira
+        if (index >= slides.length) {
+            // O loop ai
+            index = 0;
+        }
+        // Mostra o slide atual invocando a função
+        showSlide(index);
+    }
+    // Executa a função nextSlide a cada 3 segundos, que é 3000 ms em JS
+    // Ai fica parecendo que é automatico
+    setInterval(nextSlide, 3000);
+
+    // Função que mostra o slide
+    function showSlide(i) {
+
+        // Remove a classe "active" de TODAS as imagens
+        slides.forEach(slide => slide.classList.remove("active"));
+
+        // Faz o mesmo que nas imagens só que com as bolinhas
+        dots.forEach(indica => indica.classList.remove("active"));
+
+        // Adiciona "active" SOMENTE na imagem atual (se baseando no indice)
+        // Isso faz ela aparecer (por causa do CSS e JS)
+        slides[i].classList.add("active");
+        // Ativa também a bolinha 
+        dots[i].classList.add("active");
+    }
+</script>

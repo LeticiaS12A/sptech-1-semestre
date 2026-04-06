@@ -1,0 +1,182 @@
+body{
+    font-family:'Inter','Segoe UI',sans-serif;
+    background:#f8fafc;
+    margin:0;
+}
+
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:white;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.titulo p{
+    font-size:20px;
+    font-weight:600;
+    color:#111827;
+}
+
+.links{
+    display:flex;
+    gap:20px;
+}
+
+.escolhaLinks{
+    text-decoration:none;
+    color:#374151;
+    font-size:14px;
+    transition:0.2s;
+}
+
+.escolhaLinks:hover{
+    color:#111827;
+}
+
+.login{
+    background:#111827;
+    color:white;
+    padding:8px 14px;
+    border-radius:8px;
+}
+
+.login:hover{
+    background:#283344;
+}
+
+/* HERO */
+.carousel{
+    width:100%;
+    max-width:1200px;
+    margin:30px auto;
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid #e5e7eb;
+}
+
+.slide{
+    width:100%;
+    display:none;
+}
+
+.slide.active{
+    display:block;
+}
+
+.indicador{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    padding:10px;
+    background:white;
+}
+
+.indica{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#d1d5db;
+}
+
+.indica.active{
+    background:#111827;
+}
+
+/* SEÇÕES */
+section{
+    padding:40px;
+}
+
+h2{
+    color:#111827;
+    font-weight:600;
+}
+
+/* SERVIÇOS */
+.servicoMostrar{
+    margin-top:20px;
+    display:flex;
+    gap:20px;
+}
+
+/* SOBRE */
+.sobreMostrar{
+    display:flex;
+    gap:40px;
+    align-items:center;
+    margin-top:20px;
+}
+
+.textoSobre{
+    color:#374151;
+    line-height:1.6;
+}
+
+/* FORMULÁRIO */
+form{
+    background:white;
+    padding:30px;
+    max-width:500px;
+    margin:auto;
+    border-radius:14px;
+    border:1px solid #e5e7eb;
+}
+
+.labelContato{
+    display:block;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-size:14px;
+    color:#374151;
+}
+
+.inputContato, textarea{
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #d1d5db;
+    background:#f9fafb;
+    font-size:14px;
+    transition:0.2s;
+}
+
+.inputContato:focus, textarea:focus{
+    outline:none;
+    border-color:#111827;
+    background:white;
+}
+
+textarea{
+    resize:none;
+    height:100px;
+}
+
+button{
+    margin-top:20px;
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:#111827;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+button:hover{
+    background:#283344;
+}
+
+/* FOOTER */
+.footer{
+    margin-top:40px;
+    text-align:center;
+    padding:20px;
+    background:white;
+    border-top:1px solid #e5e7eb;
+    color:#6b7280;
+}
