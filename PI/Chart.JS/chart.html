@@ -38,6 +38,7 @@
             label: 'My First dataset',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
+            colorText: 'red',
             data: [0, 10, 5, 2, 20, 30, 45],
             },
             //Criando outra linha de dados
@@ -54,7 +55,31 @@
     const config = {
         type: 'line',   // Definindo o tipo de grafico de linha ou qualquer outro
         data: data,     // Data/Dados: ele puxa nosso dataset
-        options: {}
+        options: {
+            scales: {
+                y: {
+                    ticks: {
+                        color: 'blue'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: 'green'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                display: true,
+                text: 'Custom Chart Title'
+            },
+                subtitle: {
+                display: true,
+                text: 'Custom Chart Subtitle',
+                color: 'red',
+            }
+            }
+        }
     };
 
     const config2 = {
@@ -65,6 +90,7 @@
 </script>
 <!-- Renderizando o grafico -->
 <script>
+ 
     // Exibindo o grafico configurado
     const myChart = new Chart(      // Criando um novo grafico onde
         document.getElementById('myChart'),     // Onde contem o id myChart
