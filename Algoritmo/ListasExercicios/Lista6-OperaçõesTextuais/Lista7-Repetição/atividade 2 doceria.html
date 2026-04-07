@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria</title>
+</head>
+<style>
+    body{
+        img{
+            width: 50px;
+            height: 50px;
+        }
+    }
+</style>
+<body>
+    <h1>Ben vindo a Doceria</h1><br>
+    
+    Valor Unidade Macaron:
+    <input type="text" id="ipt_macaron"><br>
+    Valor Unidade Brigadeiros:
+    <input type="text" id="ipt_brigadeiros"><br>
+    Valor Unidade CupCakes:
+    <input type="text" id="ipt_cupcakes"><br>
+    Valor Unidade Cheesecakes:
+    <input type="text" id="ipt_cheesecakes"><br><br>
+
+    <button onclick="verificar()">Verificar Vendas</button><br><br>
+    
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function verificar(){
+        let qtd_macaron = ipt_macaron.value;
+        let qtd_brigadeiros = ipt_brigadeiros.value;
+        let qtd_cupcakes = ipt_cupcakes.value;
+        let qtd_cheesecakes = ipt_cheesecakes.value;
+
+        let valorMacaron = qtd_macaron * 3.99;
+        let valorBrigadeiros = qtd_brigadeiros * 4.99;
+        let valorCupcakes = qtd_cupcakes * 5.99;
+        let valorCheesecake = qtd_cheesecakes * 6.99;
+
+        let mensagem = ``;
+        let contadorVendas = 0;
+        let valorFinal = valorMacaron + valorBrigadeiros + valorCupcakes + valorCheesecake;
+
+        if(qtd_macaron > 0){
+            for(let contador = 0; contador < qtd_macaron; contador++){
+                contadorVendas++;
+                mensagem += `Venda: ${contadorVendas}-<img src="./img/macaron.jpg">-R$3.99<br><br>`;
+            }
+        }
+        if(qtd_brigadeiros > 0){
+            for(let contador = 0; contador < qtd_brigadeiros; contador++){
+                contadorVendas++;
+                mensagem += `Venda: ${contadorVendas}-<img src="./img/brigadeiro.jpg">-R$4.99<br><br>`;
+            }
+        }
+        if(qtd_cupcakes > 0){
+            for(let contador = 0; contador < qtd_cupcakes; contador++){
+                contadorVendas++;
+                mensagem += `Venda: ${contadorVendas}-<img src="./img/cupcakes.jpg">-R$5.99<br><br>`;
+            }
+        }
+        if(qtd_cheesecakes > 0){
+            for(let contador = 0; contador < qtd_cheesecakes; contador++){
+                contadorVendas++;
+                mensagem += `Venda: ${contadorVendas}-<img src="./img/cheesecakes.webp">-R$6.99<br><br>`;
+            }
+        }else{
+            mensagem = `Valores inválidos tente novamente`;
+        }
+
+        mensagem += `Com a quantidade de ${qtd_macaron} Macarons, ${qtd_brigadeiros} Brigadeiros, ${qtd_cupcakes} Cupcakes e ${qtd_cheesecakes} Cheesecakes, a venda totalizará R$${valorFinal}`;
+
+        div_msg.innerHTML = mensagem;
+    }
+</script>
