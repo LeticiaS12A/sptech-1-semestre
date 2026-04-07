@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="contar()">Contar</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function contar(){
+        let mensagem = ``;
+
+        //fir(antes de entrar; condição,   ultimaLinha Ececutiva)
+        for (let contador=0; contador < 5; contador++){
+            mensagem += `Contador: ${contador} <br>`;
+        }
+        
+        // let contador = 1;
+        // while (contador <= 5){
+        //     contador++;
+        //     mensagem += `Contador: ${contador}<br>`;
+        // }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>
