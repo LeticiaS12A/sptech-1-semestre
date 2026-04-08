@@ -16,14 +16,23 @@
 <body>
     <h1>Ben vindo a Doceria</h1><br>
     
-    Valor Unidade Macaron:
+    Quantidade Macaron:
     <input type="text" id="ipt_macaron"><br>
-    Valor Unidade Brigadeiros:
+    Quantidade Brigadeiros:
     <input type="text" id="ipt_brigadeiros"><br>
-    Valor Unidade CupCakes:
+    Quantidade CupCakes:
     <input type="text" id="ipt_cupcakes"><br>
-    Valor Unidade Cheesecakes:
+    Quantidade Cheesecakes:
     <input type="text" id="ipt_cheesecakes"><br><br>
+
+    Valor Unidade Macaron:
+    <input type="text" id="ipt_vlr_macaron"><br>
+    Valor Unidade Brigadeiros:
+    <input type="text" id="ipt_vlr_brigadeiros"><br>
+    Valor Unidade CupCakes:
+    <input type="text" id="ipt_vlr_cupcakes"><br>
+    Valor Unidade Cheesecakes:
+    <input type="text" id="ipt_vlr_cheesecakes"><br><br>
 
     <button onclick="verificar()">Verificar Vendas</button><br><br>
     
@@ -37,10 +46,15 @@
         let qtd_cupcakes = ipt_cupcakes.value;
         let qtd_cheesecakes = ipt_cheesecakes.value;
 
-        let valorMacaron = qtd_macaron * 3.99;
-        let valorBrigadeiros = qtd_brigadeiros * 4.99;
-        let valorCupcakes = qtd_cupcakes * 5.99;
-        let valorCheesecake = qtd_cheesecakes * 6.99;
+        let vlr_macaron = ipt_vlr_macaron.value;
+        let vlr_brigadeiros = ipt_vlr_brigadeiros.value;
+        let vlr_cupcakes = ipt_vlr_cupcakes.value;
+        let vlr_cheesecakes = ipt_vlr_cheesecakes.value;
+
+        let valorMacaron = qtd_macaron * vlr_macaron;
+        let valorBrigadeiros = qtd_brigadeiros * vlr_brigadeiros;
+        let valorCupcakes = qtd_cupcakes * vlr_cupcakes;
+        let valorCheesecake = qtd_cheesecakes * vlr_cheesecakes;
 
         let mensagem = ``;
         let contadorVendas = 0;
@@ -49,31 +63,31 @@
         if(qtd_macaron > 0){
             for(let contador = 0; contador < qtd_macaron; contador++){
                 contadorVendas++;
-                mensagem += `Venda: ${contadorVendas}-<img src="./img/macaron.jpg">-R$3.99<br><br>`;
+                mensagem += `Venda: ${contadorVendas}-<img src="./img/macaron.jpg">-R$${vlr_macaron}<br><br>`;
             }
         }
         if(qtd_brigadeiros > 0){
             for(let contador = 0; contador < qtd_brigadeiros; contador++){
                 contadorVendas++;
-                mensagem += `Venda: ${contadorVendas}-<img src="./img/brigadeiro.jpg">-R$4.99<br><br>`;
+                mensagem += `Venda: ${contadorVendas}-<img src="./img/brigadeiro.jpg">-R$${vlr_brigadeiros}<br><br>`;
             }
         }
         if(qtd_cupcakes > 0){
             for(let contador = 0; contador < qtd_cupcakes; contador++){
                 contadorVendas++;
-                mensagem += `Venda: ${contadorVendas}-<img src="./img/cupcakes.jpg">-R$5.99<br><br>`;
+                mensagem += `Venda: ${contadorVendas}-<img src="./img/cupcakes.jpg">-R$${vlr_cupcakes}<br><br>`;
             }
         }
         if(qtd_cheesecakes > 0){
             for(let contador = 0; contador < qtd_cheesecakes; contador++){
                 contadorVendas++;
-                mensagem += `Venda: ${contadorVendas}-<img src="./img/cheesecakes.webp">-R$6.99<br><br>`;
+                mensagem += `Venda: ${contadorVendas}-<img src="./img/cheesecakes.webp">-R$${vlr_cheesecakes}<br><br>`;
             }
         }else{
             mensagem = `Valores inválidos tente novamente`;
         }
 
-        mensagem += `Com a quantidade de ${qtd_macaron} Macarons, ${qtd_brigadeiros} Brigadeiros, ${qtd_cupcakes} Cupcakes e ${qtd_cheesecakes} Cheesecakes, a venda totalizará R$${valorFinal}`;
+        mensagem += `Com a quantidade de ${qtd_macaron} Macarons, ${qtd_brigadeiros} Brigadeiros, ${qtd_cupcakes} Cupcakes e ${qtd_cheesecakes} Cheesecakes, a venda totalizará R$${valorFinal.toFixed(2)}`;
 
         div_msg.innerHTML = mensagem;
     }

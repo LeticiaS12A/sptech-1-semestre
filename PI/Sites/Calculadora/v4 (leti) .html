@@ -1,0 +1,197 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> -->
+
+<!-- <style>
+    body {-->
+        font-family: 'Inter', 'Segoe UI', sans-serif;
+        <!--background: #f8fafc;
+        margin: 0;
+        padding: 0;
+    }
+
+    .titulo{
+        display: flex;
+        justify-content: center;
+        color: #111827;
+    } 
+
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 50px;
+        margin-top: -20px;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+
+    .container, .resultado-card {
+        background: white;
+        padding: 30px;
+        width: 420px;
+        border-radius: 14px;
+        border: 1px solid #e5e7eb;
+        transition: all 0.2s ease;
+    }
+
+    .container:hover, .resultado-card:hover {
+        border-color: #d1d5db;
+        transform: translateY(-2px);
+    }
+
+    h2 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 20px;
+    } 
+
+    .plano {
+        background: #f1f5f9;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 13px;
+        margin-bottom: 20px;
+        color: #374151;
+    }
+
+    .campo {
+        margin-bottom: 15px;
+    }
+
+    input {
+        width: 93%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #d1d5db;
+        font-size: 14px;  -->
+        transition: all 0.2s; 
+        <!-- background: #f9fafb;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #111827;
+        background: white;
+    } 
+
+    button {
+        margin-top: 10px;
+        padding: 14px;
+        width: 100%;
+        background: #111827;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer; 
+        transition: all 0.2s;
+    } 
+
+    button:hover {
+        background: #283344;
+    }
+
+    .resultado {
+        font-size: 14px;
+        color: #374151;
+        line-height: 1.6;
+} -->
+
+    .destaque {
+        color: #16a34a;
+        font-weight: 600;
+    }
+
+<!--</head>
+<body>
+    <div class="titulo">--> 
+    <h1><!-- Por que comprar o Smart Waste Monitor --></h1> 
+    <!--</div>
+    <div class="wrapper">
+
+    <div class="container">-->
+        <h2>Descubra Quanto Você Está Perdendo</h2>
+
+        <!-- <div class="plano"> -->
+            <b> Plano Mensal — R$ 2.990/mês</b><br> 
+        <!--Monitoramento em tempo real, alertas automáticos, dashboard e relatórios.
+        </div>
+
+        <div class="campo">
+            <input type="number" id="coletas" placeholder="Quantas coletas por semana você faz?">
+            <span class="valor" id="v_coletas"></span>
+        </div>
+
+        <div class="campo">
+            <input type="number" id="custo" placeholder="Quanto você paga por coleta s(R$)?">
+            <span class="valor" id="v_custo"></span>
+        </div>
+
+        <div class="campo">
+            <input type="number" id="usoAtual" placeholder="Com quantos % o lixo é coletado hoje?">
+            <span class="valor" id="v_usoAtual"></span>
+        </div>
+
+            <button onclick="calcular()">Simular Economia</button>
+    </div>
+
+        <div class="resultado-card">
+            <h2 style="margin-top: -10px;">Seu Resultado</h2>
+            <div class="resultado" id="resultado"> -->
+                <p> <!--Preencha os dados para ver quanto você pode economizar...--></p>
+           <!--  </div>
+        </div>
+</div>
+
+</body>
+</html>-->
+<!-- <script>
+    function calcular(){
+        let qtdColetas = Number(coletas.value);
+        let valorColeta = Number(custo.value);
+        let percentualAtual = Number(usoAtual.value); -->
+
+        let usoIdeal = 96;
+        let investimento = 2500;
+
+        let coletasMensais = qtdColetas * 4;
+        let custoAtual = coletasMensais * valorColeta;
+        let coletasOtimizadas = coletasMensais * (percentualAtual / usoIdeal);
+        let custoOtimizado = coletasOtimizadas * valorColeta;
+        let economia = custoAtual - custoOtimizado;
+        let economiaAno = economia * 12;
+        let lucroMensal = economia - investimento;
+        let roi = (lucroMensal / investimento) * 100;
+        let payback = investimento / economia;
+
+        resultado.innerHTML = `
+                <!-- GASTO ATUAL -->
+                Gasto atual mensal ${custoAtual.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}
+                    
+                <!-- GASTO OTIMIZADO -->
+               Gasto com otimização ${custoOtimizado.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}
+                    
+                <!-- INVESTIMENTO -->
+                Investimento no sistema ${investimento.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}/mês
+                    
+                <!-- ECONOMIA -->
+                Economia mensal ${economia.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})} e
+                ${economiaAno.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})} por ano
+                    
+                <!-- LUCRO FINAL -->
+                Resultado mensal ${lucroMensal.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})} <br>
+
+                ROI: ${roi.toFixed(1)}% • Payback: ${payback.toFixed(1)} meses
+                  
+                <!-- FRASE FINAL -->
+                Você reduz custos, paga o sistema e ainda gera lucro.
+               
+            `;
+    <!-- }
+</script> -->
