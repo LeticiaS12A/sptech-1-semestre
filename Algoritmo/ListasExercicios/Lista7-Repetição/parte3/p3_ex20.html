@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 20</title>
+</head>
+<body>
+    <h1>Divisibilidade</h1>
+
+    Digite o número:
+    <input id="input_num"><br><br>
+
+    <button onclick="pares()">Somar Pares</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function pares(){
+        let num = Number(input_num.value);
+        let contador = 1;
+        let soma = 0;
+            let mensagem = '';
+
+        if(num >= 10 && num <= 500){
+            while(contador <= num){
+                if(contador % 2 == 0){
+                    mensagem += contador + '<br>';
+                    soma += contador;
+                }
+                contador++;
+            }
+        }else{
+            alert('O número digitado deve estar entre 10 e 500!!!')
+        }
+
+        mensagem += `Soma dos pares: ${soma}`;
+
+        div_msg.innerHTML = mensagem;
+    }
+</script>

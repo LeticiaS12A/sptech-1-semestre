@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 18</title>
+</head>
+<body>
+    <h1>Divisores</h1>
+
+    Digite o número:
+    <input id="input_num"><br><br>
+
+    <button onclick="divisores()">Ver Divisores</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function divisores(){
+        let num = Number(input_num.value);
+        let contador = 1;
+        let mensagem = `Divisores do número ${num}:<br>`;
+
+        while(contador <= num){
+            if(num % contador == 0){
+                mensagem += contador + '<br>';
+            }
+            contador++;
+        }
+
+        div_msg.innerHTML = mensagem;
+    }
+</script>
