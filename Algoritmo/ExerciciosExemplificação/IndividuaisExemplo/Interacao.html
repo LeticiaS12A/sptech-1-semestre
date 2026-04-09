@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interação</title>
+</head>
+<body>
+    <button onclick="adicionar()">Adicionar na Lista</button><br>
+    <button onclick="ver()">Ver Lista</button><br>
+    <button onclick="verReversa()">Ver Lista reversa</button><br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let lista = [];
+    let email = email
+
+    function adicionar(){
+        lista.push(`Item ${lista.length}`);
+        console.log(lista);
+    }
+
+    function ver(){
+        let mensagem = "";
+
+        //contador tem que ser menor doque langth pois length já é um indice invalido
+        for(let cont = 0; cont < lista.length; cont++){ 
+            mensagem += `${ lista[cont] } <br>`;
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function verReversa(){
+        let mensagem = "";
+
+        //['a', 'b', 'c'] = length = 3;
+        //  0    1    2 
+        // Último indice válido = length - 1;
+        for(let cont = lista.length-1; cont >= 0; cont--){ 
+            mensagem += `${ lista[cont] } <br>`;
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>
