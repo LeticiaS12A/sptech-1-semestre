@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 9</title>
+</head>
+<body>
+    <h1>Viva o 7!</h1>
+
+    Digite um número:
+    <input id="ipt_num">
+    <button onclick="sete()">Viva o 7!xxx</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function sete(){
+        let num = Number(ipt_num.value);
+        let contador = 1;
+        let mensagem = '';
+
+        while(contador <= num){
+            if(contador % 7 == 0){
+                mensagem += contador + '<br>';
+            }
+            contador++;
+        }
+
+        div_msg.innerHTML = mensagem;
+    }
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 10</title>
+</head>
+<body>
+    <h1>Pares no Intervalo</h1>
+
+    Início:
+    <input id="inicio"><br>
+    Fim:
+    <input id="fim"><br><br>
+
+    <button onclick="paresIntervalo()">Ver pares</button><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function paresIntervalo(){
+        let i = Number(inicio.value);
+        let f = Number(fim.value);
+        let mensagem = '';
+
+        while(i <= f){
+            if(i % 2 == 0){
+                mensagem += i + '<br>';
+            }
+            i++;
+        }
+
+        div_msg.innerHTML = mensagem;
+    }
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 14</title>
+</head>
+<body>
+    <h1>Dividibilidade</h1>
+
+    Digite o início
+    <input id="ipt_inicio"><br>
+    Digite o fim:
+    <input id="ipt_fim"><br>
+    Digite o teste divisibilidade:
+    <input id="ipt_teste" placeholder="Divisor"><br><br>
+
+    <button onclick="divisivel()">Divisível</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function divisivel(){
+        let inicio = Number(ipt_inicio.value);
+        let fim = Number(ipt_fim.value);
+        let teste = Number(ipt_teste.value);
+
+        let mensagem = '';
+
+        if(teste >= 3 && teste <= 13){
+            while(inicio <= fim){
+                if(inicio % teste != 0){
+                    mensagem += inicio + '<br>';
+                }
+                inicio++;
+            }
+        }else{
+            alert('Valor incorreto no teste')
+        }
+
+
+        div_msg.innerHTML = mensagem;
+    }
+</script>

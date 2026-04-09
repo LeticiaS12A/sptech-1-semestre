@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 13</title>
+</head>
+<body>
+    <h1>Papagaio Repetitivo</h1>
+
+    Digite a número:
+    <input id="input_num"><br>
+    Digite o frase:
+    <input id="input_frase"><br><br>
+
+    <button onclick="papagaio2()">Papagaio Repetitivo</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function papagaio2(){
+        let n = Number(input_num.value);
+        let frase = input_frase.value;
+
+        let contador = 1;
+        let mensagem = '';
+
+        while(contador <= n){
+            mensagem += contador + ' - ' + (frase + ' ').repeat(contador) + '<br>';
+            contador++;
+        }
+
+        div_msg.innerHTML = mensagem;
+    }
+</script>
