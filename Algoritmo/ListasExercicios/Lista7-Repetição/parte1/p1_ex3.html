@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    <h1>Frase Numerada</h1>
+    
+    <button onclick="falar()">Falar</button><br><br>
+    
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function falar(){
+        let contador = 1;
+        let mensagem = '';
+
+        while(contador <= 7){
+            mensagem += contador + '. Algoritmos são incríveis!<br>';
+            contador++;
+        }
+
+        div_msg.innerHTML = mensagem;
+    }
+</script>
