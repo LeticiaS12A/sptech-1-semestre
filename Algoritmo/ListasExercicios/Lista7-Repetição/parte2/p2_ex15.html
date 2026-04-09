@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+<body>
+    <h1>É tri/penta!</h1>
+
+    Digite o início:
+    <input id="ipt_inicio"><br>
+    Digite o fim:
+    <input id="ipt_fim"><br><br>
+
+    <button onclick="triPenta()">Curto 3 e 5!</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function triPenta(){
+        let inicio = Number(ipt_inicio.value);
+        let fim = Number(ipt_fim.value);
+        let mensagem = '';
+
+        while(inicio <= fim){
+            if(inicio % 3 == 0 && inicio % 5 == 0){
+                mensagem += 'É TRI!É PENTA!<br>';
+            } else if(inicio % 3 == 0){
+                mensagem += 'É TRI!<br>';
+            } else if(inicio % 5 == 0){
+                mensagem += 'É PENTA!<br>';
+            } else {
+                mensagem += inicio + '<br>';
+            }
+            inicio++;
+        }
+
+        div_msg.innerHTML = mensagem;
+    }
+</script>
