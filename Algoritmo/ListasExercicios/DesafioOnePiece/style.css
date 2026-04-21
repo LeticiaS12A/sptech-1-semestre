@@ -40,22 +40,22 @@ header{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 98%;
+    width: 60%;
     background-color: #f5f5edad;
     border-radius: 6px;
     border: 1px solid #8f2121;
 }
 .input:not(:placeholder-shown):focus {
-    border: 2px solid #2d4bb68c;
+    border: 1px solid #2343ba8c;
     outline: none;
 }
 .button{
-    width: 200px;
-    height: 34px;
+    width: 114px;
+    height: 30px;
     background-color: #2d4ab6;
     color: #f5f5ed;
     font-weight: 700px;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 6px;
     border: 0;
 }
