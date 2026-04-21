@@ -174,17 +174,12 @@
 </html>
 <script>
     var sensorDigital = new Chart(document.getElementById('sensorDigital').getContext('2d'), {
-        type: 'bar',
+        type: 'line',
         data: {
             datasets: [{
-                label: 'Lixeira A',
+                label: 'Lixeira Commun',
                 borderColor: '#63B1BC',
-                backgroundColor: '#012790'
-            },
-        {
-                label: 'Lixeira B',
-                borderColor: '#63B1BC',
-                backgroundColor: '#111827'
+                backgroundColor: '#0762C8'
             }]
         },
         options: {
@@ -207,7 +202,7 @@
     var tempo = {};
 
     function obterDados(grafico, endpoint) {
-        fetch('http://10.18.32.143:3300/sensores/' + endpoint)
+        fetch('http://localhost:3300/sensores/' + endpoint)
             .then(response => response.json())
             .then(valores => {
                 if (paginacao[endpoint] == null) {

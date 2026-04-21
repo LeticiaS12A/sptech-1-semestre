@@ -1,0 +1,76 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #bfdeec;
+    font-family: 'Pirata One', cursive;
+}
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    
+    img{
+        width: 200px;
+        height: 60px;
+    }
+}
+.div_inputs{
+       display: flex;
+       justify-content: center; 
+       align-items: center;
+       flex-direction: column;
+       width: 60%;
+       color: #8f2121;
+       font-weight: 700;
+       background-color: #ffffffeb;
+       border-radius: 20px;
+       border: 2px solid #8f2121;
+       padding: 8px;
+}
+.inputs{
+    width: 60%;
+    gap: 8px;
+    font-size: 14px;
+}
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 98%;
+    background-color: #f5f5edad;
+    border-radius: 6px;
+    border: 1px solid #8f2121;
+}
+.input:not(:placeholder-shown):focus {
+    border: 2px solid #2d4bb68c;
+    outline: none;
+}
+.button{
+    width: 200px;
+    height: 34px;
+    background-color: #2d4ab6;
+    color: #f5f5ed;
+    font-weight: 700px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 0;
+}
+.button:hover{
+    background-color: #3c70d1;
+}
+.titulo{
+    color: #2d4ab6;
+    font-size: 28px;
+    font-weight: 900;
+}
+.resultado{
+    color: #f5f5ed;
+    background-color: #2d4ab6;
+    padding: 20px;
+    border: 2px solid #2d4ab6;
+    border-radius: 20px;
+}

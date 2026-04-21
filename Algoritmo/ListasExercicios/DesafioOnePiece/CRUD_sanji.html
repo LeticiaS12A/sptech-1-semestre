@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD do Sanji</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/pt/7/75/One_Piece_Logo.png?_=20240831194247" alt="">
+    </header>
+
+    <div class="div_inputs">
+        <h1 class="titulo">Inicie Sua batalha aqui!</h1>
+        <div class="inputs">
+            Cadastrar estoque de comidas:
+            <input type="text" id="ipt_comida" class="input">
+        </div>
+        
+        <button class="button" onclick="cadastrar()">Cadastrar</button>
+        <button class="button" onclick="verificar()">Verificar Quantidade</button>
+        
+        <div id="div_resultado"></div>
+    </div>
+
+</body>
+</html>
+<script>
+    let lista = [];
+    let msg = ``;
+    function cadastrar(){
+        let comida = ipt_comida.value;
+
+        lista.push(comida);
+        console.log(`A comida ${comida} foi adicionada na lista`);
+    }
+    function verificar(){
+        if(lista.length < 3){
+            msg = `Desse jeito, o Luffy devora até o navio<br>`;
+        }else if(lista.length >= 3 || lista.length < 7){
+            msg = `O comilão do Luffy não vai deixar sobrar nenhuma comida<br>`;
+        }
+    }
+    
+    div_resultado.innerHTML = msg;
+</script>

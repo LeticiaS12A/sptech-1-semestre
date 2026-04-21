@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece</title>
+</head>
+<style>
+    body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #bfdeec;
+    font-family: 'Pirata One', cursive;
+}
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    
+    img{
+        width: 200px;
+        height: 60px;
+    }
+}
+.div_inputs{
+       display: flex;
+       justify-content: center; 
+       align-items: center;
+       flex-direction: column;
+       width: 60%;
+       color: #8f2121;
+       font-weight: 700;
+       background-color: #ffffffeb;
+       border-radius: 20px;
+       border: 2px solid #8f2121;
+       padding: 8px;
+}
+.inputs{
+    width: 60%;
+    gap: 8px;
+    font-size: 14px;
+}
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 98%;
+    background-color: #f5f5edad;
+    border-radius: 6px;
+    border: 1px solid #8f2121;
+}
+.input:not(:placeholder-shown):focus {
+    border: 2px solid #2d4bb68c;
+    outline: none;
+}
+.button{
+    width: 200px;
+    height: 34px;
+    background-color: #2d4ab6;
+    color: #f5f5ed;
+    font-weight: 700px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 0;
+}
+.titulo{
+    color: #2d4ab6;
+    font-size: 28px;
+    font-weight: 900;
+}
+.resultado{
+    color: #f5f5ed;
+    background-color: #2d4ab6;
+    padding: 20px;
+    border: 2px solid #2d4ab6;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+</style>
+<body>
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/pt/7/75/One_Piece_Logo.png?_=20240831194247" alt="">
+    </header>
+
+    <div class="div_inputs">
+        <h1 class="titulo">Inicie Sua batalha aqui!</h1>
+        <div class="inputs">
+            Quantidade de batalhas:
+            <input type="text" id="qtd_batalhas" class="input"><br>
+            Quantidade de marinheiros para cada batalha:
+            <input type="text" id="qtd_marilheiros" class="input"><br>
+            Quantidade de carnes:
+            <input type="text" id="qtd_carnes" class="input"><br><br>
+        </div>
+        
+        <button class="button" onclick="iniciar()">Iniciar Batalha</button><br><br>
+        
+        <div id="div_resultado"></div>
+    </div>
+
+</body>
+</html>
+<script>
+    function iniciar(){
+        let luffyEnergia = 100;
+        let batalhas = Number(qtd_batalhas.value);
+        let marilheiros = Number(qtd_marilheiros.value);
+        let carnes = Number(qtd_carnes.value);
+        let totalMarilheiros = marilheiros * batalhas;
+        let totalMarilheirosInicial = totalMarilheiros;
+        let contMarilheiros = 0;
+        let vitoria = true;
+        let msg = ``;
+
+        while(batalhas > 0 && vitoria == true){
+            luffyEnergia = luffyEnergia - 10;
+            contMarilheiros = contMarilheiros + marilheiros
+
+            if(luffyEnergia > 0 && vitoria == true){
+                while(totalMarilheiros > 0 && vitoria == true){
+                    if(luffyEnergia >= (5 * marilheiros)){
+                        luffyEnergia = luffyEnergia - (5 * marilheiros);
+    
+                        totalMarilheiros = totalMarilheiros - marilheiros;
+                    } else{
+                        if(carnes > 0){
+                            carnes--;
+                            luffyEnergia = luffyEnergia + 100;
+                            luffyEnergia = luffyEnergia - (5 * marilheiros);
+    
+                            totalMarilheiros = totalMarilheiros - marilheiros;
+                        }else{
+                            vitoria = false;
+                        }
+                    }
+                }
+            }else{
+                vitoria = false;
+            }
+
+            batalhas--;
+        }
+
+        if(vitoria == true){
+            msg = ` <div class="resultado">
+                        Resultado: Luffy saiu vitorioso! <br>
+                        Quantidade de carnes restantes: ${carnes} <br>
+                        Quantidade de marinheiros derrotados: ${totalMarilheirosInicial} <br>
+                        Energia restante ao final das batalhas: ${luffyEnergia} <br>
+                    </div>
+                    `;
+        }else {
+            msg = ` <div class="resultado">
+                        Resultado: Luffy foi derrotado! <br>
+                        Quantidade de carnes restantes: ${carnes} <br>
+                        Quantidade de marinheiros derrotados: ${contMarilheiros} <br>
+                        Energia restante ao final das batalhas: ${luffyEnergia} <br>
+                    </div>`;
+        }
+
+        div_resultado.innerHTML = msg;
+    }
+</script>
