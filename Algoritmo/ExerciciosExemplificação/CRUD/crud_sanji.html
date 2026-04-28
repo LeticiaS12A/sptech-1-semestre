@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .funcoes{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .exibir{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<body>
+    <div class="funcoes">
+        <label for="ipt_comida">
+            Cadastrar Estoque de comida
+        </label>    
+        <input type="text" id="ipt_comida"><br>
+
+        <button onclick="cadastrar()">Cadastrar</button>
+    </div>
+    <hr>
+    <div class="funcoes">
+        <label for="ipt_pesquisar_comida">
+            Pesquise comida
+        </label>
+        <input type="text" id="ipt_pesquisar_comida"><br>
+        
+        <button onclick="pesquisar()">Pesquisar</button>
+    </div>
+    <hr>
+    <div class="funcoes">
+        <label for="ipt_nome_atual">
+            Nome Atual
+        </label>
+        <input type="text" id="ipt_nome_atual"><br>
+
+        <label for="ipt_novo_nome">
+            Nome novo
+        </label>
+        <input type="text" id="ipt_novo_nome"><br>
+
+        <button onclick="alterar()">Alterar</button>
+    </div>
+    <hr>
+    <div class="funcoes">
+        <label for="ipt_comida_remover">
+            Nome da Comida a Remover
+        </label>
+        <input type="text" id="ipt_comida_remover"><br>
+
+        <button onclick="remover()">Remover</button>
+    </div>
+    <hr>
+    <div class="exibir">
+        <button onclick="verificar()">Verificar</button>
+        <button onclick="exibir()">Exibir</button>
+    </div>
+    
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let listaComidas = ['arroz','feijão','carne','arroz'];
+
+    function cadastrar(){
+        let comida = ipt_comida.value;
+
+        if(comida != ''){
+            listaComidas.push(comida);
+        }
+    }
+
+    function verificar(){
+        if(listaComidas.length < 3){
+            div_msg.innerHTML = "Desse jeito, o Luffy devora até o navio"
+        }
+        else if(listaComidas.length >= 3 && listaComidas.length <= 7){
+            div_msg.innerHTML = "O comilão do Luffy não vai deixar sobrar nenhuma comida"
+        }
+        else if(listaComidas.length > 7 && listaComidas.length <= 10) {
+            div_msg.innerHTML = "Assim, talvez sobre um pouco para a tripulação"
+        }
+        else if(listaComidas.length > 10){
+            div_msg.innerHTML = "Desse jeito vai ter comida para todo mundo e ainda consigo guardar um pouco para a senhorita Nami!"
+        }
+        
+    }
+
+    function pesquisar(){
+        let comidaPesquisada = ipt_pesquisar_comida.value;
+
+        if(listaComidas.includes(comidaPesquisada)){
+            let quantidade = 0;
+
+            for(let i = 0; i < listaComidas.length; i++){
+                quantidade++;
+            }
+            div_msg.innerHTML = `Temos a comida ${comidaPesquisada} e há ${quantidade} unidade(s) dela`;
+        }else{
+            div_msg.innerHTML = `Alguém vai ter que comprar ${comidaPesquisada}, tá fazendo falta...`;
+        }
+    }
+
+    function exibir() {
+        let comidasExibidas = [];
+        let unidades = [];
+        
+        for(let i = 0; i < listaComidas.length; i++){
+            let comidaAtual = listaComidas[i];
+            let indiceComida = comidasExibidas.indexOf(comidaAtual);
+
+            if(indiceComida >= 0){
+                unidades[indiceComida] += 1;
+            }else{
+                comidasExibidas.push(comidaAtual);
+                unidades.push(1);
+            }
+        }
+        let msg = ``;
+
+        for(let i = 0 ; i < comidasExibidas.length; i++){
+            let comidasExibida = comidasExibidas[i];
+            let quantidadeExibida = unidades[i];
+
+            msg += `${comidasExibida} (${quantidadeExibida} unidades)<br>`;
+        }
+
+        div_msg.innerHTML = msg;
+    }
+
+    function alterar(){
+        let novoNome = ipt_novo_nome.value;
+        let nomeAtual = ipt_nome_atual.value;
+
+        if(listaComidas.includes(nomeAtual)){
+            for(let i = 0; i < listaComidas.length; i++){
+
+                if(listaComidas[i] == nomeAtual){
+                    listaComidas[i] = novoNome;
+                }
+            }
+        }
+    }
+    
+    function remover(){
+        let comidaRemover = ipt_comida_remover.value;
+        let novaLista = [];
+
+        if(listaComidas.includes(comidaRemover)){
+            for(let i = 0; i < listaComidas.length; i++){
+
+                if(listaComidas[i] == comidaRemover){
+                    listaComidas[i] = null;
+                }
+            }
+        }
+
+    }
+</script>
