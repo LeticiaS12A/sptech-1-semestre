@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conceito de Aleatoriedade</title>
+</head>
+<body>
+    <h1>Aleatorizando números</h1><br>
+
+    <hr><br>
+    <button onclick="sortear()">Aleatorio</button><br><br>
+    <button onclick="sortear0a10()">Aleatorio de 0 até 10</button><br><br>
+    <button onclick="sortear3a10()">Aleatorio de 3 até 10</button><br><br>
+    <button onclick="sortearMinMax()">Aleatorio de min até max</button><br><br>
+
+    <input type="text" id="ipt_min" placeholder="Digite valor minimo">
+    <input type="text" id="ipt_max" placeholder="Digite valor maximo">
+    
+    
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function sortear(){
+        let aleatorio = Math.random;
+
+        console.log(aleatorio);
+
+        div_msg.innerHTML = `Sorteado: ${aleatorio}`;
+    }
+
+    function sortear0a10(){
+        let aleatorio = Math.random();
+
+        let formatado = aleatorio * 10;
+        let inteiro = formatado.toFixed();
+
+        div_msg.innerHTML = `   Sorteado: ${aleatorio}<br>
+                                Formatado: ${formatado}<br>
+                                Inteito: ${inteiro}<br>`;
+    }
+
+    function sortear3a10(){
+        let aleatorio = Math.random();
+
+        let formatado = aleatorio * 7 + 3;
+        let inteiro = formatado.toFixed();
+
+        div_msg.innerHTML = `   Sorteado: ${aleatorio}<br>
+                                Formatado: ${formatado}<br>
+                                Inteito: ${inteiro}<br>`;
+    }
+
+    function sortearMinMax(){
+        let aleatorio = Math.random();
+        let minimo = Number(ipt_min.value);
+        let maximo = Number(ipt_max.value);
+        let intervalo = maximo - minimo;
+
+        let formatado = aleatorio * intervalo + minimo;
+        let inteiro = formatado.toFixed();
+
+        div_msg.innerHTML = `   Sorteado: ${aleatorio}<br>
+                                Formatado: ${formatado}<br>
+                                Inteito: ${inteiro}<br>`;
+    }
+</script>

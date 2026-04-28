@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conceito de Aleatoriedade</title>
+</head>
+<body>
+    <h1>Aleatorizando números</h1><br>
+
+    <hr><br>
+    <button onclick="sortear()">Aleatorio</button><br><br>
+    
+    
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function sortear(){
+        let aleatorio = Math.random;
+
+        console.log(aleatorio);
+
+        
+        if( aleatorio > 0.5){
+            div_msg.innerHTML = `Eu arredondaria para 1`;
+            
+        }else{
+            
+            div_msg.innerHTML = `Eu arredondaria para 0`;
+        }
+    }
+
+</script>
