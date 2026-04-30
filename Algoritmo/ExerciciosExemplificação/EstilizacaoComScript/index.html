@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="color: yellow; display: none;" id="div_conteudo">
+        <h1 id="h2_titulo" onmouseover="estilizar()" onmouseleave="desestilizar()">Meu Titulo</h1>
+        <a id="p_paragrafo" href="https://Google.com">Clique 5x para ir para o Google</a>
+        <button id="p_paragrafo" onclick="irParaGoogle()">Clique 5x para ir para o Google</button>
+    </div>
+</body>
+</html>
+<script>
+
+    console.log(div_conteudo.style.color = 'red')
+    console.log(div_conteudo.style.display = 'flex')
+    console.log(div_conteudo.style.backgroundColor = 'black')
+    console.log(div_conteudo.style.gap = '50px')
+
+    function estilizar(){
+        h2_titulo.style.color = 'white';
+    }
+
+    function desestilizar(){
+        h2_titulo.style.color = "inherit"
+    }
+
+    let cliques = 0;
+
+    function irParaGoogle(){
+        cliques++;
+
+        if(cliques >= 5){
+            window.location.href = './login.html'
+        }
+    }
+</script>
