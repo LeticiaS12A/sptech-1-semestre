@@ -7,7 +7,7 @@
 </head>
 <body>
     <div style="color: yellow; display: none;" id="div_conteudo">
-        <h1 id="h2_titulo" onmouseover="estilizar()" onmouseleave="desestilizar()">Meu Titulo</h1>
+        <h1 id="h2_titulo" style="position: absolute;" onmouseover="estilizar()" onmouseleave="desestilizar()">Meu Titulo</h1>
         <a id="p_paragrafo" href="https://Google.com">Clique 5x para ir para o Google</a>
         <button id="p_paragrafo" onclick="irParaGoogle()">Clique 5x para ir para o Google</button>
     </div>
@@ -22,6 +22,7 @@
 
     function estilizar(){
         h2_titulo.style.color = 'white';
+        h2
     }
 
     function desestilizar(){
