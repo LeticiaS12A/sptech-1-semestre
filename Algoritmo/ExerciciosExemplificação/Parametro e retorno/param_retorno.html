@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parametro e Retorno</title>
+</head>
+<body >
+    <h1>Utilizando Parametro e retorno</h1>
+    <hr><br>
+    <input type="text" placeholder="Digite o primeiro número" id="ipt_1">
+    <input type="text" placeholder="Digite o segundo número" id="ipt_2">
+    <button onclick="calcular()">Calcular</button><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function ehNumerico(num){
+        if(!isNaN (num)){
+            return true;
+        }else{
+            return false
+        }
+    }
+
+    function calcular(){
+        let n1 = Number(ipt_1.value);
+        let n2 = Number(ipt_2.value);
+
+        if(ehNumerico(n1) && ehNumerico(n2)){
+            let soma = somar(n1, n2);
+            let subtrai = subtrair(n1, n2);
+            let multiplica = multiplicar(n1, n2);
+            let divide = dividir(n1, n2);
+
+            div_msg.innerHTML = `
+                Entrada: ${n1} e ${n2}<br>
+                Soma ${n1}  e ${n2} = ${soma} <br>
+                Subtrair ${n1} e ${n2} = ${subtrai}<br>
+                Multiplicar ${n1} e ${n2} = ${multiplica}<br>
+                Dividir ${n1} e ${n2} = ${divide}<br>
+            `
+        }else{
+            div_msg.innerHTML = 'Insira apenas números para calcular';
+        }
+
+    }
+
+    function somar(param1, param2){
+        return param1 + param2;
+    }
+    function subtrair(param1, param2){
+        return param1 - param2;
+    }
+    function multiplicar(param1, param2){
+        return param1 * param2;
+    }
+    function dividir(param1, param2){
+        return param1 / param2;
+    }
+</script>

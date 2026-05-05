@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt_frase" ceholder="Insira uma ipt_frase">
+    <button onclick="exibir()">Comprimentar</button>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function montarFrase(){
+        console.log('antes do return');
+        let frase = ipt_frase.value
+        return `frase: ${frase}`;
+    }
+    function exibir(){       
+        div_msg.innerHTML = montarFrase();
+    }
+</script>
