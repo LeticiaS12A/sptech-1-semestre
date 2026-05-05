@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parâmetros e Retorno</title>
+</head>
+<body>
+    <label for="ipt_n1">Digite um número</label><br>
+    <input type="text" placeholder="Digite um número" id="ipt_n1">
+    <button onclick="verificarPositivo()">Positivo ou Negativo</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function ehNumerico(num){
+        if(!isNaN (num)){
+            return true;
+        }else{
+            return false
+        }
+    }
+    function verificarPositivo(){
+        let n1 = Number(ipt_n1.value);
+
+        if(ehNumerico(n1)){
+            if(n1 >= 0){
+                div_msg.innerHTML = `O numero é true`;
+                return true;
+            }else{
+                div_msg.innerHTML = `O numero é false`;
+                return false;
+            }
+        }else{
+            div_msg.innerHTML = 'Insira apenas números para verificar';
+        }
+    }
+</script>

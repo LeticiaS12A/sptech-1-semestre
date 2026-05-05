@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes em Cores</title>
+</head>
+<body>
+    <h1>Filmes em Cores: Azul e Vermelho Alternados</h1>
+    <hr><br>
+    <label for="ipt_filme">Filmes que mais gosta</label><br>
+    <input type="text" placeholder="Digite filmes que mais gosta" id="ipt_filme">
+    <button onclick="cadastrar()">Cadastrar</button><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    listafilmes = [];
+    function cadastrar(){
+        let filme = ipt_filme.value;
+
+        if(filme != ''){
+            listafilmes.push(filme);
+        }
+
+        exibir();
+    }
+    function exibir() {
+        let msg = ``;
+
+        for(let i = 0 ; i < listafilmes.length; i++){
+
+            if (i % 2 === 0) {
+                cor = "blue"
+            } else {
+                cor = "red"
+            }
+            msg += `<p style="color: ${cor}">${listafilmes[i]} <br></p>`;
+        }
+
+        div_msg.innerHTML = msg;
+    }
+</script>

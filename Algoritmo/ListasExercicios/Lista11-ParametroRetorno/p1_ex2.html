@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parâmetros e Retorno</title>
+</head>
+<body>
+    <label for="ipt_texto">Digite um texto</label><br>
+    <input type="text" placeholder="Digite um texto" id="ipt_texto">
+    <button onclick="verificarVogais()">Verificar Vogais</button>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function ehTexto(texto){
+        if(isNaN (texto)){
+            return true;
+        }else{
+            return false
+        }
+    }
+    function verificarVogais(){
+        let texto = Number(ipt_texto.value);
+
+        if(ehTexto(texto)){
+            
+        }else{
+            div_msg.innerHTML = 'Insira apenas letras para verificar';
+        }
+    }
+</script>
