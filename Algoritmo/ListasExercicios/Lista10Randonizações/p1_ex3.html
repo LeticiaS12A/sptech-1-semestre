@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    <h1>Role o D20</h1>
+    <hr><br>
+
+    <button onclick="d20()">Jogar um Dado</button><br><br>
+
+    <div id="div_msg" style="color:white; background-color: black; width: 100px; height: 100px; display: flex; justify-content: center; align-items:center;">
+        d20
+    </div>
+</body>
+</html>
+<script>
+    function d20() {
+        let random = parseInt(Math.random()*20+1)
+        div_msg.innerHTML = random;
+    }
+</script>

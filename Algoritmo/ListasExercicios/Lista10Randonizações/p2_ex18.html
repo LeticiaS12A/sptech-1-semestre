@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 18</title>
+</head>
+<body>
+    <h1>Jogo de dados</h1>
+    <hr><br>
+
+    Jogador 1: <span id="joga1">0</span>
+    <br>
+    Jogador 2: <span id="joga2">0</span>
+    <br>
+    Empate: <span id="empatado">0</span><br><br>
+    <button onclick="jogar()">Jogar</button><br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let jogo1 = null;
+    let jogo2 = null;
+
+    let empate = 0;
+
+    let jogador1 = 0;
+    let jogador2 = 0;
+
+    function jogar() {
+        jogo1 = parseInt((Math.random() * 6 + 1));
+        jogo2 = parseInt((Math.random() * 6 + 1));
+        if (jogo1 == jogo2) {
+            div_msg.innerHTML = `empate`
+            empate++
+            empatado.innerHTML = empate
+        } else if (jogo1 > jogo2) {
+            div_msg.innerHTML = `Jogador 1 venceu`
+            jogador1++
+            joga1.innerHTML = jogador1
+        }
+         else {
+            div_msg.innerHTML = `Jogador 2 venceu`
+            jogador2++
+            joga2.innerHTML = jogador2
+        }
+    }
+</script>

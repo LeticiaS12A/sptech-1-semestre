@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4</title>
+</head>
+<body>
+    <h1>Soma de um vetor</h1>
+    <hr><br>
+    
+    <button onclick="exibir()">Ver a soma de um vetor</button><br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    array = [1,3,5,10,15,20,12,0,8]
+
+    function exibir() {
+        div_msg.innerHTML = somaElementos(array);
+    }
+
+    function somaElementos(a) {
+        let soma = 0
+        for(let i = 0; i<a.length;i++){
+            soma += a[i];
+        }
+        return soma;
+    }
+</script>

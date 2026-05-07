@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 5</title>
+</head>
+<style>
+    img {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+    <h1>Vamos jogar Jo Ken Po!</h1>
+    <hr><br>
+
+    <button onclick="jogar()">Jogar</button><br><br>
+    <div id="div_msg1"></div><br>
+    <div id="div_msg2"></div><br>
+    <div id="div_msg3"></div><br>
+</body>
+</html>
+<script>
+    let jokenpo = ['https://cdn.dooca.store/72923/products/cjcpfqreixcswo8sikcprc7mz1bs6rvmmjil_640x640+fill_ffffff.png?v=1744292798&webp=0', 'https://img.freepik.com/fotos-gratis/textura-de-papel-branco_1194-2301.jpg?semt=ais_hybrid&w=740&q=80', 'https://img.kalunga.com.br/fotosdeprodutos/673693z_2.jpg']
+    let contJogo1 = 0
+    let contJogo2 = 0
+
+    function jogar() {
+        let random = Math.random() * 3;
+        random = parseInt(random);
+        
+        if (random == 0) {
+            div_msg1.innerHTML = `Jogador 1: <img src=${jokenpo[0]}>`
+        } else if (random == 1) {
+            div_msg1.innerHTML = `Jogador 1: <img src=${jokenpo[1]}>`
+        } else {
+            div_msg1.innerHTML = `Jogador 1: <img src=${jokenpo[2]}>`
+        }
+        let random2 = Math.random() * 3;
+        random2 = parseInt(random2);
+        if (random2 == 0) {
+            div_msg2.innerHTML = `Jogador 2: <img src=${jokenpo[0]}>`
+        } else if (random2 == 1) {
+            div_msg2.innerHTML = `Jogador 2: <img src=${jokenpo[1]}>`
+        } else {
+            div_msg2.innerHTML = `Jogador 2: <img src=${jokenpo[2]}>`
+        }
+
+        let vencedor = '2';
+        let empate = false;
+
+        if (
+            random == 0 && random2 == 2 ||
+            random == 1 && random2 == 0 ||
+            random == 2 && random2 == 1
+        ) {
+            contJogo1++
+            vencedor = '1'
+        } else if (random == random2) {
+            empate = true;
+        } else {
+            contJogo2++
+        }
+
+        if (!empate) {
+            div_msg3.innerHTML = `
+            O jogador ${vencedor} venceu!  
+
+            Jogador 1: ${contJogo1} vitória(s) 
+
+            Jogador 2: ${contJogo2} vitória(s) `
+        } else {
+            div_msg3.innerHTML = 'Empate!'
+        }
+    }
+</script>

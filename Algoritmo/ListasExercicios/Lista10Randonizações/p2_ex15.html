@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 15</title>
+</head>
+<body>
+    <h1>Par ou impar</h1>
+    <hr><br>
+
+    Números pares: <span id="pares">0</span>
+    <br>
+    Números ímpares: <span id="impares">0</span>
+    <br><br>
+    <button onclick="sortear()">Sortear Número</button><br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let par = 0;
+    let impar = 0;
+
+    function sortear() {
+        let random = parseInt(Math.random() * 22) - 30;
+        div_msg.innerHTML = random; 
+        
+        if (random%2==0){
+            par++;
+            pares.innerHTML = par;
+        }else {
+            impar++;
+            impares.innerHTML = impar;
+        }
+    }
+</script>

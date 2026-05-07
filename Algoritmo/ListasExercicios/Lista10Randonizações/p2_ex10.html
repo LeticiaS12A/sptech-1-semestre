@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 10</title>
+</head>
+<body>
+    <h1>Dados</h1>
+    <hr><br>
+
+    <button onclick="jogador1()">Dado Jogador 1</button><br><br>
+    <div id="div_jogador1"></div>
+    <button onclick="jogador2()">Dado Jogador 2</button><br><br>
+    <div id="div_jogador2"></div>
+    <button onclick="comparar()">Comparar Resultados</button><br><br>
+    <div id="div_comparar"></div>
+</body>
+</html>
+<script>
+    let jogo1 = null;
+    let jogo2 = null;
+    
+    function jogador1() {
+        jogo1 = parseInt((Math.random()*6+1));
+        div_jogador1.innerHTML = jogo1;
+    }
+    function jogador2() {
+        jogo2 = parseInt((Math.random()*6+1));
+        div_jogador2.innerHTML = jogo2;
+    }
+    function comparar() {
+        if(jogo1 == null || jogo2 == null){
+            div_comparar.innerHTML = `jogue ambos os dados primeiro`
+        }else if (jogo1==jogo2){
+            div_comparar.innerHTML = `empate`
+        }else if (jogo1>jogo2){
+            div_comparar.innerHTML = `Jogador 1 venceu`
+        }else {
+            div_comparar.innerHTML = `Jogador 2 venceu`
+        }
+    }
+
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 12</title>
+</head>
+<body>
+    <h1>Emojis melhorado</h1>
+    <hr><br>
+
+    <button onclick="avaliar()">Avaliar</button><br><br>
+    <div id="div_msg"></div>
+    <button onclick="media()">Verificar Média</button><br><br>
+    <div id="div_msg2"></div>
+</body>
+</html>
+<script>
+    let salvar = [];
+
+    function avaliar() {
+        let random = (Math.random() * 5).toFixed(1);
+        salvar.push(random)
+        let msg = '';
+        if (random < 0.6) {
+            msg = `Nota recebida: ${random}<br>😭`
+        } else if (random < 1.6) {
+            msg = `Nota recebida: ${random}<br>🥹`
+        } else if (random < 3.6) {
+            msg = `Nota recebida: ${random}<br>😐`
+        } else if (random < 4.6) {
+            msg = `Nota recebida: ${random}<br>😊`
+        } else {
+            msg = `Nota recebida: ${random}<br>😃`
+        }
+        div_msg.innerHTML = msg;
+    }
+
+    function media() {
+        let soma = 0;
+        for (i = 0; i < salvar.length; i++) {
+            soma += Number(salvar[i]);
+        }
+        let msg = '';
+        let dividir = salvar.length;
+        let div = (soma/dividir).toFixed(1);
+        if (soma < 0.6) {
+            msg = `Nota recebida: ${div}<br>😭`
+        } else if (soma < 1.6) {
+            msg = `Nota recebida: ${div}<br>🥹`
+        } else if (soma < 3.6) {
+            msg = `Nota recebida: ${div}<br>😐`
+        } else if (soma < 4.6) {
+            msg = `Nota recebida: ${div}<br>😊`
+        } else {
+            msg = `Nota recebida: ${div}<br>😃`
+        }
+        div_msg2.innerHTML = msg;
+    }
+</script>

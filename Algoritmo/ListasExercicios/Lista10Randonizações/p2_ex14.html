@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 14</title>
+</head>
+<body>
+    <h1>Admirar a lua</h1>
+    <hr><br>
+
+    <button onclick="ver()">Ver a Lua</button><br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function ver() {
+        let random = Number(parseInt((Math.random()*31+1)))
+        let msg = `${random}<br>`;
+        if (random < 8){
+            msg += 'Lua Nova'
+        }else if (random < 17){
+            msg += 'Lua Cheia'
+        }else if (random < 23){
+            msg += 'Lua Minguante'
+        }else {
+            msg += 'Lua Crescente'
+        }
+        div_msg.innerHTML = msg;
+    }
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+</head>
+<body>
+    <h1>Retorno de todas as Vogais </h1>
+    <hr><br>
+    
+    <input type="text" id="texto" placeholder="insira um texto">
+    <button onclick="exibir()">Inserir</button><br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function exibir(){
+        div_msg.innerHTML = vogais(texto.value);
+    }
+
+    function vogais(a){
+        limpeza = a.toLowerCase();
+        limpo = '';
+
+        for(let i = 0; i<limpeza.length; i++){
+            if(limpeza[i] == 'a') {
+                limpo += 'a';
+            }else if(limpeza[i] == 'e'){
+                limpo += 'e';
+            }else if (limpeza[i] == 'i'){
+                limpo += 'i';
+            }else if (limpeza[i] == 'o'){
+                limpo += 'o'
+            }else if (limpeza[i] == 'u'){
+                limpo += 'u'
+            }
+        }
+        return limpo;
+    } 
+</script>

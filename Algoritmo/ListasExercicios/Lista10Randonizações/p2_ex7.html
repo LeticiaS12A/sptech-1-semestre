@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7</title>
+</head>
+<body>
+    <h1>Número cabalístico</h1>
+    <hr><br>
+
+    <button onclick="cabala()">Quero um número cabalístico!</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function cabala() {
+        let random = Math.random()*15+1;
+        random = parseInt(random);
+        div_msg.innerHTML = '';
+        div_msg.innerHTML += `${random}<br>`
+        if (random == 3 || random == 4 || random == 7 || random == 10 || random == 12) {
+            div_msg.innerHTML += 'Eu S2 números cabalísticos!'
+        }else {
+            div_msg.innerHTML += 'Ah, me dá um número bom na próxima!'
+        }
+    }
+</script>

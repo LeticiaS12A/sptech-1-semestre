@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 12</title>
+</head>
+<body>
+    <h1>Ver se é positivo ou não um vetor</h1>
+    <hr><br>
+    
+    <button onclick="exibir()">positivo ou não</button><br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    array = [1,3,5,10,15,20,12,0,8,8,8,8,10,10,12,13];
+    function exibir() {
+        div_msg.innerHTML = positivoElementos(array);
+    }
+
+    function positivoElementos(a) {
+        let positivo = true;
+        
+        for(let i = 0; i<a.length;i++){
+            if(a[i]<0){
+                positivo = false
+            }
+        }
+        return positivo;
+    }
+</script>

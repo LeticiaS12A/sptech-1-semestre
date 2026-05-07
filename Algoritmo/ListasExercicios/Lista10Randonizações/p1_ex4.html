@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4</title>
+</head>
+<body>
+    <h1>Role o D20</h1>
+    <hr><br>
+
+    <button onclick="sortear()">Sortear nota para aluno</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function sortear() {
+        let random = Math.random()*10.05 //só por que se não, é impossível 10, as vezes pode cair tipo, 9.95 e arredondar para 10!
+        div_msg.innerHTML = random.toFixed(1);
+    }
+</script>

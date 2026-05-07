@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 9</title>
+</head>
+<body>
+    <h1>Gerar uma nota de aluno</h1>
+    <hr><br>
+
+    <button onclick="notaF()">Gerar uma nota de aluno entre 3 e 10</button><br><br>
+
+    <div id="div_nota"></div><br>
+    <button onclick="frequenciaF()">Gerar uma frequência de aluno entre 50 e 100</button><br><br>
+    <div id="div_frequencia"></div><br>
+    <button onclick="situacao()">Ver Aprovação</button><br><br>
+    <div id="div_aprovacao"></div>
+</body>
+</html>
+<script>
+    let nota = null;
+    let frequencia = null;
+    
+    function notaF() {
+        nota = Math.random() * 8+3;
+        if (nota > 10) {
+            nota = parseInt(nota);
+        } else {
+            nota = nota.toFixed(1);
+        }
+        div_nota.innerHTML = nota;
+    }
+
+    function frequenciaF() {
+        frequencia = Math.random() * 51+50;
+        if (frequencia > 100) {
+            frequencia = parseInt(frequencia);
+        } else {
+            frequencia = frequencia.toFixed(1);
+        }
+        div_frequencia.innerHTML = frequencia;
+    }
+
+    function situacao() {
+        let aprovado = 'reprovado';
+
+        if (nota == null || frequencia == null){
+            alert('gere a nota e frequencia primeiro')
+        }else {
+            if (nota >= 6 && frequencia >=75) {
+                aprovado = 'aprovado'
+            }
+            div_aprovacao.innerHTML = `Com nota ${nota} e frequência ${frequencia}%, o aluno está ${aprovado}!`
+        }
+    }
+</script>

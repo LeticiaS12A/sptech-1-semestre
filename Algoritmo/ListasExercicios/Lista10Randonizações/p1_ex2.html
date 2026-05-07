@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+</head>
+<body>
+    <h1>Sorteio de times</h1>
+    <hr><br>
+
+    <button onclick="sortear()">Sortear Time</button><br><br>
+
+    <div id="div_msg" style="width: 150px; height: 150px;"></div>
+</body>
+</html>
+<script>
+    function sortear()  {
+
+        const times = [
+            'https://a.espncdn.com/i/teamlogos/soccer/500/874.png',
+            'https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/9966.png&h=200&w=200',
+            'https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/3461.png',
+            'https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2674.png'
+        ];
+
+        let i = parseInt(Math.random()* times.length) ;
+
+        let mensagem = `<img height="150px" src="${times[i]}">`;
+
+        div_msg.innerHTML = mensagem;
+    }
+</script>

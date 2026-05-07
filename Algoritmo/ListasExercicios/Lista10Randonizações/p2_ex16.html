@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 16</title>
+</head>
+<body>
+    <h1>Sorte</h1>
+    <hr><br>
+
+    Insira seu nome: <input type="text" id="nomeInput">
+    <br>
+    Insira seu número da sorte entre 1 e 10: <input type="text" id="sorteInput"><br><br>
+    <button onclick="sortear()">Sortear</button><br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function sortear() {
+        let random = null;
+        let nome = nomeInput.value;
+        let sorte = Number(sorteInput.value);
+        let i = 0;
+
+        if (nome == '' || sorte == ''){
+            alert('Algum campo ausente')
+        }else if (sorte < 1 || sorte > 10){
+            alert('Número não está entre 1 e 10')
+        }else {
+            while(random!=sorte){
+                random = parseInt(Math.random()*11+1);
+                i++;
+            }
+            div_msg.innerHTML = `Parabéns, ${nome} você foi sorteado(a) após ${i} sorteios!`
+        }
+    }
+</script>

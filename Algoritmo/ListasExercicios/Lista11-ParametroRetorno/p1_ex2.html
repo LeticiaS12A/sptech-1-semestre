@@ -3,31 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parâmetros e Retorno</title>
+    <title>Exercicio 2</title>
 </head>
 <body>
-    <label for="ipt_texto">Digite um texto</label><br>
-    <input type="text" placeholder="Digite um texto" id="ipt_texto">
-    <button onclick="verificarVogais()">Verificar Vogais</button>
-
+    <h1>Vogais</h1>
+    <hr><br>
+    
+    <input type="text" id="texto" placeholder="insira um texto">
+    <button onclick="exibir()">Inserir</button><br><br>
     <div id="div_msg"></div>
 </body>
 </html>
 <script>
-    function ehTexto(texto){
-        if(isNaN (texto)){
-            return true;
-        }else{
-            return false
-        }
+    function exibir() {
+        div_msg.innerHTML = verif(texto.value);
     }
-    function verificarVogais(){
-        let texto = Number(ipt_texto.value);
 
-        if(ehTexto(texto)){
-            
-        }else{
-            div_msg.innerHTML = 'Insira apenas letras para verificar';
+    function verif(a){
+        if(a.indexOf('a') != -1){
+            return true
+        }else if (a.indexOf('e') != -1){
+            return true
+        }else if (a.indexOf('i') != -1){
+            return true
+        }else if (a.indexOf('o') != -1){
+            return true
+        }else if (a.indexOf('u') != -1){
+            return true
+        }else {
+            return false
         }
     }
 </script>
