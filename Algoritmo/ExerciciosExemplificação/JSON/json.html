@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<style>
+    body{
+        display: flex; justify-content: center; align-items: center; flex-direction: column;
+    }
+    .div-form{
+        display: flex; justify-content: center; align-items: center;
+        width: 400px; height: 180px; gap: 40px;
+    }
+    #div_msg{
+        display: flex; justify-content: center; align-items: center; flex-direction: column;
+    }
+
+</style>
+<body >
+    <!-- JSON - JavaScript Object Notation
+    Notação de Objetos JavaScript
+    Notação - Simbologia ou representação de algo -->
+    <div class="div-form">
+        <div>
+            <h3>Usuario 1</h3>
+            Nome: <br>
+            <input type="text" id="input_nome"><br>
+            Email: <br>
+            <input type="text" id="input_email"><br>
+            Ano de Nascimento: <br>
+            <input type="text" id="input_anoNasc"><br><br>
+        </div>
+    </div>
+    <button onclick="exibir()">Exibir</button><br>
+
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function exibir(){
+        let usuario = {
+        nome: input_nome.value,
+        email: input_email.value,
+        anoNasc: input_anoNasc.value
+        };
+        
+        usuario.idade = 2026 - usuario.anoNasc;
+        usuario.nome = usuario.nome.toUpperCase();
+
+        div_msg.innerHTML = `
+                            <h3>Informações do Usuario </h3>
+                            Nome: ${usuario.nome}<br>
+                            Email: ${usuario.email}<br>
+                            Ano de Nascimento: ${usuario.anoNasc}<br>
+                            Idade: ${usuario.idade}<br>
+                            `;
+    }
+</script>
