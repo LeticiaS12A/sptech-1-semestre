@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON 5</title>
+</head>
+<style>
+    body{
+        display: flex; justify-content: center; align-items: center; flex-direction: column;
+    }
+    .div-form{
+        display: flex; justify-content: center; align-items: center;
+        width: 400px; height: 180px; gap: 40px;
+    }
+    #div_msg{
+        display: flex; justify-content: center; align-items: center; flex-direction: column;
+    }
+</style>
+<body>
+    <div class="div-form">
+        <div>
+            <h3>Usuario 1</h3>
+            Nome:
+            <input type="text" id="ipt_nome"><br>
+
+            Logradouro:
+            <input type="text" id="ipt_logadouro"><br>
+            
+            Bairro:
+            <input type="text" id="ipt_bairro"><br>
+
+            Cidade:
+            <input type="text" id="ipt_cidade"><br><br>
+        </div>
+    </div>
+    <button onclick="exibir()">Exibir</button><br>
+    <button onclick="adicionarUser()">Adicionar</button><br>
+
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let usuario;
+    let listaUser = [];
+
+    function adicionarUser(){
+        console.log(usuario);
+        console.log(listaUser);
+
+        listaUser.push(usuario = {
+            nome: ipt_nome.value,
+            endereco: {
+                logradouro: ipt_logadouro.value,
+                bairro: ipt_bairro.value,
+                cidade: ipt_cidade.value
+            }
+        });
+    }
+
+    function exibir(){
+        for(let i = 0; i < listaUser.length; i++){
+            div_msg.innerHTML += `
+                Nome: ${listaUser[i].nome}<br>
+                Logradouro ${listaUser[i].endereco.logradouro}<br>
+                Bairro: ${listaUser[i].endereco.bairro}<br>
+                Cidade: ${listaUser[i].endereco.cidade}<br><br>`;
+        }
+    }
+</script>

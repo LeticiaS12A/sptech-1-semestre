@@ -40,6 +40,10 @@
 </body>
 </html>
 <script>
+    function calcularIdade(anoNasc){
+        return (2026 - anoNasc);
+    }
+
     function exibir(){
         let usuario = {
         nome: input_nome.value,
@@ -47,8 +51,11 @@
         anoNasc: input_anoNasc.value
         };
         
-        usuario.idade = 2026 - usuario.anoNasc;
+        usuario.idade = calcularIdade(usuario.anoNasc);
         usuario.nome = usuario.nome.toUpperCase();
+        delete usuario.anoNasc;
+
+        console.log(usuario)
 
         div_msg.innerHTML = `
                             <h3>Informações do Usuario </h3>
