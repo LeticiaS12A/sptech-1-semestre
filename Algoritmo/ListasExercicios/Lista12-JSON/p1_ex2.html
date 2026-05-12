@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+</head>
+<body>
+    <div>
+        <h3> Cadastro de Funcionários com Alteração de Dados</h3>
+        Nome do funcionário:
+        <input type="text" id="ipt_nome"><br>
+
+        Cargo:
+        <input type="text" id="ipt_cargo"><br>
+        
+        Salário:
+        <input type="text" id="ipt_salario"><br><br>
+    </div>
+    <button onclick="cadastrar()">Cadastrar Funcionário</button><br>
+
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let funcionario;
+
+    function cadastrar(){
+        funcionario = {
+            nome: ipt_nome.value,
+            cargo: ipt_cargo.value,
+            salario: Number(ipt_salario.value)
+        }
+        funcionario.nome = funcionario.nome.toUpperCase();
+        funcionario.bonus = funcionario.salario * 0.10;
+
+        div_msg.innerHTML = `
+            Funcionário: ${funcionario.nome}<br>
+            Cargo: ${funcionario.cargo}<br>
+            Salario: R$${funcionario.salario}<br>
+            Bonus: R$${funcionario.bonus}<br>`;
+    }
+</script>

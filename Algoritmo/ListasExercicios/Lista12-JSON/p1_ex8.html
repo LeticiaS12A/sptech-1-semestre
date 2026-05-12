@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 8</title>
+</head>
+<body>
+    <div>
+        <h3>Cadastro de Comprador e Produto</h3>
+        Nome do comprador:
+        <input type="text" id="ipt_comprador"><br>
+        
+        E-mail do comprador:
+        <input type="text" id="ipt_email"><br><br>
+        
+        Nome do produto:
+        <input type="text" id="ipt_produto"><br>
+
+        Valor do produto:
+        <input type="text" id="ipt_valor"><br><br>
+    </div>
+    <button onclick="finalizar()">Finalizar Compra</button><br><br>
+
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let comprador;
+    let produto;
+
+    function finalizar(){
+        comprador = {
+            nome: ipt_comprador.value,
+            email: ipt_email.value
+        };
+        produto = {
+            nome: ipt_produto.value,
+            valor: Number(ipt_valor.value)
+        };
+
+        div_msg.innerHTML = `
+            Comprador: ${comprador.nome} | ${comprador.email}<br><br><br><br><br><br>
+
+            Produto: ${produto.nome}<br>
+            Valor: R$${produto.valor}<br>`;
+    }
+</script>

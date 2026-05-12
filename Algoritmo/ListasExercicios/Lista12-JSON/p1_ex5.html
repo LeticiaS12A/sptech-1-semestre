@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 5</title>
+</head>
+<body>
+    <div>
+        <h3>Cadastro de Alunos com Situação Escolar</h3>
+        Nome do aluno:
+        <input type="text" id="ipt_nome"><br>
+        
+        Nota:
+        <input type="text" id="ipt_nota"><br>
+
+        Frequência:
+        <input type="text" id="ipt_frequencia"><br>
+    </div>
+    <button onclick="analisar()">Analisar Aluno</button><br>
+
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let aluno;
+
+    function analisar(){
+        aluno = {
+            nome: ipt_nome.value,
+            nota: Number(ipt_nota.value),
+            frequencia: Number(ipt_frequencia.value)
+        }
+        if(aluno.nota >= 6 && aluno.frequencia >= 75){
+            aluno.situacao  = "Aprovado";
+        }else{
+            aluno.situacao = "Reprovado";
+        }
+
+        div_msg.innerHTML = `
+            Aluno: ${aluno.nome}<br>
+            Nota: ${aluno.nota}<br>
+            Frequência: ${aluno.frequencia}<br>
+            Situação: ${aluno.situacao}<br>`;
+    }
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 9</title>
+</head>
+<body>
+    <div>
+        <h3>Cadastro de Celulares com Desconto</h3>
+        Marca do celular:
+        <input type="text" id="ipt_destino"><br>
+        
+        Modelo:
+        <input type="text" id="ipt_modelo"><br>
+        
+        Preço:
+        <input type="text" id="ipt_preco"><br><br>
+    </div>
+    <button onclick="cadastrar()">Cadastrar Celular</button><br><br>
+
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let celular;
+
+    function cadastrar(){
+        celular = {
+            nome: ipt_destino.value,
+            modelo: ipt_modelo.value,
+            preco: Number(ipt_preco.value)
+        };
+        celular.precoDesconto = celular.preco * 0.85;
+        div_msg.innerHTML = `
+            Marca: ${celular.nome}<br>
+            Modelo: ${celular.modelo}<br>
+            Preço Original: R$${celular.preco}<br>
+            Preço com Desconto: ${celular.precoDesconto}<br>`;
+    }
+</script>

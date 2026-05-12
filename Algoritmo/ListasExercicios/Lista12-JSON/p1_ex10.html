@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 11</title>
+</head>
+<body>
+    <div>
+        <h3>Cadastro de Celulares com Desconto</h3>
+        Nome:
+        <input type="text" id="ipt_nome"><br>
+        
+        Idade:
+        <input type="text" id="ipt_idade"><br>
+        
+        Cargo:
+        <input type="text" id="ipt_cargo"><br><br>
+    </div>
+    <button onclick="cadastrar()">Cadastrar Usuário</button><br><br>
+
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let usuario;
+
+    function cadastrar(){
+        usuario = {
+            nome: ipt_nome.value,
+            idade: Number(ipt_idade.value),
+            cargo: ipt_cargo.value
+        };
+        if(usuario.cargo == "Administrador"){
+            usuario.acesso = "Total";
+        }else{
+            usuario.acesso = "Limitado";
+        }
+        
+
+        div_msg.innerHTML = `
+            Usuário: ${usuario.nome}<br>
+            Cargo: ${usuario.cargo}<br>
+            Nível de acesso: ${usuario.acesso}<br>`;
+    }
+</script>

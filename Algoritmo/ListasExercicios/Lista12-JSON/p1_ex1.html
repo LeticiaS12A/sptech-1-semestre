@@ -3,27 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exercicico 1</title>
 </head>
 <body>
     <div>
         <h3>Cadastro de Pets com Informações Agrupadas</h3>
-        Nome:
-        <input type="text" id="ipt_nome"><br>
+        Nome do pet:
+        <input type="text" id="ipt_pet"><br>
 
-        Logradouro:
-        <input type="text" id="ipt_logadouro"><br>
+        Tipo do animal:
+        <input type="text" id="ipt_tipo"><br>
         
-        Bairro:
-        <input type="text" id="ipt_bairro"><br>
-
-        Cidade:
-        <input type="text" id="ipt_cidade"><br><br>
+        Idade:
+        <input type="text" id="ipt_idade"><br><br>
     </div>
-    <button onclick="exibir()">Exibir</button><br>
-    <button onclick="adicionarUser()">Adicionar</button><br>
+    <button onclick="adicionar()">Cadastrar Pet</button><br>
 
 
     <div id="div_msg"></div>
 </body>
 </html>
+<script>
+    let pet;
+
+    function adicionar(){
+        pet = {
+            nome: ipt_pet.value,
+            tipo: ipt_tipo.value,
+            idade: ipt_idade.value
+        }
+
+        div_msg.innerHTML = `
+            Pet: ${pet.nome}<br>
+            Tipo: ${pet.tipo}<br>
+            Idade: ${pet.idade}<br>`;
+
+        console.log(pet);
+    }
+</script>
