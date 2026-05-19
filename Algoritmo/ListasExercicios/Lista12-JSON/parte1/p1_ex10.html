@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicio 9</title>
+    <title>Exercicio 10</title>
 </head>
 <body>
     <div>
         <h3>Cadastro de Celulares com Desconto</h3>
         Marca do celular:
-        <input type="text" id="ipt_destino"><br>
+        <input type="text" id="ipt_marca"><br>
         
         Modelo:
         <input type="text" id="ipt_modelo"><br>
@@ -28,13 +28,13 @@
 
     function cadastrar(){
         celular = {
-            nome: ipt_destino.value,
+            marca: ipt_marca.value,
             modelo: ipt_modelo.value,
             preco: Number(ipt_preco.value)
         };
         celular.precoDesconto = celular.preco * 0.85;
         div_msg.innerHTML = `
-            Marca: ${celular.nome}<br>
+            Marca: ${celular.marca}<br>
             Modelo: ${celular.modelo}<br>
             Preço Original: R$${celular.preco}<br>
             Preço com Desconto: ${celular.precoDesconto}<br>`;

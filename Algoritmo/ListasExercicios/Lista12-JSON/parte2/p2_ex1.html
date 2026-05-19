@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+<body>
+    <h3>Caixa de Músicas</h3>
+
+    Músicas que mais gosta:
+    <input type="text" id="ipt_musica">
+    <button onclick="cadastrar()">Cadastrar</button><br>
+    <button onclick="exibir()">Exibir</button><br>
+    
+    De:
+    <input type="text" id="ipt_de">
+    Até:
+    <input type="text" id="ipt_ate">
+    <button onclick="filtrar()">Filtrar</button><br>
+
+
+    <div id="div_msg"></div><br>
+</body>
+</html>
+<script>
+    let lista = [];
+    let musica = { };
+
+    function cadastrar(){
+        let musica = {
+            nome: ipt_musica.value
+        }
+
+        lista.push(musica);
+        console.log(`${musica.nome} cadastrada`)
+    }
+    function exibir(){
+        div_msg.innerHTML = ``;
+        for(let i = 0; i < lista.length; i++){
+            div_msg.innerHTML += `${lista[i].nome}<br>`;
+        }
+    }
+    function filtar(){
+        let inicio = Number(ipt_de.value);
+        let fim = Number(ipt_ate.value);
+
+        if( inicio < lista.length && inicio ){
+            for(let i = inicio; i < fim; i++){
+                div_msg.innerHTML += `${lista[i].nome}<br>`;
+            }
+        }
+    }
+</script>

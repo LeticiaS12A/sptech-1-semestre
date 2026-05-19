@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sete e Meio</title>
+</head>
+<body>
+    <h3>Jogando Sete e Meio</h3>
+    <div id="div_jogo">
+        <button onclick="iniciar()">Jogar Sete e Meio!</button>
+    </div>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let pontosJogador = 0;
+    let pontosBanca = 0;
+
+    let primeiraChance = false;
+    let passoiVez = false;
+    let chancesJogador = 0;
+
+    function iniciar() {
+        pontosJogador = 0;
+        pontosBanca = 0;
+
+        primeiraChance = false;
+        passoiVez = false;
+        chancesJogador = 0;
+
+        div_jogo.innerHTML = ``;
+        div_msg.innerHTML = '';
+        div_jogo.innerHTML = `        
+            <button onclick="sorteio()">Pedir Outra Carta</button>
+            <button onclick="passar()">Passar Vez</button><br>`;
+        if (primeiraChance == false) {
+            primeiraChance = true;
+
+            sorteio();
+        }
+    }
+
+    function sorteio() {
+        let i = 0;
+        chancesJogador++;
+
+        if (chancesJogador > 1) {
+            div_msg.innerHTML += `<br>Quero mais uma carta!<br>`;
+        }
+
+        while (i > -1) {
+            let carta = parseInt((Math.random() * 40));
+
+            if (baralho[carta].qtd == 0) {
+                i++;
+
+            } else if (passoiVez == false) {
+                baralho[carta].qtd = 0;
+                i = -1;
+
+                verifJogador(baralho[carta].valor, baralho[carta].naipe);
+            } else {
+                baralho[carta].qtd = 0;
+                i = -1;
+
+                verifBanca(baralho[carta].valor, baralho[carta].naipe);
+            }
+        }
+    }
+
+    function verifJogador(valor, naipe) {
+        if (valor == 'Ás') {
+            pontosJogador++;
+
+        } else if (valor >= 2 && valor <= 7) {
+            pontosJogador += Number(valor);
+
+        } else {
+            pontosJogador += 0.5;
+
+        }
+        if (pontosJogador == 7.5) {
+            div_jogo.innerHTML = ``;
+
+            div_msg.innerHTML += `<br>SETE E MEIO! O pontosJogador venceu com 7.5 pontos!
+            <br>Deseja div_jogo de novo? <br><br>
+            <button onclick="iniciar()">Jogar Sete e Meio!</button>`;
+        } else if (pontosJogador > 7.5) {
+            div_jogo.innerHTML = ``;
+
+            div_msg.innerHTML += `<br>Jogador: ${pontosJogador} pontos - ${valor} de ${naipe}
+            <br><br>O JOGADOR ESTOUROU! A banca venceu com ${pontosBanca} pontos
+            <br><br>Deseja div_jogo de novo? <br><br>
+            <button onclick="iniciar()">Jogar Sete e Meio!</button>`;
+        } else {
+            
+            div_msg.innerHTML += `<br>Jogador: ${pontosJogador} pontos - ${valor} de ${naipe}`;
+        }
+    }
+
+    function passar() {
+        passoiVez = true;
+
+        div_msg.innerHTML+= '<br><br>';
+
+        sorteio();
+    }
+
+    function verifBanca(valor, naipe) {
+        if (valor == 'Ás') {
+            pontosBanca++;
+
+        } else if (valor >= 2 && valor <= 7) {
+            pontosBanca += Number(valor);
+
+        } else {
+            pontosBanca += 0.5;
+
+        }
+        if (pontosBanca == 7.5) {
+            div_jogo.innerHTML = ``;
+
+            div_msg.innerHTML += `<br>SETE E MEIO! A banca venceu com 7.5 pontos!
+            <br><br>Deseja div_jogo de novo? <br><br>
+            <button onclick="iniciar()">Jogar Sete e Meio!</button>`;
+        } else if (pontosBanca > 7.5) {
+            div_jogo.innerHTML = ``;
+
+            div_msg.innerHTML += `<br><br>Banca: ${pontosBanca} pontos - ${valor} de ${naipe}
+            <br><br>O Banca ESTOUROU! O pontosJogador venceu com ${pontosJogador} pontos
+            <br><br>Deseja div_jogo de novo? <br><br>
+            <button onclick="iniciar()">Jogar Sete e Meio!</button>`;
+        } else if (pontosBanca > pontosJogador) {
+            div_jogo.innerHTML = ``;
+
+            div_msg.innerHTML += `<br><br>Banca: ${pontosBanca} pontos - ${valor} de ${naipe}
+            <br>A banca venceu com ${pontosBanca} pontos!
+            <br><br>Deseja div_jogo de novo? <br><br>
+            <button onclick="iniciar()">Jogar Sete e Meio!</button>`;
+        } else {
+            div_msg.innerHTML += `<br><br>Banca: ${pontosBanca} pontos - ${valor} de ${naipe}
+            <br><br>É necessário virar outra carta para a banca!<br><br>`;
+
+            sorteio();
+        }
+
+    }
+
+    let baralho = [
+    {
+        naipe: 'Copas',
+        valor: 'Ás',
+        quantia: 1
+    }, {
+        naipe: 'Espadas',
+        valor: 'Ás',
+        quantia: 1
+    }, {
+        naipe: 'Ouros',
+        valor: 'Ás',
+        quantia: 1
+    }, {
+        naipe: 'Paus',
+        valor: 'Ás',
+        quantia: 1
+    }, {
+        naipe: 'Copas',
+        valor: '2',
+        quantia: 1
+    }, {
+        naipe: 'Espadas',
+        valor: '2',
+        quantia: 1
+    }, {
+        naipe: 'Ouros',
+        valor: '2',
+        quantia: 1
+    }, {
+        naipe: 'Paus',
+        valor: '2',
+        quantia: 1
+    }, {
+        naipe: 'Copas',
+        valor: '3',
+        quantia: 1
+    }, {
+        naipe: 'Espadas',
+        valor: '3',
+        quantia: 1
+    }, {
+        naipe: 'Ouros',
+        valor: '3',
+        quantia: 1
+    }, {
+        naipe: 'Paus',
+        valor: '3',
+        quantia: 1
+    }, {
+        naipe: 'Copas',
+        valor: '4',
+        quantia: 1
+    }, {
+        naipe: 'Espadas',
+        valor: '4',
+        quantia: 1
+    }, {
+        naipe: 'Ouros',
+        valor: '4',
+        quantia: 1
+    }, {
+        naipe: 'Paus',
+        valor: '4',
+        quantia: 1
+    }, {
+        naipe: 'Copas',
+        valor: '5',
+        quantia: 1
+    }, {
+        naipe: 'Espadas',
+        valor: '5',
+        quantia: 1
+    }, {
+        naipe: 'Ouros',
+        valor: '5',
+        quantia: 1
+    }, {
+        naipe: 'Paus',
+        valor: '5',
+        quantia: 1
+    }, {
+        naipe: 'Copas',
+        valor: '6',
+        quantia: 1
+    }, {
+        naipe: 'Espadas',
+        valor: '6',
+        quantia: 1
+    }, {
+        naipe: 'Ouros',
+        valor: '6',
+        quantia: 1
+    }, {
+        naipe: 'Paus',
+        valor: '6',
+        quantia: 1
+    }, {
+        naipe: 'Copas',
+        valor: '7',
+        quantia: 1
+    }, {
+        naipe: 'Espadas',
+        valor: '7',
+        quantia: 1
+    }, {
+        naipe: 'Ouros',
+        valor: '7',
+        quantia: 1
+    }, {
+        naipe: 'Paus',
+        valor: '7',
+        quantia: 1
+    }, {
+        naipe: 'Copas',
+        valor: 'Valete',
+        quantia: 1
+    }, {
+        naipe: 'Espadas',
+        valor: 'Valete',
+        quantia: 1
+    }, {
+        naipe: 'Ouros',
+        valor: 'Valete',
+        quantia: 1
+    }, {
+        naipe: 'Paus',
+        valor: 'Valete',
+        quantia: 1
+    }, {
+        naipe: 'Copas',
+        valor: 'Rainha',
+        quantia: 1
+    }, {
+        naipe: 'Espadas',
+        valor: 'Rainha',
+        quantia: 1
+    }, {
+        naipe: 'Ouros',
+        valor: 'Rainha',
+        quantia: 1
+    }, {
+        naipe: 'Paus',
+        valor: 'Rainha',
+        quantia: 1
+    }, {
+        naipe: 'Copas',
+        valor: 'Rei',
+        quantia: 1
+    }, {
+        naipe: 'Espadas',
+        valor: 'Rei',
+        quantia: 1
+    }, {
+        naipe: 'Ouros',
+        valor: 'Rei',
+        quantia: 1
+    }, {
+        naipe: 'Paus',
+        valor: 'Rei',
+        quantia: 1
+    }]
+</script>
