@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio 6</title>
+</head>
+<body>
+    <h3>Controle de Contatos</h3>
+
+    Nome:
+    <input type="text" id="ipt_nome"><br><br>
+    Telefone:
+    <input type="text" id="ipt_telefone">
+    <button onclick="cadastrar()">Cadastrar Contato</button><br><br>
+    <button onclick="exibir()">Exibir Contatos</button><br><br>
+
+    De:
+    <input type="text" id="ipt_de">
+    Até:
+    <input type="text" id="ipt_ate">
+    <button onclick="filtrar()">Filtrar Contatos</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let lista = [];
+
+    function cadastrar(){
+        let contato = {
+            nome: ipt_nome.value,
+            telefone: ipt_telefone.value
+        }
+        lista.push(contato);
+
+        div_msg.innerHTML = `Contato cadastrado com sucesso`;
+    }
+
+    function exibir(){
+        div_msg.innerHTML = ``;
+
+        for(let i = 0; i < lista.length; i++){
+            div_msg.innerHTML += `
+                ${lista[i].nome} - ${lista[i].telefone}<br>
+            `;
+        }
+    }
+
+    function filtrar(){
+        let inicio = Number(ipt_de.value);
+        let fim = Number(ipt_ate.value);
+
+        div_msg.innerHTML = ``;
+
+        if(inicio <= lista.length && fim <= lista.length){
+            for(let i = inicio - 1; i < fim; i++){
+                div_msg.innerHTML += `
+                    ${lista[i].nome} - ${lista[i].telefone}<br>
+                `;
+            }
+        }else{
+            div_msg.innerHTML = `Filtro inválido`;
+        }
+    }
+</script>

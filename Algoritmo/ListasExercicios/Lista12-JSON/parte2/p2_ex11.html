@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio 11</title>
+</head>
+<body>
+    <h3>Agenda de Eventos</h3>
+
+    Nome do evento:
+    <input type="text" id="ipt_nome"><br><br>
+    Data:
+    <input type="text" id="ipt_data"><br><br>
+    Local:
+    <input type="text" id="ipt_local">
+    <button onclick="cadastrar()">Cadastrar Evento</button><br><br>
+    <button onclick="exibir()">Exibir Agenda</button><br><br>
+
+    De:
+    <input type="text" id="ipt_de">
+    Até:
+    <input type="text" id="ipt_ate">
+    <button onclick="filtrar()">Filtrar Agenda</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let lista = [];
+
+    function cadastrar(){
+        let evento = {
+            nome: ipt_nome.value,
+            data: ipt_data.value,
+            local: ipt_local.value
+        }
+        lista.push(evento);
+
+        div_msg.innerHTML = `Evento cadastrado com sucesso`;
+    }
+
+    function exibir(){
+        div_msg.innerHTML = ``;
+
+        for(let i = 0; i < lista.length; i++){
+            div_msg.innerHTML += `
+                ${lista[i].nome} - ${lista[i].data} - ${lista[i].local}<br>
+            `;
+        }
+    }
+
+    function filtrar(){
+        let inicio = Number(ipt_de.value);
+        let fim = Number(ipt_ate.value);
+
+        div_msg.innerHTML = ``;
+
+        if(inicio <= lista.length && fim <= lista.length){
+            for(let i = inicio - 1; i < fim; i++){
+                div_msg.innerHTML += `
+                    ${lista[i].nome} - ${lista[i].data} - ${lista[i].local}<br>
+                `;
+            }
+        }else{
+            div_msg.innerHTML = `Filtro inválido`;
+        }
+    }
+</script>

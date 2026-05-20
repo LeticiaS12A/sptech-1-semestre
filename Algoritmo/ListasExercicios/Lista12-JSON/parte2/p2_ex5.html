@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio 5</title>
+</head>
+<body>
+    <h3>Cadastro de Usuários</h3>
+
+    Nome:
+    <input type="text" id="ipt_nome"><br><br>
+    Idade:
+    <input type="text" id="ipt_idade"><br><br>
+    Cargo:
+    <input type="text" id="ipt_cargo">
+    <button onclick="cadastrar()">Cadastrar Usuário</button><br><br>
+    <button onclick="exibir()">Exibir Usuários</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let lista = [];
+
+    function cadastrar(){
+        let usuario = {
+            nome: ipt_nome.value,
+            idade: Number(ipt_idade.value),
+            cargo: ipt_cargo.value
+        }
+
+        if(usuario.cargo == "Administrador"){
+            usuario.acesso = "Total";
+        }else{
+            usuario.acesso = "Limitado";
+        }
+        lista.push(usuario);
+
+        div_msg.innerHTML = `
+            Usuário: ${usuario.nome}<br>
+            Cargo: ${usuario.cargo}<br>
+            Nível de acesso: ${usuario.acesso}
+        `;
+    }
+
+    function exibir(){
+        div_msg.innerHTML = ``;
+
+        for(let i = 0; i < lista.length; i++){
+            div_msg.innerHTML += `
+                Usuário: ${lista[i].nome}<br>
+                Cargo: ${lista[i].cargo}<br>
+                Nível de acesso: ${lista[i].acesso}<br><br>
+            `;
+        }
+    }
+
+</script>

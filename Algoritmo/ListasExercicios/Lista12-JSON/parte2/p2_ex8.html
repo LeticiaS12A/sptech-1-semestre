@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio 8</title>
+</head>
+<body>
+    <h3>Registro de Despesas Mensais</h3>
+
+    Nome da despesa:
+    <input type="text" id="ipt_nome"><br><br>
+    Valor gasto:
+    <input type="text" id="ipt_valor">
+    <button onclick="cadastrar()">Cadastrar Despesa</button><br><br>
+    <button onclick="resumo()">Resumo das Despesas</button><br><br>
+
+    <select id="select_tipo">
+        <option value="acima">Acima de</option>
+        <option value="abaixo">Abaixo de</option>
+    </select>
+
+    Valor:
+    <input type="text" id="ipt_filtro">
+    <button onclick="filtrar()">Filtrar Despesas</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let lista = [];
+
+    function cadastrar(){
+        let despesa = {
+            nome: ipt_nome.value,
+            valor: Number(ipt_valor.value)
+        }
+
+        if(despesa.valor > 0){
+            lista.push(despesa);
+
+            div_msg.innerHTML = `Despesa cadastrada com sucesso`;
+        }else{
+            div_msg.innerHTML = `Valor inválido`;
+        }
+    }
+
+    function resumo(){
+        let total = 0;
+
+        div_msg.innerHTML = `Você tem ${lista.length} despesas cadastradas:<br><br>`;
+
+        for(let i = 0; i < lista.length; i++){
+            div_msg.innerHTML += `
+                ${lista[i].nome} - R$${lista[i].valor}<br>
+            `;
+            total += lista[i].valor;
+        }
+
+        div_msg.innerHTML += `<br>Total gasto: R$${total}`;
+    }
+
+    function filtrar(){
+        let valor = Number(ipt_filtro.value);
+        let tipo = select_tipo.value;
+
+        div_msg.innerHTML = ``;
+
+        for(let i = 0; i < lista.length; i++){
+            if(tipo == "acima" && lista[i].valor > valor){
+                div_msg.innerHTML += `
+                    ${lista[i].nome} - R$${lista[i].valor}<br>
+                `;
+            }
+
+            if(tipo == "abaixo" && lista[i].valor < valor){
+                div_msg.innerHTML += `
+                    ${lista[i].nome} - R$${lista[i].valor}<br>
+                `;
+            }
+        }
+    }
+</script>

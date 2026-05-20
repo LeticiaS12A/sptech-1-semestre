@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio 4</title>
+</head>
+<body>
+    <h3>Registro de Alimentos</h3>
+
+    Nome:
+    <input type="text" id="ipt_nome"><br><br>
+    Quantidade:
+    <input type="text" id="ipt_quantidade">
+    <button onclick="cadastrar()">Cadastrar</button><br><br>
+    <button onclick="atualizar()">Atualizar Lista</button><br><br>
+
+    <select id="select_tipo">
+        <option value="maior">Maior que</option>
+        <option value="menor">Menor que</option>
+    </select>
+
+    Quantidade:
+    <input type="text" id="ipt_filtro">
+    <button onclick="filtrar()">Filtrar Alimentos</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let lista = [];
+
+    function cadastrar(){
+        let alimento = {
+            nome: ipt_nome.value,
+            quantidade: Number(ipt_quantidade.value)
+        }
+
+        if(alimento.nome.length >= 3 && alimento.quantidade > 0){
+            lista.push(alimento);
+
+            div_msg.innerHTML = `Alimento cadastrado com sucesso`;
+
+        }else{
+            div_msg.innerHTML = `Nome ou quantidade inválida`;
+        }
+    }
+
+    function atualizar(){
+        div_msg.innerHTML = `Você tem ${lista.length} alimentos cadastrados:<br><br>`;
+
+        for(let i = 0; i < lista.length; i++){
+            div_msg.innerHTML += `${lista[i].nome} - ${lista[i].quantidade} unidades<br>`;
+        }
+    }
+
+    function filtrar(){
+        let valor = Number(ipt_filtro.value);
+        let tipo = select_tipo.value;
+
+        div_msg.innerHTML = ``;
+
+        for(let i = 0; i < lista.length; i++){
+            if(tipo == "maior" && lista[i].quantidade > valor){
+                div_msg.innerHTML += `${lista[i].nome} - ${lista[i].quantidade} unidades<br>`;
+            }
+
+            if(tipo == "menor" && lista[i].quantidade < valor){
+                div_msg.innerHTML += `${lista[i].nome} - ${lista[i].quantidade} unidades<br>`;
+            }
+        }
+    }
+</script>

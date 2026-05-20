@@ -1,17 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 2</title>
 </head>
 <body>
     <h3>Registro de Produtos</h3>
 
-    Digite o preço do produto:
-    <input type="text" id="ipt_preco"><br>
-    Digite o nome do produto:
+    Nome do produto:
     <input type="text" id="ipt_nome"><br><br>
-    button{cadastrar}
+    Preço:
+    <input type="text" id="ipt_preco">
+
+    <button onclick="cadastrar()">Cadastrar</button><br><br>
+    <button onclick="atualizar()">Atualizar Estoque</button><br><br>
+
+    <select id="select_filtro">
+        <option value="acima">Preços acima de</option>
+        <option value="abaixo">Preços abaixo de</option>
+    </select>
+
+    Valor:
+    <input type="text" id="ipt_valor">
+    <button onclick="filtrar()">Filtrar Produtos</button><br><br>
+
+    <div id="div_msg"></div>
 </body>
 </html>
+<script>
+    let lista = [];
+
+    function cadastrar(){
+        let produto = {
+            nome: ipt_nome.value,
+            preco: Number(ipt_preco.value)
+        }
+
+        if(produto.preco > 0 && produto.nome.length >= 3){
+            lista.push(produto);
+            div_msg.innerHTML = `Produto cadastrado com sucesso`;
+        }else{
+            div_msg.innerHTML = `Nome inválido ou preço inválido`;
+        }
+    }
+
+    function atualizar(){
+        let soma = 0;
+
+        div_msg.innerHTML = `Você tem ${lista.length} produtos cadastrados em estoque:<br><br>`;
+
+        for(let i = 0; i < lista.length; i++){
+            div_msg.innerHTML += `${i+1}. ${lista[i].nome} - R$${lista[i].preco}<br>`;
+            soma += lista[i].preco;
+        }
+
+        div_msg.innerHTML += `<br>Seu estoque vale R$${soma}`;
+    }
+
+    function filtrar(){
+        let valor = Number(ipt_valor.value);
+        let filtro = select_filtro.value;
+
+        div_msg.innerHTML = ``;
+
+        for(let i = 0; i < lista.length; i++){
+
+            if(filtro == "acima" && lista[i].preco > valor){
+                div_msg.innerHTML += `${lista[i].nome} - R$${lista[i].preco}<br>`;
+            }
+
+            if(filtro == "abaixo" && lista[i].preco < valor){
+                div_msg.innerHTML += `${lista[i].nome} - R$${lista[i].preco}<br>`;
+            }
+        }
+    }
+</script>

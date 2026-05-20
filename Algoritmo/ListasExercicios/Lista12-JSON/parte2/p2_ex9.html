@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio 9</title>
+</head>
+<body>
+    <h3>Catálogo de Cursos</h3>
+
+    Nome do curso:
+    <input type="text" id="ipt_curso">
+    <button onclick="cadastrar()">Cadastrar</button><br><br>
+    <button onclick="exibir()">Exibir Cursos</button><br><br>
+
+    De:
+    <input type="text" id="ipt_de">
+    Até:
+    <input type="text" id="ipt_ate">
+    <button onclick="filtrar()">Filtrar Cursos</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let lista = [];
+
+    function cadastrar(){
+        let curso = {
+            nome: ipt_curso.value
+        }
+        lista.push(curso);
+
+        div_msg.innerHTML = `Curso cadastrado com sucesso`;
+    }
+
+    function exibir(){
+        div_msg.innerHTML = `Quantidade de cursos: ${lista.length}<br><br>`;
+
+        for(let i = 0; i < lista.length; i++){
+            div_msg.innerHTML += `
+                ${lista[i].nome}<br>
+            `;
+        }
+    }
+
+    function filtrar(){
+        let inicio = Number(ipt_de.value);
+        let fim = Number(ipt_ate.value);
+
+        div_msg.innerHTML = ``;
+
+        for(let i = inicio - 1; i < fim; i++){
+            div_msg.innerHTML += `
+                ${lista[i].nome}<br>
+            `;
+        }
+    }
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio 10</title>
+</head>
+<body>
+    <h3>Cadastro de Animais de Estimação</h3>
+
+    Nome do animal:
+    <input type="text" id="ipt_nome"><br><br>
+    Espécie:
+    <input type="text" id="ipt_especie">
+    <button onclick="cadastrar()">Cadastrar Animal</button><br><br>
+    <button onclick="listar()">Listar Animais</button><br><br>
+
+    Espécie:
+    <input type="text" id="ipt_filtro">
+    <button onclick="filtrar()">Filtrar Animais</button><br><br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let lista = [];
+
+    function cadastrar(){
+        let animal = {
+            nome: ipt_nome.value,
+            especie: ipt_especie.value
+        }
+        lista.push(animal);
+
+        div_msg.innerHTML = `Animal cadastrado com sucesso`;
+    }
+
+    function listar(){
+        div_msg.innerHTML = ``;
+
+        for(let i = 0; i < lista.length; i++){
+            div_msg.innerHTML += `
+                ${lista[i].nome} - ${lista[i].especie}<br>
+            `;
+        }
+    }
+
+    function filtrar(){
+        let especie = ipt_filtro.value;
+
+        div_msg.innerHTML = ``;
+
+        for(let i = 0; i < lista.length; i++){
+            if(lista[i].especie == especie){
+                div_msg.innerHTML += `
+                    ${lista[i].nome} - ${lista[i].especie}<br>
+                `;
+            }
+        }
+    }
+</script>
