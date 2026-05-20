@@ -22,23 +22,23 @@
 </body>
 </html>
 <script>
-    let lista = [];
+    let catalogoCursos = [];
 
     function cadastrar(){
         let curso = {
             nome: ipt_curso.value
         }
-        lista.push(curso);
+        catalogoCursos.push(curso);
 
         div_msg.innerHTML = `Curso cadastrado com sucesso`;
     }
 
     function exibir(){
-        div_msg.innerHTML = `Quantidade de cursos: ${lista.length}<br><br>`;
+        div_msg.innerHTML = `Quantidade de cursos: ${catalogoCursos.length}<br><br>`;
 
-        for(let i = 0; i < lista.length; i++){
+        for(let i = 0; i < catalogoCursos.length; i++){
             div_msg.innerHTML += `
-                ${lista[i].nome}<br>
+                ${catalogoCursos[i].nome}<br>
             `;
         }
     }
@@ -51,7 +51,7 @@
 
         for(let i = inicio - 1; i < fim; i++){
             div_msg.innerHTML += `
-                ${lista[i].nome}<br>
+                ${catalogoCursos[i].nome}<br>
             `;
         }
     }

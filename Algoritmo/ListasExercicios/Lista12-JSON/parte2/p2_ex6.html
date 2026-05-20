@@ -24,14 +24,14 @@
 </body>
 </html>
 <script>
-    let lista = [];
+    let listaContatos = [];
 
     function cadastrar(){
         let contato = {
             nome: ipt_nome.value,
             telefone: ipt_telefone.value
         }
-        lista.push(contato);
+        listaContatos.push(contato);
 
         div_msg.innerHTML = `Contato cadastrado com sucesso`;
     }
@@ -39,9 +39,9 @@
     function exibir(){
         div_msg.innerHTML = ``;
 
-        for(let i = 0; i < lista.length; i++){
+        for(let i = 0; i < listaContatos.length; i++){
             div_msg.innerHTML += `
-                ${lista[i].nome} - ${lista[i].telefone}<br>
+                ${listaContatos[i].nome} - ${listaContatos[i].telefone}<br>
             `;
         }
     }
@@ -52,10 +52,10 @@
 
         div_msg.innerHTML = ``;
 
-        if(inicio <= lista.length && fim <= lista.length){
+        if(inicio <= listaContatos.length && fim <= listaContatos.length){
             for(let i = inicio - 1; i < fim; i++){
                 div_msg.innerHTML += `
-                    ${lista[i].nome} - ${lista[i].telefone}<br>
+                    ${listaContatos[i].nome} - ${listaContatos[i].telefone}<br>
                 `;
             }
         }else{

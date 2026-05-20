@@ -20,7 +20,7 @@
 </body>
 </html>
 <script>
-    let lista = [];
+    let listaUsuarios = [];
 
     function cadastrar(){
         let usuario = {
@@ -34,7 +34,7 @@
         }else{
             usuario.acesso = "Limitado";
         }
-        lista.push(usuario);
+        listaUsuarios.push(usuario);
 
         div_msg.innerHTML = `
             Usuário: ${usuario.nome}<br>
@@ -46,11 +46,11 @@
     function exibir(){
         div_msg.innerHTML = ``;
 
-        for(let i = 0; i < lista.length; i++){
+        for(let i = 0; i < listaUsuarios.length; i++){
             div_msg.innerHTML += `
-                Usuário: ${lista[i].nome}<br>
-                Cargo: ${lista[i].cargo}<br>
-                Nível de acesso: ${lista[i].acesso}<br><br>
+                Usuário: ${listaUsuarios[i].nome}<br>
+                Cargo: ${listaUsuarios[i].cargo}<br>
+                Nível de acesso: ${listaUsuarios[i].acesso}<br><br>
             `;
         }
     }

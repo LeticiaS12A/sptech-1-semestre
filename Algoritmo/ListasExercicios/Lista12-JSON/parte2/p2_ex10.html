@@ -22,14 +22,14 @@
 </body>
 </html>
 <script>
-    let lista = [];
+    let listaAnimais = [];
 
     function cadastrar(){
         let animal = {
             nome: ipt_nome.value,
             especie: ipt_especie.value
         }
-        lista.push(animal);
+        listaAnimais.push(animal);
 
         div_msg.innerHTML = `Animal cadastrado com sucesso`;
     }
@@ -37,9 +37,9 @@
     function listar(){
         div_msg.innerHTML = ``;
 
-        for(let i = 0; i < lista.length; i++){
+        for(let i = 0; i < listaAnimais.length; i++){
             div_msg.innerHTML += `
-                ${lista[i].nome} - ${lista[i].especie}<br>
+                ${listaAnimais[i].nome} - ${listaAnimais[i].especie}<br>
             `;
         }
     }
@@ -49,10 +49,10 @@
 
         div_msg.innerHTML = ``;
 
-        for(let i = 0; i < lista.length; i++){
-            if(lista[i].especie == especie){
+        for(let i = 0; i < listaAnimais.length; i++){
+            if(listaAnimais[i].especie == especie){
                 div_msg.innerHTML += `
-                    ${lista[i].nome} - ${lista[i].especie}<br>
+                    ${listaAnimais[i].nome} - ${listaAnimais[i].especie}<br>
                 `;
             }
         }

@@ -24,7 +24,7 @@
 </body>
 </html>
 <script>
-    let lista = [];
+    let playlist = [];
     let musica = { };
 
     function cadastrar(){
@@ -32,13 +32,13 @@
             nome: ipt_musica.value
         }
 
-        lista.push(musica);
+        playlist.push(musica);
         console.log(`${musica.nome} cadastrada`)
     }
     function exibir(){
         div_msg.innerHTML = ``;
-        for(let i = 0; i < lista.length; i++){
-            div_msg.innerHTML += `${lista[i].nome}<br>`;
+        for(let i = 0; i < playlist.length; i++){
+            div_msg.innerHTML += `${playlist[i].nome}<br>`;
         }
     }
     function filtrar(){
@@ -47,9 +47,9 @@
         
         div_msg.innerHTML = ``;
         
-        if( inicio < lista.length && fim <= lista.length ){
+        if( inicio < playlist.length && fim <= playlist.length ){
             for(let i = inicio-1; i < fim; i++){
-                div_msg.innerHTML += `${lista[i].nome}<br>`;
+                div_msg.innerHTML += `${playlist[i].nome}<br>`;
             }
         }else{
             div_msg.innerHTML = `Filtro invalido`;

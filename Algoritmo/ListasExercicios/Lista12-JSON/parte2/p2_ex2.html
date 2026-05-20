@@ -28,7 +28,7 @@
 </body>
 </html>
 <script>
-    let lista = [];
+    let listaProdutos = [];
 
     function cadastrar(){
         let produto = {
@@ -37,7 +37,7 @@
         }
 
         if(produto.preco > 0 && produto.nome.length >= 3){
-            lista.push(produto);
+            listaProdutos.push(produto);
             div_msg.innerHTML = `Produto cadastrado com sucesso`;
         }else{
             div_msg.innerHTML = `Nome inválido ou preço inválido`;
@@ -47,11 +47,11 @@
     function atualizar(){
         let soma = 0;
 
-        div_msg.innerHTML = `Você tem ${lista.length} produtos cadastrados em estoque:<br><br>`;
+        div_msg.innerHTML = `Você tem ${listaProdutos.length} produtos cadastrados em estoque:<br><br>`;
 
-        for(let i = 0; i < lista.length; i++){
-            div_msg.innerHTML += `${i+1}. ${lista[i].nome} - R$${lista[i].preco}<br>`;
-            soma += lista[i].preco;
+        for(let i = 0; i < listaProdutos.length; i++){
+            div_msg.innerHTML += `${i+1}. ${listaProdutos[i].nome} - R$${listaProdutos[i].preco}<br>`;
+            soma += listaProdutos[i].preco;
         }
 
         div_msg.innerHTML += `<br>Seu estoque vale R$${soma}`;
@@ -63,14 +63,14 @@
 
         div_msg.innerHTML = ``;
 
-        for(let i = 0; i < lista.length; i++){
+        for(let i = 0; i < listaProdutos.length; i++){
 
-            if(filtro == "acima" && lista[i].preco > valor){
-                div_msg.innerHTML += `${lista[i].nome} - R$${lista[i].preco}<br>`;
+            if(filtro == "acima" && listaProdutos[i].preco > valor){
+                div_msg.innerHTML += `${listaProdutos[i].nome} - R$${listaProdutos[i].preco}<br>`;
             }
 
-            if(filtro == "abaixo" && lista[i].preco < valor){
-                div_msg.innerHTML += `${lista[i].nome} - R$${lista[i].preco}<br>`;
+            if(filtro == "abaixo" && listaProdutos[i].preco < valor){
+                div_msg.innerHTML += `${listaProdutos[i].nome} - R$${listaProdutos[i].preco}<br>`;
             }
         }
     }

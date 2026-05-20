@@ -28,24 +28,24 @@
 </body>
 </html>
 <script>
-    let lista = [];
+    let catalogoFilmes = [];
 
     function cadastrar(){
         let filme = {
             nome: ipt_filme.value,
             genero: ipt_genero.value
         }
-        lista.push(filme);
+        catalogoFilmes.push(filme);
 
-        div_msg.innerHTML = `Você já assistiu ${lista.length} filmes`;
+        div_msg.innerHTML = `Você já assistiu ${catalogoFilmes.length} filmes`;
     }
 
     function listar(){
         div_msg.innerHTML = ``;
 
-        for(let i = lista.length - 1; i >= 0; i--){
+        for(let i = catalogoFilmes.length - 1; i >= 0; i--){
             div_msg.innerHTML += `
-                ${lista[i].nome} - ${lista[i].genero}<br>
+                ${catalogoFilmes[i].nome} - ${catalogoFilmes[i].genero}<br>
             `;
         }
     }
@@ -58,7 +58,7 @@
 
         for(let i = fim - 1; i >= inicio - 1; i--){
             div_msg.innerHTML += `
-                ${lista[i].nome} - ${lista[i].genero}<br>
+                ${catalogoFilmes[i].nome} - ${catalogoFilmes[i].genero}<br>
             `;
         }
     }
@@ -68,10 +68,10 @@
 
         div_msg.innerHTML = ``;
 
-        for(let i = 0; i < lista.length; i++){
-            if(lista[i].genero == genero){
+        for(let i = 0; i < catalogoFilmes.length; i++){
+            if(catalogoFilmes[i].genero == genero){
                 div_msg.innerHTML += `
-                    ${lista[i].nome} - ${lista[i].genero}<br>
+                    ${catalogoFilmes[i].nome} - ${catalogoFilmes[i].genero}<br>
                 `;
             }
         }

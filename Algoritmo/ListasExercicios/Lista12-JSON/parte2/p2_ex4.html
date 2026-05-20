@@ -27,7 +27,7 @@
 </body>
 </html>
 <script>
-    let lista = [];
+    let listaAlimentos = [];
 
     function cadastrar(){
         let alimento = {
@@ -36,7 +36,7 @@
         }
 
         if(alimento.nome.length >= 3 && alimento.quantidade > 0){
-            lista.push(alimento);
+            listaAlimentos.push(alimento);
 
             div_msg.innerHTML = `Alimento cadastrado com sucesso`;
 
@@ -46,10 +46,10 @@
     }
 
     function atualizar(){
-        div_msg.innerHTML = `Você tem ${lista.length} alimentos cadastrados:<br><br>`;
+        div_msg.innerHTML = `Você tem ${listaAlimentos.length} alimentos cadastrados:<br><br>`;
 
-        for(let i = 0; i < lista.length; i++){
-            div_msg.innerHTML += `${lista[i].nome} - ${lista[i].quantidade} unidades<br>`;
+        for(let i = 0; i < listaAlimentos.length; i++){
+            div_msg.innerHTML += `${listaAlimentos[i].nome} - ${listaAlimentos[i].quantidade} unidades<br>`;
         }
     }
 
@@ -59,13 +59,13 @@
 
         div_msg.innerHTML = ``;
 
-        for(let i = 0; i < lista.length; i++){
-            if(tipo == "maior" && lista[i].quantidade > valor){
-                div_msg.innerHTML += `${lista[i].nome} - ${lista[i].quantidade} unidades<br>`;
+        for(let i = 0; i < listaAlimentos.length; i++){
+            if(tipo == "maior" && listaAlimentos[i].quantidade > valor){
+                div_msg.innerHTML += `${listaAlimentos[i].nome} - ${listaAlimentos[i].quantidade} unidades<br>`;
             }
 
-            if(tipo == "menor" && lista[i].quantidade < valor){
-                div_msg.innerHTML += `${lista[i].nome} - ${lista[i].quantidade} unidades<br>`;
+            if(tipo == "menor" && listaAlimentos[i].quantidade < valor){
+                div_msg.innerHTML += `${listaAlimentos[i].nome} - ${listaAlimentos[i].quantidade} unidades<br>`;
             }
         }
     }
