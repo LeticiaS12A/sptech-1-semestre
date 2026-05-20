@@ -41,14 +41,18 @@
             div_msg.innerHTML += `${lista[i].nome}<br>`;
         }
     }
-    function filtar(){
+    function filtrar(){
         let inicio = Number(ipt_de.value);
         let fim = Number(ipt_ate.value);
-
-        if( inicio < lista.length && inicio ){
-            for(let i = inicio; i < fim; i++){
+        
+        div_msg.innerHTML = ``;
+        
+        if( inicio < lista.length && fim <= lista.length ){
+            for(let i = inicio-1; i < fim; i++){
                 div_msg.innerHTML += `${lista[i].nome}<br>`;
             }
+        }else{
+            div_msg.innerHTML = `Filtro invalido`;
         }
     }
 </script>
