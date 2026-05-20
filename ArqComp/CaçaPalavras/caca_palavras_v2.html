@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Caça-Palavras</title>
+
+    <style>
+        body {
+    font-family: Arial;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    margin: 0;
+    padding: 30px;
+    color: white;
+}
+
+.container {
+    width: 950px;
+    margin: auto;
+    background-color: #111827;
+    padding: 10px 50px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.4);
+}
+
+h1 {
+    color: #38bdf8;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    color: #cbd5e1;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.pergunta {
+    font-size: 18px;
+    margin-bottom: 20px;
+    background-color: #1e293b;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+input {
+    padding: 12px;
+    width: 250px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #38bdf8;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #0ea5e9;
+}
+
+#mensagem {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.cacaPalavras {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(15, 45px);
+    gap: 6px;
+    justify-content: center;
+    background-color: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.letra {
+    width: 45px;
+    height: 45px;
+    background-color: #334155;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.letra:hover {
+    transform: scale(1.05);
+    background-color: #475569;
+}
+
+.correta {
+    background-color: #38bdf8;
+    color: black;
+    transform: scale(1.08);
+}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Caça-Palavras</h1>
+        <h2>Arquitetura Computacional</h2>
+
+        <div class="pergunta" id="pergunta"></div>
+
+        <br>
+
+        <input type="text" id="inputResposta">
+        <button onclick="verificar()">Verificar</button>
+
+        <h3 id="mensagem"></h3>
+
+        <div class="cacaPalavras">
+
+    <!-- LINHA 1 -->
+    <div class="letra">A</div>
+    <div class="letra cpu">C</div>
+    <div class="letra cpu">P</div>
+    <div class="letra cpu">U</div>
+    <div class="letra">X</div>
+    <div class="letra">L</div>
+    <div class="letra ula">U</div>
+    <div class="letra">M</div>
+    <div class="letra rom">R</div>
+    <div class="letra">R</div>
+    <div class="letra">T</div>
+    <div class="letra">Y</div>
+    <div class="letra">B</div>
+    <div class="letra">H</div>
+    <div class="letra">N</div>
+
+    <!-- LINHA 2 -->
+    <div class="letra">P</div>
+    <div class="letra">D</div>
+    <div class="letra">S</div>
+    <div class="letra">G</div>
+    <div class="letra">J</div>
+    <div class="letra">K</div>
+    <div class="letra ula">L</div>
+    <div class="letra">T</div>
+    <div class="letra">E</div>
+    <div class="letra rom">O</div>
+    <div class="letra">Q</div>
+    <div class="letra">R</div>
+    <div class="letra">O</div>
+    <div class="letra">X</div>
+    <div class="letra">A</div>
+
+    <!-- LINHA 3 -->
+    <div class="letra dma">D</div>
+    <div class="letra">P</div>
+    <div class="letra ram">R</div>
+    <div class="letra ram">A</div>
+    <div class="letra ram">M</div>
+    <div class="letra">C</div>
+    <div class="letra ula">A</div>
+    <div class="letra">V</div>
+    <div class="letra">N</div>
+    <div class="letra">J</div>
+    <div class="letra rom">M</div>
+    <div class="letra">Q</div>
+    <div class="letra">B</div>
+    <div class="letra">F</div>
+    <div class="letra">Z</div>
+
+    <!-- LINHA 4 -->
+    <div class="letra dma">M</div>
+    <div class="letra">R</div>
+    <div class="letra">U</div>
+    <div class="letra">D</div>
+    <div class="letra">O</div>
+    <div class="letra">P</div>
+    <div class="letra">X</div>
+    <div class="letra">M</div>
+    <div class="letra">T</div>
+    <div class="letra">L</div>
+    <div class="letra">Q</div>
+    <div class="letra">S</div>
+    <div class="letra">H</div>
+    <div class="letra">V</div>
+    <div class="letra">Y</div>
+
+    <!-- LINHA 5 -->
+    <div class="letra dma">A</div>
+    <div class="letra">Q</div>
+    <div class="letra">D</div>
+    <div class="letra">W</div>
+    <div class="letra">M</div>
+    <div class="letra">T</div>
+    <div class="letra">R</div>
+    <div class="letra">A</div>
+    <div class="letra">L</div>
+    <div class="letra">F</div>
+    <div class="letra">B</div>
+    <div class="letra">N</div>
+    <div class="letra">E</div>
+    <div class="letra">I</div>
+    <div class="letra">P</div>
+
+    <!-- Linha 6 -->
+    <div class="letra">A</div>
+    <div class="letra">Q</div>
+    <div class="letra">D</div>
+    <div class="letra">W</div>
+    <div class="letra">M</div>
+    <div class="letra">T</div>
+    <div class="letra">R</div>
+    <div class="letra">A</div>
+    <div class="letra">L</div>
+    <div class="letra">F</div>
+    <div class="letra">B</div>
+    <div class="letra">N</div>
+    <div class="letra">E</div>
+    <div class="letra">I</div>
+    <div class="letra">P</div>
+
+</div>
+</body>
+</html>
+<script>
+    var perguntas = [
+        {
+            pergunta: 'Qual componente do computador é responsável por interpretar comandos e executar operações?',
+            resposta: 'CPU',
+            classe: 'cpu'
+        },{
+            pergunta: 'Qual parte interna do processador executa operações lógicas e cálculos matemáticos?',
+            resposta: 'ULA',
+            classe: 'ula'
+        },{
+            pergunta: 'Qual memória armazena temporariamente os dados utilizados pelos programas em execução?',
+            resposta: 'RAM',
+            classe: 'ram'
+        },{
+            pergunta: 'Qual memória mantém dados gravados mesmo após o desligamento do computador?',
+            resposta: 'ROM',
+            classe: 'rom'
+        },{
+            pergunta: 'Qual recurso permite transferência direta de dados entre periféricos e memória RAM?',
+            resposta: 'DMA',
+            classe: 'dma'
+        }
+    ];
+    var indice = 0;
+
+    pergunta.innerHTML = perguntas[indice].pergunta;
+
+    function verificar() {
+        var respostaUsuario = inputResposta.value.toUpperCase().replaceAll(' ', '');
+        var respostaCorreta = perguntas[indice].resposta;
+
+        if(respostaUsuario == respostaCorreta){
+
+            mensagem.innerHTML = 'Resposta correta!';
+
+            var letras = document.querySelectorAll('.' + perguntas[indice].classe);
+
+            for(var i = 0; i < letras.length; i++){
+                letras[i].classList.add('correta');
+            }
+            indice++;
+
+            if(indice < perguntas.length){
+                pergunta.innerHTML = perguntas[indice].pergunta;
+            } else {
+                pergunta.innerHTML = 'Você terminou o caça-palavras!';
+            }
+
+        } else {
+            mensagem.innerHTML = 'Resposta incorreta!';
+        }
+
+        inputResposta.value = '';
+    }
+</script>
