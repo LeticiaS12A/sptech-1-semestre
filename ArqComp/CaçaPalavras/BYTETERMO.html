@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYTETERMO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>BYTETERMO</h1>
+
+    <div class="contexto">
+        Bem-vindo ao ByteCaça! Em meio a uma matriz repleta de letras, estão escondidos importantes conceitos da Arquitetura de Computadores. Resolva os desafios, descubra as palavras secretas e complete o tabuleiro. Será que você consegue encontrar todas elas e alcançar a vitória?
+    </div>
+
+    <p id="pergunta"></p>
+
+    <div class="resposta">
+        <input type="text" id="ipt_resposta">
+        <button onclick="verificar()">ENVIAR</button>
+    </div>
+
+    <div id="div_tabela"></div>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    let listaPerguntas = [
+        "1. Qual componente do computador é responsável por interpretar comandos e executar operações?",
+        "2. Qual parte interna do processador executa operações lógicas e cálculos matemáticos?",
+        "3.  PC, IR, MAR e MBR são exemplos de qual estrutura localizada dentro da CPU?",
+        "4. Qual memória armazena temporariamente os dados utilizados pelos programas em execução?",
+        "5. Qual memória mantém dados gravados mesmo após o desligamento do computador e contém instruções de inicialização?",
+        "6. Qual tipo de memória pode ser apagada apenas com exposição à luz ultravioleta?",
+        "7. Qual memória não volátil é muito utilizada em pendrives e SSDs por permitir apagamento elétrico?",
+        "8.  Como se chama o armazenamento utilizado para guardar arquivos permanentemente no computador?",
+        "9. Qual recurso permite transferência direta de dados entre periféricos e memória RAM sem depender constantemente da CPU?",
+        "10. Qual sinal é utilizado para habilitar um chip específico durante a comunicação com o processador?",
+        "11.  Qual barramento é responsável por transportar os endereços de memória solicitados pela CPU?",
+        "12. Qual barramento transfere informações entre memória, processador e dispositivos periféricos?",
+        "13. Qual linha da Intel oferece desempenho intermediário para multitarefas e jogos?",
+        "14. Qual série de processadores Intel é voltada para aplicações de maior desempenho?",
+        "15. Como é chamado o processador que possui dois núcleos físicos de processamento?",
+        "16. Como é conhecido o processador que possui quatro núcleos físicos trabalhando simultaneamente?"
+    ];
+
+    let listaRespostas = [
+        "CPU",
+        "ULA",
+        "REGISTRADORES",
+        "RAM",
+        "ROM",
+        "EPROM",
+        "FLASH",
+        "MEMÓRIA DE MASSA",
+        "DMA",
+        "CS",
+        "ADRESS BUS",
+        "DATA BUS",
+        "I5",
+        "I7",
+        "DUAL CORE",
+        "QUAD CORE"
+    ];
+
+    let atual = 0;
+    pergunta.innerHTML = listaPerguntas[atual];
+
+    let tabela = `
+    <table>
+        <tr>
+            <td id="cpu1">C</td>
+            <td id="cpu2">P</td>
+            <td id="cpu3">U</td>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+            <td>F</td>
+            <td>G</td>
+            <td>H</td>
+            <td>I</td>
+            <td>J</td>
+            <td>K</td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td>X</td>
+            <td>Y</td>
+            <td>Z</td>
+            <td>A</td>
+            <td>8</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+            <td>F</td>
+            <td id="ula1">U</td>
+            <td id="ula2">L</td>
+            <td id="ula3">A</td>
+            <td>G</td>
+            <td>H</td>
+            <td>J</td>
+        </tr>
+        <tr>
+            <td id="reg1">R</td>
+            <td id="reg2">E</td>
+            <td id="reg3">G</td>
+            <td id="reg4">I</td>
+            <td id="reg5">S</td>
+            <td id="reg6">T</td>
+            <td id="reg7">R</td>
+            <td id="reg8">A</td>
+            <td id="reg9">D</td>
+            <td id="reg10">O</td>
+            <td id="reg11">R</td>
+            <td id="reg12">E</td>
+            <td id="reg13">S</td>
+            <td>X</td>
+            <td>H</td>
+        </tr>
+        <tr>
+            <td>H</td>
+            <td id="ram1">R</td>
+            <td id="ram2">A</td>
+            <td id="ram3">M</td>
+            <td>I</td>
+            <td>J</td>
+            <td>K</td>
+            <td>L</td>
+            <td>M</td>
+            <td>N</td>
+            <td>0</td>
+            <td>P</td>
+            <td>Q</td>
+            <td>R</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>R</td>
+            <td>5</td>
+            <td>T</td>
+            <td>U</td>
+            <td>V</td>
+            <td>W</td>
+            <td>X</td>
+            <td id="rom1">R</td>
+            <td id="rom2">O</td>
+            <td id="rom3">M</td>
+            <td>Y</td>
+            <td>Z</td>
+            <td>A</td>
+            <td>B</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+            <td>F</td>
+            <td>G</td>
+            <td>H</td>
+            <td>1</td>
+            <td>J</td>
+            <td id="eprom1">E</td>
+            <td id="eprom2">P</td>
+            <td id="eprom3">R</td>
+            <td id="eprom4">O</td>
+            <td id="eprom5">M</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>J</td>
+            <td id="flash1">F</td>
+            <td id="flash2">L</td>
+            <td id="flash3">A</td>
+            <td id="flash4">S</td>
+            <td id="flash5">H</td>
+            <td>K</td>
+            <td>L</td>
+            <td>M</td>
+            <td>N</td>
+            <td>O</td>
+            <td>P</td>
+            <td>Q</td>
+            <td>R</td>
+            <td>M</td>
+        </tr>
+        <tr>
+            <td id="memo1">M</td>
+            <td id="memo2">E</td>
+            <td id="memo3">M</td>
+            <td id="memo4">O</td>
+            <td id="memo5">R</td>
+            <td id="memo6">I</td>
+            <td id="memo7">A</td>
+            <td id="memo8">D</td>
+            <td id="memo9">E</td>
+            <td id="memo10">M</td>
+            <td id="memo11">A</td>
+            <td id="memo12">S</td>
+            <td id="memo13">S</td>
+            <td id="memo14">A</td>
+            <td>X</td>
+        </tr>
+        <tr>
+            <td>X</td>
+            <td>Y</td>
+            <td id="dma1">D</td>
+            <td id="dma2">M</td>
+            <td id="dma3">A</td>
+            <td>Z</td>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+            <td>F</td>
+            <td>G</td>
+            <td>H</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>H</td>
+            <td>I</td>
+            <td>J</td>
+            <td>K</td>
+            <td>1</td>
+            <td>M</td>
+            <td>N</td>
+            <td>O</td>
+            <td id="cs1">C</td>
+            <td id="cs2">S</td>
+            <td>P</td>
+            <td>Q</td>
+            <td>R</td>
+            <td>S</td>
+            <td>N</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td id="add1">A</td>
+            <td id="add2">D</td>
+            <td id="add3">D</td>
+            <td id="add4">R</td>
+            <td id="add5">E</td>
+            <td id="add6">S</td>
+            <td id="add7">S</td>
+            <td id="add8">B</td>
+            <td id="add9">U</td>
+            <td id="add10">S</td>
+            <td>W</td>
+            <td>X</td>
+            <td>Y</td>
+            <td>R</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+            <td>F</td>
+            <td>G</td>
+            <td id="data1">D</td>
+            <td id="data2">A</td>
+            <td id="data3">T</td>
+            <td id="data4">A</td>
+            <td id="data5">B</td>
+            <td id="data6">U</td>
+            <td id="data7">S</td>
+            <td>H</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+            <td>F</td>
+            <td id="i51">I</td>
+            <td id="i52">5</td>
+            <td>G</td>
+            <td>H</td>
+            <td>I</td>
+            <td>J</td>
+            <td>K</td>
+            <td>L</td>
+            <td>T</td>
+        </tr>
+        <tr>
+            <td>M</td>
+            <td>N</td>
+            <td>O</td>
+            <td>P</td>
+            <td>Q</td>
+            <td>R</td>
+            <td>5</td>
+            <td>T</td>
+            <td>U</td>
+            <td>V</td>
+            <td>W</td>
+            <td id="i71">I</td>
+            <td id="i72">7</td>
+            <td>X</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>H</td>
+            <td>I</td>
+            <td>J</td>
+            <td>4</td>
+            <td>L</td>
+            <td>M</td>
+            <td id="dual1">D</td>
+            <td id="dual2">U</td>
+            <td id="dual3">A</td>
+            <td id="dual4">L</td>
+            <td id="dual5">C</td>
+            <td id="dual6">O</td>
+            <td id="dual7">R</td>
+            <td id="dual8">E</td>
+            <td>U</td>
+        </tr>
+        <tr>
+            <td>Q</td>
+            <td>R</td>
+            <td id="quad1">Q</td>
+            <td id="quad2">U</td>
+            <td id="quad3">A</td>
+            <td id="quad4">D</td>
+            <td id="quad5">C</td>
+            <td id="quad6">O</td>
+            <td id="quad7">R</td>
+            <td id="quad8">E</td>
+            <td>S</td>
+            <td>T</td>
+            <td>U</td>
+            <td>V</td>
+            <td>U</td>
+        </tr>
+    </table>
+    `;
+
+    div_tabela.innerHTML = tabela;
+
+    function verificar() {
+        let resposta = ipt_resposta.value.toUpperCase().trim();
+
+        if (resposta == listaRespostas[atual]) {
+            div_msg.innerHTML = "Resposta correta!";
+            acerto(resposta);
+            atual++;
+            ipt_resposta.value = "";
+
+            if (atual < listaPerguntas.length) {
+                pergunta.innerHTML = listaPerguntas[atual];
+            } else {
+                pergunta.innerHTML = "Você terminou o caça palavras!";
+                div_msg.innerHTML = "Parabéns!";
+            }
+        } else {
+            div_msg.innerHTML = "Resposta errada!";
+        }
+    }
+
+    function acerto(palavra) {
+        if (palavra == "CPU") {
+            div_tabela.innerHTML = div_tabela.innerHTML
+                .replace(`id="cpu1">`, `class="azul" id="cpu1">`)
+                .replace(`id="cpu2">`, `class="azul" id="cpu2">`)
+                .replace(`id="cpu3">`, `class="azul" id="cpu3">`);
+        }
+        if (palavra == "ULA") {
+            div_tabela.innerHTML = div_tabela.innerHTML
+                .replace(`id="ula1">`, `class="azul" id="ula1">`)
+                .replace(`id="ula2">`, `class="azul" id="ula2">`)
+                .replace(`id="ula3">`, `class="azul" id="ula3">`);
+        }
+        if (palavra == "REGISTRADORES") {
+            for (let i = 1; i <= 13; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="reg${i}">`, `class="azul" id="reg${i}">`);
+            }
+        }
+        if (palavra == "RAM") {
+            for (let i = 1; i <= 3; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="ram${i}">`, `class="azul" id="ram${i}">`);
+            }
+        }
+        if (palavra == "ROM") {
+            for (let i = 1; i <= 3; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="rom${i}">`, `class="azul" id="rom${i}">`);
+            }
+        }
+        if (palavra == "EPROM") {
+            for (let i = 1; i <= 5; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="eprom${i}">`, `class="azul" id="eprom${i}">`);
+            }
+        }
+        if (palavra == "FLASH") {
+            for (let i = 1; i <= 5; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="flash${i}">`, `class="azul" id="flash${i}">`);
+            }
+        }
+        if (palavra == "MEMÓRIA DE MASSA") {
+            for (let i = 1; i <= 14; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="memo${i}">`, `class="azul" id="memo${i}">`);
+            }
+        }
+        if (palavra == "DMA") {
+            for (let i = 1; i <= 3; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="dma${i}">`, `class="azul" id="dma${i}">`);
+            }
+        }
+        if (palavra == "CS") {
+            for (let i = 1; i <= 2; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="cs${i}">`, `class="azul" id="cs${i}">`);
+            }
+        }
+        if (palavra == "ADRESS BUS") {
+            for (let i = 1; i <= 10; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="add${i}">`, `class="azul" id="add${i}">`);
+            }
+        }
+        if (palavra == "DATA BUS") {
+            for (let i = 1; i <= 7; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="data${i}">`, `class="azul" id="data${i}">`);
+            }
+        }
+        if (palavra == "I5") {
+            for (let i = 1; i <= 2; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="i5${i}">`, `class="azul" id="i5${i}">`);
+            }
+        }
+        if (palavra == "I7") {
+            for (let i = 1; i <= 2; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="i7${i}">`, `class="azul" id="i7${i}">`);
+            }
+        }
+        if (palavra == "DUAL CORE") {
+            for (let i = 1; i <= 8; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="dual${i}">`, `class="azul" id="dual${i}">`);
+            }
+        }
+        if (palavra == "QUAD CORE") {
+            for (let i = 1; i <= 8; i++) {
+                div_tabela.innerHTML = div_tabela.innerHTML
+                    .replace(`id="quad${i}">`, `class="azul" id="quad${i}">`);
+            }
+        }
+    }
+</script>
