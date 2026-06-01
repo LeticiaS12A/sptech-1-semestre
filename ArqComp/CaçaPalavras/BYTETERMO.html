@@ -49,7 +49,7 @@
         "ULA",
         "REGISTRADORES",
         "RAM",
-        "ROM",
+        "   ",
         "EPROM",
         "FLASH",
         "MEMÓRIA DE MASSA",
@@ -366,101 +366,34 @@
     }
 
     function acerto(palavra) {
-        if (palavra == "CPU") {
-            div_tabela.innerHTML = div_tabela.innerHTML
-                .replace(`id="cpu1">`, `class="azul" id="cpu1">`)
-                .replace(`id="cpu2">`, `class="azul" id="cpu2">`)
-                .replace(`id="cpu3">`, `class="azul" id="cpu3">`);
-        }
-        if (palavra == "ULA") {
-            div_tabela.innerHTML = div_tabela.innerHTML
-                .replace(`id="ula1">`, `class="azul" id="ula1">`)
-                .replace(`id="ula2">`, `class="azul" id="ula2">`)
-                .replace(`id="ula3">`, `class="azul" id="ula3">`);
-        }
-        if (palavra == "REGISTRADORES") {
-            for (let i = 1; i <= 13; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="reg${i}">`, `class="azul" id="reg${i}">`);
+        var palavras = {
+            "CPU": ["cpu", 3],
+            "ULA": ["ula", 3],
+            "REGISTRADORES": ["reg", 13],
+            "RAM": ["ram", 3],
+            "ROM": ["rom", 3],
+            "EPROM": ["eprom", 5],
+            "FLASH": ["flash", 5],
+            "MEMÓRIA DE MASSA": ["memo", 14],
+            "DMA": ["dma", 3],
+            "CS": ["cs", 2],
+            "ADRESS BUS": ["add", 10],
+            "DATA BUS": ["data", 7],
+            "I5": ["i5", 2],
+            "I7": ["i7", 2],
+            "DUAL CORE": ["dual", 8],
+            "QUAD CORE": ["quad", 8]
+        };
+
+        var info = palavras[palavra];
+
+        if (info) {
+            var prefixo = info[0];
+            var quantidade = info[1];
+
+            for (var i = 1; i <= quantidade; i++) {
+                document.getElementById(prefixo + i).className = "azul";
             }
         }
-        if (palavra == "RAM") {
-            for (let i = 1; i <= 3; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="ram${i}">`, `class="azul" id="ram${i}">`);
-            }
-        }
-        if (palavra == "ROM") {
-            for (let i = 1; i <= 3; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="rom${i}">`, `class="azul" id="rom${i}">`);
-            }
-        }
-        if (palavra == "EPROM") {
-            for (let i = 1; i <= 5; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="eprom${i}">`, `class="azul" id="eprom${i}">`);
-            }
-        }
-        if (palavra == "FLASH") {
-            for (let i = 1; i <= 5; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="flash${i}">`, `class="azul" id="flash${i}">`);
-            }
-        }
-        if (palavra == "MEMÓRIA DE MASSA") {
-            for (let i = 1; i <= 14; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="memo${i}">`, `class="azul" id="memo${i}">`);
-            }
-        }
-        if (palavra == "DMA") {
-            for (let i = 1; i <= 3; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="dma${i}">`, `class="azul" id="dma${i}">`);
-            }
-        }
-        if (palavra == "CS") {
-            for (let i = 1; i <= 2; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="cs${i}">`, `class="azul" id="cs${i}">`);
-            }
-        }
-        if (palavra == "ADRESS BUS") {
-            for (let i = 1; i <= 10; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="add${i}">`, `class="azul" id="add${i}">`);
-            }
-        }
-        if (palavra == "DATA BUS") {
-            for (let i = 1; i <= 7; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="data${i}">`, `class="azul" id="data${i}">`);
-            }
-        }
-        if (palavra == "I5") {
-            for (let i = 1; i <= 2; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="i5${i}">`, `class="azul" id="i5${i}">`);
-            }
-        }
-        if (palavra == "I7") {
-            for (let i = 1; i <= 2; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="i7${i}">`, `class="azul" id="i7${i}">`);
-            }
-        }
-        if (palavra == "DUAL CORE") {
-            for (let i = 1; i <= 8; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="dual${i}">`, `class="azul" id="dual${i}">`);
-            }
-        }
-        if (palavra == "QUAD CORE") {
-            for (let i = 1; i <= 8; i++) {
-                div_tabela.innerHTML = div_tabela.innerHTML
-                    .replace(`id="quad${i}">`, `class="azul" id="quad${i}">`);
-            }
-        }
-    }
+    }   
 </script>
